@@ -5,7 +5,7 @@ import numpy as np
 # On considère que le vaisseau est deja en orbite a basse alttitude avec une vitesse initiale non nulle
 
 
-def calculer_vitesse_initiale(param_gravitation_planete, rayon_orbite_planete_depart, rayon_orbite_planete_arrivee):
+def calculer_vitesse_initiale(mission):
     """Calcule la vitesse initiale et d'arrivée du vaisseau en fonction de la hauteur de chaque oribite
 
     Input :
@@ -15,11 +15,11 @@ def calculer_vitesse_initiale(param_gravitation_planete, rayon_orbite_planete_de
     Output :
         Vitesse du vaisseau avant d'entamer son changement d'orbite et vitesse d'arrivee pour etre en orbite à une hauteur donnée"""
 
-    vitesse_initiale_vaisseau = np.sqrt(param_gravitation_planete / rayon_orbite_planete_depart)
-    vitesse_arrivee_vaisseau = np.sqrt(param_gravitation_planete / rayon_orbite_planete_arrivee)
+    vitesse_initiale_vaisseau = np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite)
+    vitesse_arrivee_vaisseau = np.sqrt(mission['planete_arrivee'].parametre_gravitationnel / mission['planete_arrivee'].rayon_orbite)
     return vitesse_initiale_vaisseau, vitesse_arrivee_vaisseau
 
-def determiner_instant_depart(planete_depart, planete_arrivee):
+def determiner_instant_depart(mission):
     """Détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l'orbite de Hohmann
 
     Input :
@@ -29,22 +29,22 @@ def determiner_instant_depart(planete_depart, planete_arrivee):
     Output :
         Angle optimal pour entamer l'orbite et l'instant de départ (jour, minute, seconde)."""
 
-    difference_angles = abs(planete_depart.position[1]-planete_arrivee.position[1])
+    difference_angles = abs(mission['planete_depart'].temps_pos_planete[3]-mission['planete_arrivee'].temps_pos_planete[3])
 
     indices_minimum = np.where(difference_angles == np.min(difference_angles))[0]
 
-    premier_indice_minimum = indices_minimum[0]
+    premier_indice_minimum = indices_minimum[3]
 
     # Afficher la valeur de l'angle correspondant au premier minimum
     premier_minimum = difference_angles[premier_indice_minimum]
 
     # Afficher le temps correspondant au premier minimum
-    instant_depart = planete_arrivee[0][premier_indice_minimum]
+    instant_depart = mission['planete_arrivee'].temps_pos_planete[3][premier_indice_minimum]
 
     return premier_minimum, instant_depart
 
 
-def calculer_delta_v(param_gravitation_soleil, distance_soleil_depart, distance_soleil_arrivee,  vitesse_initiale_vaisseau,  vitesse_arrivee_vaisseau):
+def calculer_delta_v(mission):
     """Calcule la variation de vitesse (delta-v) nécessaire pour passer d'une orbite autour du Soleil à une autre,
         en tenant compte des vitesses initiales et finales du vaisseau.
 
@@ -71,7 +71,7 @@ def calculer_delta_v(param_gravitation_soleil, distance_soleil_depart, distance_
 
     return delta_v1, delta_v2
 
-def calculer_duree_transfert(param_gravitation_soleil, distance_soleil_depart, distance_soleil_arrivee):
+def calculer_duree_transfert(mission):
     """Calcule la durée estimée du transfert entre deux orbites autour du Soleil.
 
     Input :
@@ -88,7 +88,7 @@ def calculer_duree_transfert(param_gravitation_soleil, distance_soleil_depart, d
     return duree_transfert
 
 
-def calculer_periode_synodique(periode_planete_depart, periode_planete_arrivee):
+def calculer_periode_synodique(mission):
     """Calcule la période synodique entre deux planètes.
 
     Input :
