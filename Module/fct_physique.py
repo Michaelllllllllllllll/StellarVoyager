@@ -4,6 +4,7 @@ import numpy as np
 # e = 0, nous considérons que les orbites sont circulaires
 # On considère que le vaisseau est deja en orbite a basse alttitude avec une vitesse initiale non nulle
 
+param_gravitation_soleil = 132712440018 # km3/s2
 
 def calculer_vitesse_initiale(mission):
     """Calcule la vitesse initiale et d'arrivée du vaisseau en fonction de la hauteur de chaque oribite
@@ -17,6 +18,8 @@ def calculer_vitesse_initiale(mission):
 
     vitesse_initiale_vaisseau = np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite)
     vitesse_arrivee_vaisseau = np.sqrt(mission['planete_arrivee'].parametre_gravitationnel / mission['planete_arrivee'].rayon_orbite)
+    print(vitesse_initiale_vaisseau)
+    print(vitesse_arrivee_vaisseau)
     return vitesse_initiale_vaisseau, vitesse_arrivee_vaisseau
 
 def determiner_instant_depart(mission):
@@ -33,18 +36,20 @@ def determiner_instant_depart(mission):
 
     indices_minimum = np.where(difference_angles == np.min(difference_angles))[0]
 
-    premier_indice_minimum = indices_minimum[3]
+    premier_indice_minimum = indices_minimum[0]
 
     # Afficher la valeur de l'angle correspondant au premier minimum
     premier_minimum = difference_angles[premier_indice_minimum]
 
     # Afficher le temps correspondant au premier minimum
-    instant_depart = mission['planete_arrivee'].temps_pos_planete[3][premier_indice_minimum]
+    instant_depart = mission['planete_arrivee'].temps_pos_planete[0][premier_indice_minimum]
+    print(premier_minimum)
+    print(instant_depart)
 
     return premier_minimum, instant_depart
 
 
-def calculer_delta_v(mission):
+def calculer_delta_v(mission, vitesse_initiale_vaisseau, vitesse_arrivee_vaisseau):
     """Calcule la variation de vitesse (delta-v) nécessaire pour passer d'une orbite autour du Soleil à une autre,
         en tenant compte des vitesses initiales et finales du vaisseau.
 
@@ -60,14 +65,17 @@ def calculer_delta_v(mission):
         """
 
     # Calcul de la vitesse de libération au départ
-    vitesse_liberation_depart = np.sqrt(((2 * param_gravitation_soleil) / (distance_soleil_depart + distance_soleil_arrivee)) * (distance_soleil_arrivee / distance_soleil_depart))
+    vitesse_liberation_depart = np.sqrt(((2 * param_gravitation_soleil) / (mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)) * (mission['planete_arrivee'].distance_soleil / mission['planete_depart'].distance_soleil))
 
     # Calcul de la vitesse à l'arrivée
-    vitesse_arrivee = np.sqrt(((2 * param_gravitation_soleil) / (distance_soleil_depart + distance_soleil_arrivee)) * (distance_soleil_depart / distance_soleil_arrivee))
+    vitesse_arrivee = np.sqrt(((2 * param_gravitation_soleil) / (mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)) * (mission['planete_depart'].distance_soleil / mission['planete_arrivee'].distance_soleil))
 
     # Calcul de la variation de vitesse delta-v au départ et à l'arrivée
     delta_v1 = vitesse_liberation_depart - vitesse_initiale_vaisseau
     delta_v2 = vitesse_arrivee_vaisseau - vitesse_arrivee
+
+    print(delta_v1)
+    print(delta_v2)
 
     return delta_v1, delta_v2
 
@@ -83,7 +91,9 @@ def calculer_duree_transfert(mission):
         La durée estimée du transfert en ***.
     """
     # Calcul de la durée estimée du transfert
-    duree_transfert = (np.pi / 2) * np.sqrt((distance_soleil_depart + distance_soleil_arrivee)**3 / (2 * param_gravitation_soleil))
+    duree_transfert = (np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil))
+
+    print(duree_transfert)
 
     return duree_transfert
 
@@ -100,7 +110,9 @@ def calculer_periode_synodique(mission):
     """
 
     # Calcul de la période synodique
-    periode_synodique = 1 / ((1 / periode_planete_depart) - (1 / periode_planete_arrivee))
+    periode_synodique = 1 / ((1 / mission['planete_depart'].periode_revolution) - (1 / mission['planete_arrivee'].periode_revolution))
+
+    print(periode_synodique)
 
     return periode_synodique
 
@@ -125,6 +137,13 @@ def calculer_duree_mission(duree_transfert, periode_synodique):
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
         duree = duree_transfert
         print(f"Vous comptez rester sur la planète initiale. La période totale de la mission sera de {duree} jours.")
+def appel_fonctions_physique(mission):
 
+    vitesse_initiale_vaisseau, vitesse_arrivee_vaisseau = calculer_vitesse_initiale(mission)
+    determiner_instant_depart(mission)
+    calculer_delta_v(mission, vitesse_initiale_vaisseau, vitesse_arrivee_vaisseau)
+    duree_transfert = calculer_duree_transfert(mission)
+    periode_synodique = calculer_periode_synodique(mission)
+    calculer_duree_mission(duree_transfert, periode_synodique)
 
 
