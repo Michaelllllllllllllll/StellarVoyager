@@ -7,6 +7,7 @@ class Vaisseau:
     :vartype masse_reactive: float"""
 
     def __init__(self, obtenir_flottant):
+
         """Initialise un objet Vaisseau.
 
         :param obtenir_flottant: Une fonction qui permet d'obtenir un nombre flottant de l'utilisateur.
