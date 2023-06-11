@@ -24,6 +24,9 @@ class Planete:
         vitesse_planete_ordre = [172800, 126000, 104400, 86400, 46800, 36000, 25200, 18000, 18000] #km/h
         self.vitesse = vitesse_planete_ordre[numero_planete]
 
+        distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km/h
+        self.distance_soleil = distance_au_soleil[numero_planete]
+
         self.parametre_gravitationnel = self.masse * 6.67 *10**-11
 
         self.nombre_annee = 10
@@ -37,7 +40,7 @@ class Planete:
         date_observation = datetime.datetime(annee, mois, jour)
 
         #tableau coordonnées sur 10 ans
-        temps_pos_planete = np.zeros([4, self.nombre_annee * 365])
+        self.temps_pos_planete = np.zeros([4, self.nombre_annee * 365])
 
         planete_cible = self.ephemeris[self.nom_planete]
         sun = self.ephemeris['sun']
@@ -52,11 +55,9 @@ class Planete:
             # Conversion en coordonnées astrométriques
             ra, dec, distance = astrometric.radec()
 
-            temps_pos_planete[0,jour] = date.utc_datetime().day
-            temps_pos_planete[1,jour] = date.utc_datetime().month
-            temps_pos_planete[2,jour] = date.utc_datetime().year
-            temps_pos_planete[3,jour] = ra.radians
+            self.temps_pos_planete[0,jour] = date.utc_datetime().day
+            self.temps_pos_planete[1,jour] = date.utc_datetime().month
+            self.temps_pos_planete[2,jour] = date.utc_datetime().year
+            self.temps_pos_planete[3,jour] = ra.radians
 
             date = date + timedelta(days = 1)
-
-        return temps_pos_planete
