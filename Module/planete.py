@@ -37,7 +37,7 @@ class Planete:
         date_observation = datetime.datetime(annee, mois, jour)
 
         #tableau coordonnées sur 10 ans
-        temps_pos_planete = np.zeros([4, self.nombre_annee * 365])
+        self.temps_pos_planete = np.zeros([4, self.nombre_annee * 365])
 
         planete_cible = self.ephemeris[self.nom_planete]
         sun = self.ephemeris['sun']
@@ -52,11 +52,9 @@ class Planete:
             # Conversion en coordonnées astrométriques
             ra, dec, distance = astrometric.radec()
 
-            temps_pos_planete[0,jour] = date.utc_datetime().day
-            temps_pos_planete[1,jour] = date.utc_datetime().month
-            temps_pos_planete[2,jour] = date.utc_datetime().year
-            temps_pos_planete[3,jour] = ra.radians
+            self.temps_pos_planete[0,jour] = date.utc_datetime().day
+            self.temps_pos_planete[1,jour] = date.utc_datetime().month
+            self.temps_pos_planete[2,jour] = date.utc_datetime().year
+            self.temps_pos_planete[3,jour] = ra.radians
 
             date = date + timedelta(days = 1)
-
-        return temps_pos_planete
