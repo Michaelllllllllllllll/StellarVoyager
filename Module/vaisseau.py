@@ -12,5 +12,5 @@ class Vaisseau:
 
         :param obtenir_flottant: Une fonction qui permet d'obtenir un nombre flottant de l'utilisateur.
         :type obtenir_flottant: function"""
-        self.masse_vide = obtenir_flottant('Entrer la masse à vide du vaisseau : ')
-        self.masse_reactive = obtenir_flottant('Entrer la masse de carburant réactif : ')
+        self.masse_vide = obtenir_flottant('Entrer la masse à vide du vaisseau en kg : ')
+        self.masse_reactive = obtenir_flottant('Entrer la masse de carburant réactif en kg : ')
