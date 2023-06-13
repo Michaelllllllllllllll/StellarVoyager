@@ -13,4 +13,14 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     mission['planete_depart'] = Planete(mission['numero_planete_depart'])
     mission['planete_arrivee'] = Planete(mission['numero_planete_arrivee'])
     mission['vaisseau'] = Vaisseau(obtenir_flottant)
+
+    jour = obtenir_entier("Veuillez entrer le numéro du jour de départ au plus tôt : ")
+    mois = obtenir_entier("Veuillez entrer le numéro du mois de départ au plus tôt : ")
+    annee = obtenir_entier("Veuillez entrer le numéro de l'année de départ au plus tôt : ")
+    mission['planete_depart'].coordonnees_planete(jour, mois, annee)
+    mission['planete_arrivee'].coordonnees_planete(jour, mois, annee)
+
+    #nom_planete = ['mercure', 'vénus', 'terre', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton']
+    #print(f"Votre Mission de )
+
     return mission
