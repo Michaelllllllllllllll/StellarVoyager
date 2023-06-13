@@ -16,19 +16,22 @@ def determiner_instant_depart(mission):
     Output :
         Angle optimal pour entamer l'orbite et l'instant de départ (jour, minute, seconde)."""
 
-    difference_angles = abs(mission['planete_depart'].temps_pos_planete[3]-mission['planete_arrivee'].temps_pos_planete[3])
+    difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3])
 
-    indices_minimum = np.where(difference_angles == np.min(difference_angles))[0]
+    angle_objectif = np.pi - 2 * np.pi / mission['planete_arrivee'].periode_revolution * mission['duree_transfert']
+    #print(angle_objectif)
 
-    premier_indice_minimum = indices_minimum[0]
+    minimalisation = angle_objectif - difference_angles
+    #print(minimalisation)
 
-    # Afficher la valeur de l'angle correspondant au premier minimum
-    mission['premier_minimum'] = difference_angles[premier_indice_minimum]
-
-    # Afficher le temps correspondant au premier minimum
-    mission['instant_depart'] = mission['planete_arrivee'].temps_pos_planete[0][premier_indice_minimum]
-    print(mission['premier_minimum'])
-    print(mission['instant_depart'])
+    for indice in range(1, len(minimalisation)):
+        if (minimalisation[indice] > 0 and minimalisation[indice-1] < 0) or (minimalisation[indice] < 0 and minimalisation[indice-1] > 0):
+            break
+    mission['jour_depart'] = mission['planete_depart'].temps_pos_planete[0, indice]
+    mission['mois_depart'] = mission['planete_depart'].temps_pos_planete[1, indice]
+    mission['annee_depart'] = mission['planete_depart'].temps_pos_planete[2, indice]
+    print(f"Le jour de départ optimal est le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
+    print()
 
     return mission
 
@@ -142,7 +145,7 @@ def calculer_duree_mission(mission):
     print(f"Une fois sur place, vous devrez attendre {int(duree_sur_planete_arrivee)} jours, soit environ {round(duree_sur_planete_arrivee / 30, 2)} mois.")
 
     # Demande à l'utilisateur s'il souhaite revenir sur la planète de départ
-    question_utilisateur = input("Souhaitez-vous revenir sur la planète de départ (oui ou non) ?")
+    question_utilisateur = input("Souhaitez-vous revenir sur la planète de départ (oui ou non) : ")
 
     if question_utilisateur == 'oui':
         # Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
