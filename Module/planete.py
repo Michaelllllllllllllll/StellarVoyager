@@ -7,8 +7,11 @@ import numpy as np
 class Planete:
     def __init__(self, numero_planete):
 
-        nom_planete_ordre = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto']
+        nom_planete_ordre = ['mercury barycenter', 'venus barycenter', 'earth barycenter', 'mars barycenter', 'jupiter barycenter', 'saturn barycenter', 'uranus barycenter', 'neptune barycenter', 'pluto barycenter']
         self.nom_planete = nom_planete_ordre[numero_planete]
+
+        nom_planete_affichage_ordre = ['Mercure', 'Venus', 'Terre', 'Mars', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Pluton']
+        self.nom_planete_affichage = nom_planete_affichage_ordre[numero_planete]
 
         masse_planete_ordre = [3.3011e+23, 4.8675e+24, 5.9724e+24, 6.4171e+23, 1.8982e+27, 5.6834e+26, 8.6813e+25, 1.0241e+26, 1.303e+22] #kg
         self.masse = masse_planete_ordre[numero_planete]
