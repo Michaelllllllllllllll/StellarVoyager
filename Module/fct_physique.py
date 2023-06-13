@@ -19,10 +19,8 @@ def determiner_instant_depart(mission):
     difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3])
 
     angle_objectif = np.pi - 2 * np.pi / mission['planete_arrivee'].periode_revolution * mission['duree_transfert']
-    #print(angle_objectif)
 
     minimalisation = angle_objectif - difference_angles
-    #print(minimalisation)
 
     for indice in range(1, len(minimalisation)):
         if (minimalisation[indice] > 0 and minimalisation[indice-1] < 0) or (minimalisation[indice] < 0 and minimalisation[indice-1] > 0):
@@ -30,8 +28,7 @@ def determiner_instant_depart(mission):
     mission['jour_depart'] = mission['planete_depart'].temps_pos_planete[0, indice]
     mission['mois_depart'] = mission['planete_depart'].temps_pos_planete[1, indice]
     mission['annee_depart'] = mission['planete_depart'].temps_pos_planete[2, indice]
-    print(f"Le jour de départ optimal est le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
-    print()
+    print(f"Le jour de départ optimal est le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}.")
 
     return mission
 
@@ -66,7 +63,7 @@ def calculer_delta_v(mission):
 def calculer_influence_planete(mission):
 
     mission['distance_influence'] = round(mission['planete_depart'].distance_soleil * (mission['planete_depart'].masse / masse_soleil)**(2/5), 2)
-    print(f"influence : {mission['distance_influence']} km")
+    #print(f"influence : {mission['distance_influence']} km")
     return mission
 
 def calculer_vitesse_orbite_depart(mission):
@@ -76,7 +73,7 @@ def calculer_vitesse_orbite_depart(mission):
     """
 
     vitesse_orbite = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
-    print(f"\nAu départ, à une hauteur de {mission['planete_depart'].rayon_orbite - mission['planete_depart'].rayon} km, le vaisseau se déplacera à une vitesse de {vitesse_orbite} km/s")
+    print(f"\nAu départ, à une hauteur de {mission['planete_depart'].rayon_orbite - mission['planete_depart'].rayon} km, le vaisseau se déplacera à une vitesse de {vitesse_orbite} km/s.")
     energie_orbitale_planete_depart = ((mission['delta_v1'])**2 / 2) - (mission['planete_depart'].parametre_gravitationnel / mission['distance_influence'])
     vitesse_liberation = round(np.sqrt(2 * (energie_orbitale_planete_depart + (mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite))), 2)
     print(f"Le vaisseau devra se déplacer à une vitesse de {vitesse_liberation} km/s pour sortir de l'attraction de la planète {mission['planete_depart'].nom_planete_affichage}.")
