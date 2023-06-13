@@ -59,11 +59,8 @@ def calculer_delta_v(mission):
     # Calcul de la variation de vitesse delta-v au départ et à l'arrivée
     mission['delta_v1'] = abs(round(vitesse_liberation_depart - (mission['planete_depart'].vitesse / 3600), 2))
     mission['delta_v2'] = abs(round((mission['planete_arrivee'].vitesse / 3600) - vitesse_arrivee, 2))
-
-    print(f"delta_v1 = {mission['delta_v1']} km/s")
-    print(f"delta_v2 = {mission['delta_v2']} km/s")
-    print("je dois commenter tous les deltav")
-
+    #print(f"delta_v1 = {mission['delta_v1']} km/s")
+    #print(f"delta_v2 = {mission['delta_v2']} km/s")
     return mission
 
 def calculer_influence_planete(mission):
@@ -101,10 +98,9 @@ def calculer_duree_transfert(mission):
     # Calcul de la durée estimée du transfert
     mission['duree_transfert'] = abs((np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil)))
     mission['duree_transfert'] /= (3600 * 24)
-    print(f"La durée du voyage sera de {int(mission['duree_transfert'])} jours, soit environ {round(mission['duree_transfert']/30, 2)} mois, ou {round(mission['duree_transfert']/(30*12), 2)} ans.")
+    print(f"\nLa durée du voyage sera de {int(mission['duree_transfert'])} jours, soit environ {round(mission['duree_transfert']/30, 2)} mois, ou {round(mission['duree_transfert']/(30*12), 2)} ans.")
 
     return mission
-
 
 def calculer_periode_synodique(mission):
     """Calcule la période synodique entre deux planètes.
@@ -119,10 +115,6 @@ def calculer_periode_synodique(mission):
 
     # Calcul de la période synodique
     periode_synodique = abs(round(1 / ((1 / mission['planete_depart'].periode_revolution) - (1 / mission['planete_arrivee'].periode_revolution)), 0))
-
-    #print(f"Il faut en moyenne attendre {int(periode_synodique)} jours pour avoir la meilleure fenetre de lancement, ne loupez pas le coche.")
-
-
 
 def calculer_duree_mission(mission):
     """Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.
@@ -146,7 +138,7 @@ def calculer_duree_mission(mission):
 
     # Demande à l'utilisateur s'il souhaite revenir sur la planète de départ
 
-    question_utilisateur = input("\nSouhaitez-vous revenir sur la planète de départ (oui ou non) ?")
+    question_utilisateur = input("\nSouhaitez-vous revenir sur la planète de départ (oui ou non) : ")
 
     if question_utilisateur == 'oui':
         # Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
@@ -159,8 +151,7 @@ def calculer_duree_mission(mission):
 
 def appel_fonctions_physique(mission):
     """a faire"""
-    print("\n")
-    print(f"Vous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.")
+    print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.")
 
     mission = calculer_duree_transfert(mission)
     determiner_instant_depart(mission)
