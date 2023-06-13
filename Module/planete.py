@@ -27,7 +27,7 @@ class Planete:
         distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km/h
         self.distance_soleil = distance_au_soleil[numero_planete]
 
-        self.parametre_gravitationnel = self.masse * 6.67 *10**-11
+        self.parametre_gravitationnel = self.masse * 6.67 * 10**-20 #km^3/s^2
 
         self.nombre_annee = 10
 
@@ -55,9 +55,9 @@ class Planete:
             # Conversion en coordonnées astrométriques
             ra, dec, distance = astrometric.radec()
 
-            self.temps_pos_planete[0,jour] = date.utc_datetime().day
-            self.temps_pos_planete[1,jour] = date.utc_datetime().month
-            self.temps_pos_planete[2,jour] = date.utc_datetime().year
-            self.temps_pos_planete[3,jour] = ra.radians
+            self.temps_pos_planete[0, jour] = date.utc_datetime().day
+            self.temps_pos_planete[1, jour] = date.utc_datetime().month
+            self.temps_pos_planete[2, jour] = date.utc_datetime().year
+            self.temps_pos_planete[3, jour] = ra.radians
 
             date = date + timedelta(days = 1)
