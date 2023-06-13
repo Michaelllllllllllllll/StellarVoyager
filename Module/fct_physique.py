@@ -161,5 +161,3 @@ def appel_fonctions_physique(mission):
     duree_transfert = calculer_duree_transfert(mission)
     calculer_periode_synodique(mission)
     calculer_duree_mission(duree_transfert, mission)
-
-

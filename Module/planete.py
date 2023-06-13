@@ -2,7 +2,6 @@ from skyfield.api import load, utc
 import datetime
 from datetime import timedelta
 import numpy as np
-#import math
 
 class Planete:
     def __init__(self, numero_planete):
