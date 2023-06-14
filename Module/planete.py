@@ -61,7 +61,7 @@ class Planete:
         # (paramètre gravitationnel standard = M * G)
         self.parametre_gravitationnel = self.masse * 6.67 * 10**-20 #km^3/s^2
 
-        self.nombre_annee = 10
+        self.nombre_annee = 20
 
         # Charger les données éphémérides pour toutes les planètes
         self.ephemeris = load('de421.bsp')
