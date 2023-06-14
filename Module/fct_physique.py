@@ -87,6 +87,7 @@ def calculer_vitesse_orbite_depart(mission):
     delta_v_orbite_planete_arrivee = round(vitesse_liberation - vitesse_orbite, 2)
     print(f"Il devra atteindre une variation de vitesse de {delta_v_orbite_planete_arrivee} km/s pour atteindre {mission['planete_arrivee'].nom_planete_affichage}.")
 
+    return mission
 
 def calculer_duree_transfert(mission):
     """Calcule la durée estimée du transfert entre deux orbites autour du Soleil.
@@ -119,6 +120,8 @@ def calculer_periode_synodique(mission):
 
     # Calcul de la période synodique
     periode_synodique = abs(round(1 / ((1 / mission['planete_depart'].periode_revolution) - (1 / mission['planete_arrivee'].periode_revolution)), 0))
+
+    return mission
 
 def calculer_duree_mission(mission):
     """Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.
@@ -153,15 +156,19 @@ def calculer_duree_mission(mission):
         duree = abs(mission['duree_transfert'])
         print(f"\nVous comptez rester sur la planète initiale. La période totale de la mission sera de {int(duree)} jours, soit environ {round(duree/30, 2)} mois, ou {round(duree/(30*12), 2)} ans.")
 
+    return mission
+
 def appel_fonctions_physique(mission):
     """a faire"""
 
     print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.\n")
 
     mission = calculer_duree_transfert(mission)
-    determiner_instant_depart(mission)
+    mission = determiner_instant_depart(mission)
     mission = calculer_delta_v(mission)
     mission = calculer_influence_planete(mission)
-    calculer_vitesse_orbite_depart(mission)
-    calculer_periode_synodique(mission)
-    calculer_duree_mission(mission)
+    mission = calculer_vitesse_orbite_depart(mission)
+    mission = calculer_periode_synodique(mission)
+    mission = calculer_duree_mission(mission)
+
+    return mission
