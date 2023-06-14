@@ -78,7 +78,7 @@ def calculer_vitesse_orbite_depart(mission):
     """
 
     vitesse_orbite = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
-    print(f"\nAu départ, à une hauteur de {mission['planete_depart'].rayon_orbite - mission['planete_depart'].rayon} km, le vaisseau se déplacera à une vitesse de {vitesse_orbite} km/s")
+    print(f"Au départ, à une hauteur de {mission['planete_depart'].rayon_orbite - mission['planete_depart'].rayon} km, le vaisseau se déplacera à une vitesse de {vitesse_orbite} km/s")
     energie_orbitale_planete_depart = ((mission['delta_v1'])**2 / 2) - (mission['planete_depart'].parametre_gravitationnel / mission['distance_influence'])
     vitesse_liberation = round(np.sqrt(2 * (energie_orbitale_planete_depart + (mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite))), 2)
     print(f"Le vaisseau devra se déplacer à une vitesse de {vitesse_liberation} km/s pour sortir de l'attraction de la planète {mission['planete_depart'].nom_planete_affichage}.")
@@ -119,8 +119,7 @@ def calculer_periode_synodique(mission):
     # Calcul de la période synodique
     periode_synodique = abs(round(1 / ((1 / mission['planete_depart'].periode_revolution) - (1 / mission['planete_arrivee'].periode_revolution)), 0))
 
-    #print(f"Il faut en moyenne attendre {int(periode_synodique)} jours pour avoir la meilleure fenetre de lancement, ne loupez pas le coche.")
-
+    #print(f"I {int(periode_synodique)}")
 
 
 def calculer_duree_mission(mission):
@@ -147,19 +146,18 @@ def calculer_duree_mission(mission):
 
     question_utilisateur = input("\nSouhaitez-vous revenir sur la planète de départ (oui ou non) ?")
 
-    if question_utilisateur == 'oui':
+    if question_utilisateur == 'oui' or question_utilisateur == 'OUI' or question_utilisateur == 'o' or question_utilisateur == 'O':
         # Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
         duree = abs(mission['duree_transfert'] + duree_sur_planete_arrivee + mission['duree_transfert'])
         print(f"\nVous comptez revenir sur la planète initiale. La période totale de la mission sera alors de {int(duree)} jours, soit environ {round(duree/30, 2)} mois, ou {round(duree/(30*12), 2)} ans.")
-    elif question_utilisateur == 'non':
+    elif question_utilisateur == 'non' or question_utilisateur == 'NON' or question_utilisateur == 'n' or question_utilisateur == 'N':
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
         duree = abs(mission['duree_transfert'])
         print(f"\nVous comptez rester sur la planète initiale. La période totale de la mission sera de {int(duree)} jours, soit environ {round(duree/30, 2)} mois, ou {round(duree/(30*12), 2)} ans.")
 
 def appel_fonctions_physique(mission):
     """a faire"""
-    print("\n")
-    print(f"Vous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.\n")
+    print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.\n")
 
     mission = calculer_duree_transfert(mission)
     determiner_instant_depart(mission)
