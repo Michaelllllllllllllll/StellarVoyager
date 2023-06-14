@@ -4,7 +4,7 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
 
     Input : aucune
 
-    Output : dictionnaire avec les données d'entrées du problème"""
+    Output : dictionnaire avec les données d'entrée du problème"""
     mission = {}
     print("Voici les planètes du système solaire :\n1 - Mercure\n2 - Vénus\n3 - Terre\n4 - Mars\n5 - Jupiter\n6 - Saturne\n7 - Uranus\n8 - Neptune\n9 - Pluton")
 
