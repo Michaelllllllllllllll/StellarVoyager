@@ -45,13 +45,9 @@ def determiner_instant_depart(mission):
     mission['jour_arrivee_planete'] = date_arrivee_planete.utc_datetime().day
     mission['mois_arrivee_planete'] = date_arrivee_planete.utc_datetime().month
     mission['annee_arrivee_planete'] = date_arrivee_planete.utc_datetime().year
-    print(f"La date d'arrivée sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")
+    print(f"La date d'arrivée sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.\n")
 
     mission['indice'] += int(mission['duree_transfert'])
-
-    print(f"Le jour de départ optimal sera le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
-    print()
-
 
     return mission
 

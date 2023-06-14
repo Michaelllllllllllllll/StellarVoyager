@@ -64,7 +64,8 @@ class Planete:
         self.nombre_annee = 20
 
         # Charger les données éphémérides pour toutes les planètes
-        self.ephemeris = load('de421.bsp')
+        #self.ephemeris = load('de421.bsp')
+        self.ephemeris = load('de405.bsp')
 
     def coordonnees_planete(self, jour, mois, annee):
         """
