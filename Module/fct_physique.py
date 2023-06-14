@@ -1,4 +1,6 @@
 import numpy as np
+from skyfield.api import load, utc
+from datetime import timedelta
 
 # e = 0, nous considérons que les orbites sont circulaires
 # On considère que le vaisseau est deja en orbite a basse alttitude avec une vitesse initiale non nulle
@@ -26,12 +28,30 @@ def determiner_instant_depart(mission):
     for indice in range(1, len(minimalisation)):
         if (minimalisation[indice] > 0 and minimalisation[indice-1] < 0) or (minimalisation[indice] < 0 and minimalisation[indice-1] > 0):
             break
+
+    mission['indice'] = indice
+    mission['angle_depart'] = mission['planete_depart'].temps_pos_planete[3,indice]
+
     mission['jour_depart'] = mission['planete_depart'].temps_pos_planete[0, indice]
     mission['mois_depart'] = mission['planete_depart'].temps_pos_planete[1, indice]
     mission['annee_depart'] = mission['planete_depart'].temps_pos_planete[2, indice]
 
+    print(f"La date de départ optimal de {mission['planete_depart'].nom_planete_affichage} est le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}.")
+
+    #Affichage de la date d'arrivée du vaisseau sur la planète
+    ts = load.timescale()
+    date_arrivee_planete = ts.utc(mission['annee_depart'], mission['mois_depart'], mission['jour_depart'])
+    date_arrivee_planete = date_arrivee_planete + timedelta(days=int(mission['duree_transfert']))
+    mission['jour_arrivee_planete'] = date_arrivee_planete.utc_datetime().day
+    mission['mois_arrivee_planete'] = date_arrivee_planete.utc_datetime().month
+    mission['annee_arrivee_planete'] = date_arrivee_planete.utc_datetime().year
+    print(f"La date d'arrivée sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")
+
+    mission['indice'] += int(mission['duree_transfert'])
+
     print(f"Le jour de départ optimal sera le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
     print()
+
 
     return mission
 
@@ -104,6 +124,7 @@ def calculer_duree_transfert(mission):
     mission['duree_transfert'] = abs((np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil)))
     mission['duree_transfert'] /= (3600 * 24)
     print(f"\nLa durée du voyage sera de {int(mission['duree_transfert'])} jours, soit environ {round(mission['duree_transfert']/30, 2)} mois, ou {round(mission['duree_transfert']/(30*12), 2)} ans.")
+    # Obtention de la position de la planète à la date d'observation
 
     return mission
 
@@ -143,6 +164,19 @@ def calculer_duree_mission(mission):
     duree_sur_planete_arrivee = abs(phi / delta_omega)
     print(f"\nUne fois sur place, vous devrez attendre {int(duree_sur_planete_arrivee)} jours pour avoir la meilleure fenetre de tir, soit environ {round(duree_sur_planete_arrivee / 30, 2)} mois, ou {round(duree_sur_planete_arrivee /(30*12), 2)} ans.")
 
+    # Affichage de la date de départ du vaisseau sur la planète
+    ts = load.timescale()
+    date_depart_planete = ts.utc(mission['annee_arrivee_planete'], mission['mois_arrivee_planete'], mission['jour_arrivee_planete'])
+    date_depart_planete = date_depart_planete + timedelta(days=int(duree_sur_planete_arrivee))
+    mission['jour_depart_planete'] = date_depart_planete.utc_datetime().day
+    mission['mois_depart_planete'] = date_depart_planete.utc_datetime().month
+    mission['annee_depart_planete'] = date_depart_planete.utc_datetime().year
+    print(f"Le jour de depart sur {mission['planete_arrivee'].nom_planete_affichage} serait le {int(mission['jour_depart_planete'])}/{int(mission['mois_depart_planete'])}/{int(mission['annee_depart_planete'])}.")
+
+    # récupère l'angle de départ du vaisseau
+    mission['indice'] += int(duree_sur_planete_arrivee)
+    mission['angle_depart_planete'] = mission['planete_depart'].temps_pos_planete[3, mission['indice']]
+
     # Demande à l'utilisateur s'il souhaite revenir sur la planète de départ
 
     question_utilisateur = input("\nSouhaitez-vous revenir sur la planète de départ (oui ou non) : ")
@@ -151,10 +185,24 @@ def calculer_duree_mission(mission):
         # Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
         duree = abs(mission['duree_transfert'] + duree_sur_planete_arrivee + mission['duree_transfert'])
         print(f"\nVous comptez revenir sur la planète initiale. La période totale de la mission sera alors de {int(duree)} jours, soit environ {round(duree/30, 2)} mois, ou {round(duree/(30*12), 2)} ans.")
+
+        # Affichage de la date de retour du vaisseau sur la planète initiale
+        ts = load.timescale()
+        date_retour_mission = ts.utc(mission['annee_depart_planete'], mission['mois_depart_planete'],
+                                     mission['jour_depart_planete'])
+        date_retour_mission = date_retour_mission + timedelta(days=int(mission['duree_transfert']))
+        mission['jour_retour_mission'] = date_retour_mission.utc_datetime().day
+        mission['mois_retour_mission'] = date_retour_mission.utc_datetime().month
+        mission['annee_retour_mission'] = date_retour_mission.utc_datetime().year
+        print(
+            f"La date de retour sur {mission['planete_depart'].nom_planete_affichage} est le {int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}.")
+
     elif question_utilisateur == 'non' or question_utilisateur == 'NON' or question_utilisateur == 'n' or question_utilisateur == 'N':
+
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
         duree = abs(mission['duree_transfert'])
         print(f"\nVous comptez rester sur la planète initiale. La période totale de la mission sera de {int(duree)} jours, soit environ {round(duree/30, 2)} mois, ou {round(duree/(30*12), 2)} ans.")
+        print(f"La date de fin de mission sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")
 
     return mission
 
