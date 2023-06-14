@@ -19,10 +19,8 @@ def determiner_instant_depart(mission):
     difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3])
 
     angle_objectif = np.pi - 2 * np.pi / mission['planete_arrivee'].periode_revolution * mission['duree_transfert']
-    #print(angle_objectif)
 
     minimalisation = angle_objectif - difference_angles
-    #print(minimalisation)
 
     for indice in range(1, len(minimalisation)):
         if (minimalisation[indice] > 0 and minimalisation[indice-1] < 0) or (minimalisation[indice] < 0 and minimalisation[indice-1] > 0):
@@ -30,6 +28,7 @@ def determiner_instant_depart(mission):
     mission['jour_depart'] = mission['planete_depart'].temps_pos_planete[0, indice]
     mission['mois_depart'] = mission['planete_depart'].temps_pos_planete[1, indice]
     mission['annee_depart'] = mission['planete_depart'].temps_pos_planete[2, indice]
+
     print(f"Le jour de départ optimal sera le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
     print()
 
@@ -78,7 +77,9 @@ def calculer_vitesse_orbite_depart(mission):
     """
 
     vitesse_orbite = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
+
     print(f"Au départ, à une hauteur de {mission['planete_depart'].rayon_orbite - mission['planete_depart'].rayon} km, le vaisseau se déplacera à une vitesse de {vitesse_orbite} km/s")
+
     energie_orbitale_planete_depart = ((mission['delta_v1'])**2 / 2) - (mission['planete_depart'].parametre_gravitationnel / mission['distance_influence'])
     vitesse_liberation = round(np.sqrt(2 * (energie_orbitale_planete_depart + (mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite))), 2)
     print(f"Le vaisseau devra se déplacer à une vitesse de {vitesse_liberation} km/s pour sortir de l'attraction de la planète {mission['planete_depart'].nom_planete_affichage}.")
@@ -100,10 +101,9 @@ def calculer_duree_transfert(mission):
     # Calcul de la durée estimée du transfert
     mission['duree_transfert'] = abs((np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil)))
     mission['duree_transfert'] /= (3600 * 24)
-    print(f"La durée du voyage sera de {int(mission['duree_transfert'])} jours, soit environ {round(mission['duree_transfert']/30, 2)} mois, ou {round(mission['duree_transfert']/(30*12), 2)} ans.")
+    print(f"\nLa durée du voyage sera de {int(mission['duree_transfert'])} jours, soit environ {round(mission['duree_transfert']/30, 2)} mois, ou {round(mission['duree_transfert']/(30*12), 2)} ans.")
 
     return mission
-
 
 def calculer_periode_synodique(mission):
     """Calcule la période synodique entre deux planètes.
@@ -118,9 +118,6 @@ def calculer_periode_synodique(mission):
 
     # Calcul de la période synodique
     periode_synodique = abs(round(1 / ((1 / mission['planete_depart'].periode_revolution) - (1 / mission['planete_arrivee'].periode_revolution)), 0))
-
-    #print(f"I {int(periode_synodique)}")
-
 
 def calculer_duree_mission(mission):
     """Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.
@@ -144,7 +141,7 @@ def calculer_duree_mission(mission):
 
     # Demande à l'utilisateur s'il souhaite revenir sur la planète de départ
 
-    question_utilisateur = input("\nSouhaitez-vous revenir sur la planète de départ (oui ou non) ?")
+    question_utilisateur = input("\nSouhaitez-vous revenir sur la planète de départ (oui ou non) : ")
 
     if question_utilisateur == 'oui' or question_utilisateur == 'OUI' or question_utilisateur == 'o' or question_utilisateur == 'O':
         # Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
@@ -157,6 +154,7 @@ def calculer_duree_mission(mission):
 
 def appel_fonctions_physique(mission):
     """a faire"""
+
     print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.\n")
 
     mission = calculer_duree_transfert(mission)
