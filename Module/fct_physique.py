@@ -3,6 +3,7 @@ import numpy as np
 # e = 0, nous considérons que les orbites sont circulaires
 # On considère que le vaisseau est deja en orbite a basse alttitude avec une vitesse initiale non nulle
 
+# Données du soleil utiles
 param_gravitation_soleil = 132712440018	 # km3/s2
 masse_soleil = 1.989 * 10**30 #kg
 
