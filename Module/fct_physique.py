@@ -45,13 +45,9 @@ def determiner_instant_depart(mission):
     mission['jour_arrivee_planete'] = date_arrivee_planete.utc_datetime().day
     mission['mois_arrivee_planete'] = date_arrivee_planete.utc_datetime().month
     mission['annee_arrivee_planete'] = date_arrivee_planete.utc_datetime().year
-    print(f"La date d'arrivée sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")
+    print(f"La date d'arrivée sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.\n")
 
     mission['indice'] += int(mission['duree_transfert'])
-
-    print(f"Le jour de départ optimal sera le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
-    print()
-
 
     return mission
 
@@ -182,6 +178,9 @@ def calculer_duree_mission(mission):
     question_utilisateur = input("\nSouhaitez-vous revenir sur la planète de départ (oui ou non) : ")
 
     if question_utilisateur == 'oui' or question_utilisateur == 'OUI' or question_utilisateur == 'o' or question_utilisateur == 'O':
+
+        mission['retour_oui_non'] = 'oui'
+
         # Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
         duree = abs(mission['duree_transfert'] + duree_sur_planete_arrivee + mission['duree_transfert'])
         print(f"\nVous comptez revenir sur la planète initiale. La période totale de la mission sera alors de {int(duree)} jours, soit environ {round(duree/30, 2)} mois, ou {round(duree/(30*12), 2)} ans.")
@@ -198,6 +197,8 @@ def calculer_duree_mission(mission):
             f"La date de retour sur {mission['planete_depart'].nom_planete_affichage} est le {int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}.")
 
     elif question_utilisateur == 'non' or question_utilisateur == 'NON' or question_utilisateur == 'n' or question_utilisateur == 'N':
+
+        mission['retour_oui_non'] = 'non'
 
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
         duree = abs(mission['duree_transfert'])
