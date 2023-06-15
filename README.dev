@@ -1,3 +1,4 @@
 Code à implémenter :
 * Ajout de condition sur toutes les entrées utilisateurs pour ne pas qu'il aille trop loin pour les dates
 * Ajout d'une modification pour aller chercher les données juqu'en 2200 à chaque fois
+* Demander à l'utilisateur la masse utile qu'il veut embarquer, multiplier par 15 puis calculer la masse de carburant
