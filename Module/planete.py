@@ -49,7 +49,7 @@ class Planete:
         rayon_planete_ordre = [2439.7, 6051.8, 6371.0, 3389.5, 69911.0, 58232.0, 25362.0, 24622.0, 1188.3] #km
         self.rayon = rayon_planete_ordre[numero_planete]
 
-        self.rayon_orbite = self.rayon + 300
+        self.rayon_orbite = self.rayon * 1.05
 
         vitesse_planete_ordre = [172800, 126000, 104400, 86400, 46800, 36000, 25200, 18000, 18000] #km/h
         self.vitesse = vitesse_planete_ordre[numero_planete]
