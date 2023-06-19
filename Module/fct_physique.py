@@ -36,7 +36,7 @@ def determiner_instant_depart(mission):
     mission['mois_depart'] = mission['planete_depart'].temps_pos_planete[1, indice]
     mission['annee_depart'] = mission['planete_depart'].temps_pos_planete[2, indice]
 
-    print(f"La date de départ optimal de {mission['planete_depart'].nom_planete_affichage} est le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}.")
+    print(f"La date de départ optimal de {mission['planete_depart'].nom_planete_affichage} sera le {int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}.")
 
     #Affichage de la date d'arrivée du vaisseau sur la planète
     ts = load.timescale()
@@ -45,7 +45,7 @@ def determiner_instant_depart(mission):
     mission['jour_arrivee_planete'] = date_arrivee_planete.utc_datetime().day
     mission['mois_arrivee_planete'] = date_arrivee_planete.utc_datetime().month
     mission['annee_arrivee_planete'] = date_arrivee_planete.utc_datetime().year
-    print(f"La date d'arrivée sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.\n")
+    print(f"Si vous partez à cette date, la date d'arrivée sur {mission['planete_arrivee'].nom_planete_affichage} sera le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.\n")
 
     mission['indice'] += int(mission['duree_transfert'])
 
@@ -95,13 +95,13 @@ def calculer_vitesse_orbite_depart(mission):
 
     vitesse_orbite = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
 
-    print(f"Au départ, à une hauteur de {mission['planete_depart'].rayon_orbite - mission['planete_depart'].rayon} km, le vaisseau se déplacera à une vitesse de {vitesse_orbite} km/s")
+    print(f"Au départ, à une hauteur d'environ {int(mission['planete_depart'].rayon_orbite - mission['planete_depart'].rayon)} km, le vaisseau se déplacera à une vitesse de {vitesse_orbite} km/s")
 
     energie_orbitale_planete_depart = ((mission['delta_v1'])**2 / 2) - (mission['planete_depart'].parametre_gravitationnel / mission['distance_influence'])
     vitesse_liberation = round(np.sqrt(2 * (energie_orbitale_planete_depart + (mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite))), 2)
     print(f"Le vaisseau devra se déplacer à une vitesse de {vitesse_liberation} km/s pour sortir de l'attraction de la planète {mission['planete_depart'].nom_planete_affichage}.")
     delta_v_orbite_planete_arrivee = round(vitesse_liberation - vitesse_orbite, 2)
-    print(f"Il devra atteindre une variation de vitesse de {delta_v_orbite_planete_arrivee} km/s pour atteindre {mission['planete_arrivee'].nom_planete_affichage}.")
+    print(f"Ce qui correspond à variation de vitesse de {delta_v_orbite_planete_arrivee} km/s pour atteindre {mission['planete_arrivee'].nom_planete_affichage}.")
 
     return mission
 
@@ -194,7 +194,7 @@ def calculer_duree_mission(mission):
         mission['mois_retour_mission'] = date_retour_mission.utc_datetime().month
         mission['annee_retour_mission'] = date_retour_mission.utc_datetime().year
         print(
-            f"La date de retour sur {mission['planete_depart'].nom_planete_affichage} est le {int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}.")
+            f"La date de retour sur {mission['planete_depart'].nom_planete_affichage} sera le {int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}.")
 
     elif question_utilisateur == 'non' or question_utilisateur == 'NON' or question_utilisateur == 'n' or question_utilisateur == 'N':
 
@@ -203,14 +203,14 @@ def calculer_duree_mission(mission):
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
         duree = abs(mission['duree_transfert'])
         print(f"\nVous comptez rester sur la planète initiale. La période totale de la mission sera de {int(duree)} jours, soit environ {round(duree/30, 2)} mois, ou {round(duree/(30*12), 2)} ans.")
-        print(f"La date de fin de mission sur {mission['planete_arrivee'].nom_planete_affichage} est le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")
+        print(f"La date de fin de mission sur {mission['planete_arrivee'].nom_planete_affichage} sera le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")
 
     return mission
 
 def appel_fonctions_physique(mission):
     """a faire"""
 
-    print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.\n")
+    print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.")
 
     mission = calculer_duree_transfert(mission)
     mission = determiner_instant_depart(mission)
