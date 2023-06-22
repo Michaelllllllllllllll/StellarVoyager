@@ -2,6 +2,7 @@ from skyfield.api import load, utc
 import datetime
 from datetime import timedelta
 import numpy as np
+from tqdm import tqdm
 
 class Planete:
     """
@@ -61,7 +62,7 @@ class Planete:
         # (paramètre gravitationnel standard = M * G)
         self.parametre_gravitationnel = self.masse * 6.67 * 10**-20 #km^3/s^2
 
-        self.nombre_annee = 20
+        self.annee_maximum = 2200 -1
 
         # Charger les données éphémérides pour toutes les planètes
         #self.ephemeris = load('de421.bsp')
@@ -84,7 +85,8 @@ class Planete:
         date_observation = datetime.datetime(annee, mois, jour)
 
         #tableau des coordonnées sur 10 ans
-        self.temps_pos_planete = np.zeros([4, self.nombre_annee * 365])
+        #self.temps_pos_planete = np.zeros([4, self.nombre_annee * 365])
+        self.temps_pos_planete = np.zeros([4, (self.annee_maximum - annee) * 365])
 
         # Calcul de la position relative de la planète cible en fonction du soleil
         planete_cible = self.ephemeris[self.nom_planete]
@@ -96,7 +98,7 @@ class Planete:
         date = ts.utc(date_observation.year, date_observation.month, date_observation.day)
 
         # Boucle qui donne la date en fonction de la position de la planète.
-        for jour in range(self.nombre_annee * 365):
+        for jour in tqdm(range((self.annee_maximum - annee) * 365)):
             astrometric = position_relative.at(date)
             # Conversion en coordonnées astrométriques
             ra, dec, distance = astrometric.radec()

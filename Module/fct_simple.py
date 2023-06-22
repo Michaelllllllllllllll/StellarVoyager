@@ -18,7 +18,7 @@ def obtenir_flottant(question):
             # Si l'entree n'est pas un nombre flottant, nous avons une erreur
             print("Entrée invalide, un flottant est attendu, veuillez réessayer.")
 
-def obtenir_entier(question):
+def obtenir_entier(question, minimum, maximum):
     """Vérifie que l'entrée de l'utilisateur est un nombre entier.
 
     :param question: Une chaîne de caractères contenant la question posée à l'utilisateur.
@@ -33,10 +33,10 @@ def obtenir_entier(question):
             entree = input(question)
             # Essayez de le transformer en nombre flottant, s'il ne peut pas, nous passons à "except"
             valeur = float(entree)
-            if valeur % 1 != 0:
+            if valeur % 1 != 0 or valeur > maximum or valeur < minimum :
                 valeur = ''
             valeur = int(valeur)
             return valeur
         except ValueError:
             # Si l'entree n'est pas un nombre flottant, nous avons une erreur
-            print("Entrée invalide, un entier est attendu, veuillez réessayer.")
+            print(f"Entrée invalide, un entier entre {minimum} et {maximum} est attendu, veuillez réessayer.")
