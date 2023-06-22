@@ -9,6 +9,7 @@ class Vaisseau:
     """
     def __init__(self, obtenir_flottant):
 
-        #self.masse_vide = obtenir_flottant('Entrer la masse à vide du vaisseau en kg : ')
-        #self.masse_reactive = obtenir_flottant('Entrer la masse de carburant réactif en kg : ')
+        self.masse_charge_utile = obtenir_flottant('Entrer la masse de charge utile que vous voulez emmener avec vous en kg : ')
+        self.masse_initiale = 15 * self.masse_charge_utile
+
         pass

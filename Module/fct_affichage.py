@@ -19,6 +19,9 @@ def afficher_trajectoire(mission):
     # Définit la figure 1
     plt.figure(1)
 
+    # Affichage du soleil
+    plt.scatter(0, 0, label = 'soleil', color='yellow')
+
     # Affiche les orbites des 9 planètes
     for i in range(9):
 
@@ -27,7 +30,7 @@ def afficher_trajectoire(mission):
         y = distance_au_soleil[i] * np.sin(angle_planete)
 
         # Affiche les points et les relies en pointillés avec le nom des planètes en légende
-        plt.plot(x, y, label = nom_planete_affichage[i], linestyle='dashed')
+        plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = nom_planete_affichage[i], linestyle='dashed')
 
     ## Trajet aller
     # Récupère l'anglais de départ de la mission
@@ -42,8 +45,14 @@ def afficher_trajectoire(mission):
     # Calcul des tableaux des coordonnées du points x & y effectuant la trajectoire du vaisseau
     x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
     y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
+
     # Affiche la trajectoire allée du vaisseau
-    plt.plot(x, y, label = 'Trajet aller')
+    plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet aller', color='blue')
+
+    plt.scatter(x[0] * 6.68459e-9, y[0] * 6.68459e-9)
+    plt.text(x[0] * 6.68459e-9, y[0] * 6.68459e-9, f"{int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
+    plt.scatter(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9)
+    plt.text(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9, f"{int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}")
 
     ## Trajet retour
     # S'effectue seulement si l'utilisateur indique qu'il
@@ -60,15 +69,21 @@ def afficher_trajectoire(mission):
         # Calcul des tableaux des coordonnées du points x & y effectuant la trajectoire du vaisseau
         x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
         y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
+
         # Affiche la trajectoire retour du vaisseau
-        plt.plot(x, y, label = 'Trajet retour')
+        plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet retour', color='red')
+
+        plt.scatter(x[0] * 6.68459e-9, y[0] * 6.68459e-9)
+        plt.text(x[0] * 6.68459e-9, y[0] * 6.68459e-9, f"{int(mission['jour_depart_planete'])}/{int(mission['mois_depart_planete'])}/{int(mission['annee_depart_planete'])}")
+        plt.scatter(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9)
+        plt.text(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9, f"{int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}")
 
     # Définit le libellé de l'axe des abscisses
-    plt.xlabel('Position x en km ')
+    plt.xlabel('Position x en unité astronomique')
     # Définit le libellé de l'axe des ordonnées
-    plt.ylabel('Position y en km')
+    plt.ylabel('Position y en unité astronomique')
     # Définit le titre du graphique
-    plt.title('Affichage de la mission en référenciel héliocentrique')
+    plt.title(f"Affichage de la mission de la planète {mission['planete_depart'].nom_planete_affichage} à la planète {mission['planete_arrivee'].nom_planete_affichage} en référenciel héliocentrique")
     # Affiche la légende
     plt.legend()
     # Conserve les proportions du graphique
