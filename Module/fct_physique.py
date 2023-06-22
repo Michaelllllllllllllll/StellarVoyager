@@ -104,6 +104,7 @@ def calculer_masse_carburant(mission):
 
     mission['carburant_entree_orbite_arrivee'] = (mission['vaisseau'].masse_initiale - mission['carburant_sortie_orbite_init']) * (1 - np.exp(-((abs(mission['delta_v_orbite_arrivee'])) / mission['vitesse_orbite_arrivee']))) - mission['vaisseau'].masse_charge_utile
 
+    mission['poids_vaisseau'] = mission['vaisseau'].masse_charge_utile + mission['vaisseau'].masse_initiale + mission['carburant_sortie_orbite_init'] + mission['carburant_entree_orbite_arrivee']
     return mission
 def calculer_periode_synodique(mission):
     """Calcule la période synodique entre deux planètes.
@@ -171,12 +172,14 @@ def calculer_duree_mission(mission):
         mission['mois_retour_mission'] = date_retour_mission.utc_datetime().month
         mission['annee_retour_mission'] = date_retour_mission.utc_datetime().year
 
+
     elif question_utilisateur == 'non' or question_utilisateur == 'NON' or question_utilisateur == 'n' or question_utilisateur == 'N':
 
         mission['retour_oui_non'] = 'non'
 
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
         mission['duree'] = abs(mission['duree_transfert'])
+
 
     return mission
 

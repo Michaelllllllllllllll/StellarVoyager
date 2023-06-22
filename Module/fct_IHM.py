@@ -1,4 +1,4 @@
-
+import numpy as np
 def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     """Affiche l'interface utilisateur
 
@@ -44,17 +44,21 @@ def retour_utilisateur(mission):
     print(f"\nA l'arrivée, le vaisseau sera à une hauteur de {int(mission['planete_arrivee'].rayon_orbite - mission['planete_arrivee'].rayon)} km, le vaisseau devra se déplacer à une vitesse de {mission['vitesse_orbite_arrivee']} km/s")
     print(f"Ce qui correspond à une variation de vitesse de {mission['delta_v_orbite_arrivee']} km/s, il va falloir freiner.")
 
-    print(f"\nLa masse de carburant pour la phase de départ de l'orbite vers la planète {mission['planete_depart'].nom_planete_affichage} sera de {int(mission['carburant_sortie_orbite_init'])} kg.")
+    print(f"\nLa masse de carburant pour la phase de départ de l'orbite vers la planète {mission['planete_arrivee'].nom_planete_affichage} sera de {int(mission['carburant_sortie_orbite_init'])} kg.")
 
-    print(f"La masse de carburant pour la phase de freinage afin d'atteindre l'orbite de la planète {mission['planete_depart'].nom_planete_affichage} sera de {int(mission['carburant_entree_orbite_arrivee'])} kg.")
+    print(f"La masse de carburant pour la phase de freinage afin d'atteindre l'orbite de la planète {mission['planete_arrivee'].nom_planete_affichage} sera de {int(mission['carburant_entree_orbite_arrivee'])} kg.")
 
     print(f"\nUne fois sur place, vous devrez attendre {int(mission['duree_sur_planete_arrivee'])} jours pour avoir la meilleure fenetre de tir, soit environ {round(mission['duree_sur_planete_arrivee'] / 30, 2)} mois, ou {round(mission['duree_sur_planete_arrivee'] / (30 * 12), 2)} ans.")
 
-    print(f"Le jour de depart sur {mission['planete_arrivee'].nom_planete_affichage} serait le {int(mission['jour_depart_planete'])}/{int(mission['mois_depart_planete'])}/{int(mission['annee_depart_planete'])}, si vous souhiatez revenir.")
+    print(f"Le jour de depart sur {mission['planete_arrivee'].nom_planete_affichage} serait le {int(mission['jour_depart_planete'])}/{int(mission['mois_depart_planete'])}/{int(mission['annee_depart_planete'])}, si vous souhaitez revenir.")
+
+    print(f"\nPour aller sur la planète {mission['planete_arrivee'].nom_planete_affichage}, il faudra {int(mission['carburant_sortie_orbite_init']) + int(mission['carburant_entree_orbite_arrivee'])} kg de carburant.")
+    print(f"Une fois en orbite autour de la planète {mission['planete_depart'].nom_planete_affichage}, votre vaisseau devra peser au total {int(mission['poids_vaisseau'])} kg, soit {int(mission['poids_vaisseau'] / 1000)} tonnes")
 
     if mission['retour_oui_non'] == 'oui' :
         print(f"\nVous comptez revenir sur la planète initiale. La période totale de la mission sera alors de {int(mission['duree'])} jours, soit environ {round(mission['duree'] / 30, 2)} mois, ou {round(mission['duree'] / (30 * 12), 2)} ans.")
         print(f"La date de retour sur {mission['planete_depart'].nom_planete_affichage} sera le {int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}.")
+        print(f"N'oubliez pas de ravitailler votre vaisseau !")
 
     elif mission['retour_oui_non'] == 'non' :
         print(f"\nVous comptez rester sur la planète initiale. La période totale de la mission sera de {int(mission['duree'])} jours, soit environ {round(mission['duree'] / 30, 2)} mois, ou {round(mission['duree'] / (30 * 12), 2)} ans.")
