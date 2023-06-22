@@ -24,3 +24,6 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     #print(f"Votre Mission de )
 
     return mission
+
+def retour_utilisateur(mission):
+    print(mission['planete_arrivee'].periode_revolution)
