@@ -3,9 +3,9 @@ import numpy as np
 
 # Fonction qui affiche la trajectoire du vaisseau ainsi que celle des planètes
 def afficher_trajectoire(mission):
-    """
-    :param mission:
-    :return:
+
+    """Affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes.
+    :param dict mission: contient tous les paramètres utiles de la mission.
     """
 
     # Liste des distances des planètes par rapport au soleil en km.

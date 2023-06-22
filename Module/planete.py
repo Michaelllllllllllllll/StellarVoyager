@@ -4,35 +4,30 @@ from datetime import timedelta
 import numpy as np
 
 class Planete:
+
+    """Classe représentant une planète du système solaire et ses caractéristiques utiles au projet.
+
+    :ivar str nom_planete: Nom de la planète en Anglais reconnue par les données éphémérides.
+    :ivar str nom_planete_affichage: Nom de la planète en Français.
+    :ivar float masse: Masse de la planète en kilogrammes.
+    :ivar float periode_revolution: Période de révolution de la planète en jours.
+    :ivar float rayon: Rayon de la planète en kilomètres.
+    :ivar float rayon_orbite: Rayon de l'orbite de la planète en kilomètres.
+    :ivar float vitesse: Vitesse de la planète en kilomètres par heure.
+    :ivar float distance_soleil: Distance de la planète par rapport au Soleil en kilomètres.
+    :ivar float parametre_gravitationnel: Paramètre gravitationnel standard de la planète en km^3/s^2.
+    :ivar int nombre_annee: Nombre d'années utilisées pour les coordonnées des planètes.
+    :ivar ephemeris: Données éphémérides pour toutes les planètes.
+
+    Méthodes :
+        __init__(self, numero_planete): Initialise une instance de la classe Planete.
+        coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
     """
-        Classe représentant une planète du système solaire et ses caractéristiques utiles au projet.
 
-        Attributs :
-            nom_planete (chaine de caractères) : Nom de la planète en Anglais reconnue par les données éphémérides.
-            nom_planete_affichage (chaine de caractères) : Nom de la planète en Français.
-            masse (flottant) : Masse de la planète en kilogrammes.
-            periode_revolution (flottant) : Période de révolution de la planète en jours.
-            rayon (flottant) : Rayon de la planète en kilomètres.
-            rayon_orbite (flottant) : Rayon de l'orbite de la planète en kilomètres.
-            vitesse (flottant) : Vitesse de la planète en kilomètres par heure.
-            distance_soleil (flottant) : Distance de la planète par rapport au Soleil en kilomètres.
-            parametre_gravitationnel (flottant) : Paramètre gravitationnel standard de la planète en km^3/s^2.
-            nombre_annee (entier) : Nombre d'années utilisées pour les coordonnées des planètes.
-            ephemeris : Données éphémérides pour toutes les planètes.
-
-        Méthodes :
-            __init__(self, numero_planete): Initialise une instance de la classe Planete.
-            coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
-        """
     def __init__(self, numero_planete):
-        """
-            Initialise une instance de la classe Planete.
-
-            Input :
-            numero_planete (entier): Numéro de la planète indiquée par l'utilisateur.
-
-            Output :
-            Aucune.
+        """The constructor.
+        :param int numero_planete: Numéro de la planète indiquée par l'utilisateur.
+        :return: Aucun.
         """
 
         # Liste des noms des planetes utilisées dans Skyfield afin de récupérer les données associées
@@ -87,16 +82,13 @@ class Planete:
         self.ephemeris = load('de405.bsp')
 
     def coordonnees_planete(self, jour, mois, annee):
-        """
-        Calcule les coordonnées de la planète à une date donnée.
 
-        Input :
-            jour (entier): Le jour de la date d'observation.
-            mois (entier): Le mois de la date d'observation.
-            annee (entier): L'année de la date d'observation.
+        """Calcule les coordonnées de la planète à une date spécifiée.
 
-        Output :
-            Aucune.
+        :param int jour: Le jour de la date d'observation.
+        :param int mois: Le mois de la date d'observation.
+        :param int annee: L'année de la date d'observation.
+        :return: Aucun.
         """
 
         # Date précise à laquelle vous souhaitez observer la planète
