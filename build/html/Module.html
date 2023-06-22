@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module package &#8212; Documentation StellarVoyager </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="StellarVoyager" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-package">
+<h1>Module package<a class="headerlink" href="#module-package" title="Lien permanent vers cette rubrique">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien permanent vers cette rubrique">¶</a></h2>
+</section>
+<section id="module-Module.fct_IHM">
+<span id="module-fct-ihm-module"></span><h2>Module.fct_IHM module<a class="headerlink" href="#module-Module.fct_IHM" title="Lien permanent vers cette rubrique">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_IHM.afficher_ihm">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_IHM.</span></span><span class="sig-name descname"><span class="pre">afficher_ihm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obtenir_entier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obtenir_flottant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Vaisseau</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Planete</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_IHM.afficher_ihm" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche l’interface utilisateur</p>
+<p>Input : aucune</p>
+<p>Output : dictionnaire avec les données d’entrée du problème</p>
+</dd></dl>
+
+</section>
+<section id="module-Module.fct_affichage">
+<span id="module-fct-affichage-module"></span><h2>Module.fct_affichage module<a class="headerlink" href="#module-Module.fct_affichage" title="Lien permanent vers cette rubrique">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_affichage.afficher_trajectoire">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_affichage.</span></span><span class="sig-name descname"><span class="pre">afficher_trajectoire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_affichage.afficher_trajectoire" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes.
+:param dict mission: contient tous les paramètres utiles de la mission.</p>
+</dd></dl>
+
+</section>
+<section id="module-Module.fct_physique">
+<span id="module-fct-physique-module"></span><h2>Module.fct_physique module<a class="headerlink" href="#module-Module.fct_physique" title="Lien permanent vers cette rubrique">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.appel_fonctions_physique">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">appel_fonctions_physique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.appel_fonctions_physique" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>a faire</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_delta_v">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_delta_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_delta_v" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Calcule la variation de vitesse (delta-v) nécessaire pour passer d’une orbite autour du Soleil à une autre,
+en tenant compte des vitesses initiales et finales du vaisseau.</p>
+<dl class="simple">
+<dt>Input :</dt><dd><p>param_gravitation_soleil (float): Paramètre gravitationnel du Soleil.
+distance_soleil_depart (float): Distance entre le Soleil et le point de départ.
+distance_soleil_arrivee (float): Distance entre le Soleil et le point d’arrivée.
+vitesse_initiale_vaisseau (float): Vitesse initiale du vaisseau avant le changement d’orbite.
+vitesse_arrivee_vaisseau (float): Vitesse à l’arrivée du vaisseau après le changement d’orbite.</p>
+</dd>
+<dt>Output :</dt><dd><p>variation de vitesse delta-v requise au départ et à l’arrivée.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_duree_mission">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_duree_mission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_duree_mission" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.</p>
+<dl class="simple">
+<dt>Input :</dt><dd><p>duree_transfert (float): Durée estimée du transfert entre deux orbites.
+periode_synodique (float): Période synodique entre les deux planètes.</p>
+</dd>
+</dl>
+<p>Output :</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_duree_transfert">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_duree_transfert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_duree_transfert" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Calcule la durée estimée du transfert entre deux orbites autour du Soleil.</p>
+<dl class="simple">
+<dt>Input :</dt><dd><p>param_gravitation_soleil (float): Paramètre gravitationnel du Soleil.
+distance_soleil_depart (float): Distance entre le Soleil et le point de départ.
+distance_soleil_arrivee (float): Distance entre le Soleil et le point d’arrivée.</p>
+</dd>
+<dt>Output :</dt><dd><p>La durée estimée du transfert en <a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_influence_planete">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_influence_planete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_influence_planete" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_periode_synodique">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_periode_synodique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_periode_synodique" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Calcule la période synodique entre deux planètes.</p>
+<dl class="simple">
+<dt>Input :</dt><dd><p>periode_planete_depart (float): Période orbitale de la planète de départ.
+periode_planete_arrivee (float): Période orbitale de la planète d’arrivée.</p>
+</dd>
+<dt>Output :</dt><dd><p>La période synodique entre les deux planètes en jour.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_vitesse_orbite_depart">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_vitesse_orbite_depart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_vitesse_orbite_depart" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mission</strong> – </p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.determiner_instant_depart">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">determiner_instant_depart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.determiner_instant_depart" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l’orbite de Hohmann</p>
+<dl class="simple">
+<dt>Input :</dt><dd><p>planete_depart (ndarray): Tableau NumPy contenant les angles de la planète de départ (2 lignes : temps et angles).
+planete_arrivee (ndarray): Tableau NumPy contenant les angles de la planète d’arrivée (2 lignes : temps et angles).</p>
+</dd>
+<dt>Output :</dt><dd><p>Angle optimal pour entamer l’orbite et l’instant de départ (jour, minute, seconde).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-Module.fct_simple">
+<span id="module-fct-simple-module"></span><h2>Module.fct_simple module<a class="headerlink" href="#module-Module.fct_simple" title="Lien permanent vers cette rubrique">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_simple.obtenir_entier">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_simple.</span></span><span class="sig-name descname"><span class="pre">obtenir_entier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_simple.obtenir_entier" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vérifie que l’entrée de l’utilisateur est un nombre entier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>question</strong> (<em>str</em>) – Une chaîne de caractères contenant la question posée à l’utilisateur.</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le nombre entier entré par l’utilisateur.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_simple.obtenir_flottant">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_simple.</span></span><span class="sig-name descname"><span class="pre">obtenir_flottant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_simple.obtenir_flottant" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vérifie que l’entrée de l’utilisateur est un nombre flottant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>question</strong> (<em>str</em>) – Une chaîne de caractères contenant la question posée à l’utilisateur.</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le nombre flottant entré par l’utilisateur.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-Module.planete">
+<span id="module-planete-module"></span><h2>Module.planete module<a class="headerlink" href="#module-Module.planete" title="Lien permanent vers cette rubrique">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Module.planete.Planete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Module.planete.</span></span><span class="sig-name descname"><span class="pre">Planete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero_planete</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.planete.Planete" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe représentant une planète du système solaire et ses caractéristiques utiles au projet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nom_planete</strong> (<em>str</em>) – Nom de la planète en Anglais reconnue par les données éphémérides.</p></li>
+<li><p><strong>nom_planete_affichage</strong> (<em>str</em>) – Nom de la planète en Français.</p></li>
+<li><p><strong>masse</strong> (<em>float</em>) – Masse de la planète en kilogrammes.</p></li>
+<li><p><strong>periode_revolution</strong> (<em>float</em>) – Période de révolution de la planète en jours.</p></li>
+<li><p><strong>rayon</strong> (<em>float</em>) – Rayon de la planète en kilomètres.</p></li>
+<li><p><strong>rayon_orbite</strong> (<em>float</em>) – Rayon de l’orbite de la planète en kilomètres.</p></li>
+<li><p><strong>vitesse</strong> (<em>float</em>) – Vitesse de la planète en kilomètres par heure.</p></li>
+<li><p><strong>distance_soleil</strong> (<em>float</em>) – Distance de la planète par rapport au Soleil en kilomètres.</p></li>
+<li><p><strong>parametre_gravitationnel</strong> (<em>float</em>) – Paramètre gravitationnel standard de la planète en km^3/s^2.</p></li>
+<li><p><strong>nombre_annee</strong> (<em>int</em>) – Nombre d’années utilisées pour les coordonnées des planètes.</p></li>
+<li><p><strong>ephemeris</strong> – Données éphémérides pour toutes les planètes.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Méthodes :</dt><dd><p>__init__(self, numero_planete): Initialise une instance de la classe Planete.
+coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Module.planete.Planete.coordonnees_planete">
+<span class="sig-name descname"><span class="pre">coordonnees_planete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mois</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annee</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.planete.Planete.coordonnees_planete" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Calcule les coordonnées de la planète à une date spécifiée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jour</strong> (<em>int</em>) – Le jour de la date d’observation.</p></li>
+<li><p><strong>mois</strong> (<em>int</em>) – Le mois de la date d’observation.</p></li>
+<li><p><strong>annee</strong> (<em>int</em>) – L’année de la date d’observation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Aucun.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-Module.vaisseau">
+<span id="module-vaisseau-module"></span><h2>Module.vaisseau module<a class="headerlink" href="#module-Module.vaisseau" title="Lien permanent vers cette rubrique">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Module.vaisseau.Vaisseau">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Module.vaisseau.</span></span><span class="sig-name descname"><span class="pre">Vaisseau</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obtenir_flottant</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.vaisseau.Vaisseau" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe représent un vaisseau spatial et ses caractéristiques.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>masse_vide</strong> (<em>float</em>) – La masse à vide du vaisseau en kg.</p></li>
+<li><p><strong>masse_reactive</strong> (<em>float</em>) – La masse de carburant réactif en kg.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Méthodes:</dt><dd><p>__init__(self, obtenir_flottant): Initialise un objet Vaisseau.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-Module">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-Module" title="Lien permanent vers cette rubrique">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">StellarVoyager</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">StellarVoyager</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">StellarVoyager</a><ul>
+      <li>Previous: <a href="modules.html" title="Chapitre précédent">StellarVoyager</a></li>
+      <li>Next: <a href="main.html" title="Chapitre suivant">main module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Romain Robillard, Michael Roquejofre, Laetitia Granal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/Module.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
