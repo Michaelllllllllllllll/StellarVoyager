@@ -192,8 +192,7 @@ def calculer_duree_mission(mission):
 
         # Affichage de la date de retour du vaisseau sur la planète initiale
         ts = load.timescale()
-        date_retour_mission = ts.utc(mission['annee_depart_planete'], mission['mois_depart_planete'],
-                                     mission['jour_depart_planete'])
+        date_retour_mission = ts.utc(mission['annee_depart_planete'], mission['mois_depart_planete'], mission['jour_depart_planete'])
         date_retour_mission = date_retour_mission + timedelta(days=int(mission['duree_transfert']))
         mission['jour_retour_mission'] = date_retour_mission.utc_datetime().day
         mission['mois_retour_mission'] = date_retour_mission.utc_datetime().month

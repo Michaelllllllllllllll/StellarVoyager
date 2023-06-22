@@ -10,6 +10,8 @@ def afficher_trajectoire(mission):
 
     plt.figure(1)
 
+    plt.scatter(0, 0, label = 'soleil')
+
     for i in range(9):
 
         x = distance_au_soleil[i] * np.cos(angle_planete)
@@ -26,6 +28,11 @@ def afficher_trajectoire(mission):
     y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
     plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet aller')
 
+    plt.scatter(x[0] * 6.68459e-9, y[0] * 6.68459e-9)
+    plt.text(x[0] * 6.68459e-9, y[0] * 6.68459e-9, f"{int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
+    plt.scatter(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9)
+    plt.text(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9, f"{int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}")
+
     #trajet retour
     if mission['retour_oui_non'] == 'oui':
         angle_depart = mission['angle_depart_planete']
@@ -37,9 +44,14 @@ def afficher_trajectoire(mission):
         y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
         plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet retour')
 
+        plt.scatter(x[0] * 6.68459e-9, y[0] * 6.68459e-9)
+        plt.text(x[0] * 6.68459e-9, y[0] * 6.68459e-9, f"{int(mission['jour_depart_planete'])}/{int(mission['mois_depart_planete'])}/{int(mission['annee_depart_planete'])}")
+        plt.scatter(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9)
+        plt.text(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9, f"{int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}")
+
     plt.xlabel('Position x en unité astronomique')
     plt.ylabel('Position y en unité astronomique')
-    plt.title('Affichage de la mission en référenciel héliocentrique')
+    plt.title(f"Affichage de la mission de la planète {mission['planete_depart'].nom_planete_affichage} à la planète {mission['planete_arrivee'].nom_planete_affichage} en référenciel héliocentrique")
     plt.legend()
     plt.axis('equal')  # Pour conserver les proportions
     plt.grid()
