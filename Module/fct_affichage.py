@@ -10,7 +10,7 @@ def afficher_trajectoire(mission):
 
     plt.figure(1)
 
-    plt.scatter(0, 0, label = 'soleil')
+    plt.scatter(0, 0, label = 'soleil', color='yellow')
 
     for i in range(9):
 
@@ -26,7 +26,7 @@ def afficher_trajectoire(mission):
     centre_trajet_y = (mission['planete_depart'].distance_soleil - rayon_trajet) * np.sin(angle_depart)
     x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
     y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
-    plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet aller')
+    plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet aller', color='blue')
 
     plt.scatter(x[0] * 6.68459e-9, y[0] * 6.68459e-9)
     plt.text(x[0] * 6.68459e-9, y[0] * 6.68459e-9, f"{int(mission['jour_depart'])}/{int(mission['mois_depart'])}/{int(mission['annee_depart'])}")
@@ -42,7 +42,7 @@ def afficher_trajectoire(mission):
         centre_trajet_y = (mission['planete_arrivee'].distance_soleil - rayon_trajet) * np.sin(angle_depart)
         x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
         y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
-        plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet retour')
+        plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet retour', color='red')
 
         plt.scatter(x[0] * 6.68459e-9, y[0] * 6.68459e-9)
         plt.text(x[0] * 6.68459e-9, y[0] * 6.68459e-9, f"{int(mission['jour_depart_planete'])}/{int(mission['mois_depart_planete'])}/{int(mission['annee_depart_planete'])}")
