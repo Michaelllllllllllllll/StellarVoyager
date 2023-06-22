@@ -154,8 +154,9 @@ def calculer_duree_mission(mission):
     mission['indice'] += int(mission["duree_sur_planete_arrivee"])
     try:
         mission['angle_depart_planete'] = mission['planete_depart'].temps_pos_planete[3, mission['indice']]
+        mission['mission_trop_longue'] = 'non'
     except IndexError:
-        print("\nErreur, la mission est trop longue, elle dépasse l'année maximale permise par nos données d'éphéméride.")
+        mission['mission_trop_longue'] = 'oui'
         mission['retour_oui_non'] = 'non'
         return mission
 
