@@ -55,7 +55,7 @@ class Planete:
         vitesse_planete_ordre = [172800, 126000, 104400, 86400, 46800, 36000, 25200, 18000, 18000] #km/h
         self.vitesse = vitesse_planete_ordre[numero_planete]
 
-        distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km/h
+        distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km
         self.distance_soleil = distance_au_soleil[numero_planete]
 
         # Le paramètre gravitationnel standard est obtenu en multipliant la masse de l'astre par la constante gravitationnelle
@@ -64,8 +64,7 @@ class Planete:
 
         self.annee_maximum = 2200 -1
 
-        # Charger les données éphémérides pour toutes les planètes
-        #self.ephemeris = load('de421.bsp')
+        # Charger les données éphémérides pour toutes les planètes (données de 1800 à 2200)
         self.ephemeris = load('de405.bsp')
 
     def coordonnees_planete(self, jour, mois, annee):
