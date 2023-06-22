@@ -16,8 +16,10 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
 
     jour = obtenir_entier("Veuillez entrer le numéro du jour de départ au plus tôt : ", 1, 31)
     mois = obtenir_entier("Veuillez entrer le numéro du mois de départ au plus tôt : ", 1, 12)
-    annee = obtenir_entier("Veuillez entrer le numéro de l'année de départ au plus tôt : ", 1600, 2200)
+    annee = obtenir_entier("Veuillez entrer le numéro de l'année de départ au plus tôt : ", 1600, 2200 - 1)
+    print("\nTéléchargement des éphémérides 1/2 :\n")
     mission['planete_depart'].coordonnees_planete(jour, mois, annee)
+    print("\nTéléchargement des éphémérides 2/2 :\n")
     mission['planete_arrivee'].coordonnees_planete(jour, mois, annee)
 
     return mission

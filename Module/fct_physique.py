@@ -171,7 +171,12 @@ def calculer_duree_mission(mission):
 
     # récupère l'angle de départ du vaisseau
     mission['indice'] += int(duree_sur_planete_arrivee)
-    mission['angle_depart_planete'] = mission['planete_depart'].temps_pos_planete[3, mission['indice']]
+    try:
+        mission['angle_depart_planete'] = mission['planete_depart'].temps_pos_planete[3, mission['indice']]
+    except IndexError:
+        print("\nErreur, la mission est trop longue, elle dépasse l'année maximale permise par nos données d'éphéméride.")
+        mission['retour_oui_non'] = 'non'
+        return mission
 
     # Demande à l'utilisateur s'il souhaite revenir sur la planète de départ
 
