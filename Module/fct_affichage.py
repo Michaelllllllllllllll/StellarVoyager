@@ -14,7 +14,7 @@ def afficher_trajectoire(mission):
 
         x = distance_au_soleil[i] * np.cos(angle_planete)
         y = distance_au_soleil[i] * np.sin(angle_planete)
-        plt.plot(x, y, label = nom_planete_affichage[i], linestyle='dashed')
+        plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = nom_planete_affichage[i], linestyle='dashed')
 
     #trajet aller
     angle_depart = mission['angle_depart']
@@ -24,7 +24,7 @@ def afficher_trajectoire(mission):
     centre_trajet_y = (mission['planete_depart'].distance_soleil - rayon_trajet) * np.sin(angle_depart)
     x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
     y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
-    plt.plot(x, y, label = 'Trajet aller')
+    plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet aller')
 
     #trajet retour
     if mission['retour_oui_non'] == 'oui':
@@ -35,10 +35,10 @@ def afficher_trajectoire(mission):
         centre_trajet_y = (mission['planete_arrivee'].distance_soleil - rayon_trajet) * np.sin(angle_depart)
         x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
         y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
-        plt.plot(x, y, label = 'Trajet retour')
+        plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet retour')
 
-    plt.xlabel('Position x en km ')
-    plt.ylabel('Position y en km')
+    plt.xlabel('Position x en unité astronomique')
+    plt.ylabel('Position y en unité astronomique')
     plt.title('Affichage de la mission en référenciel héliocentrique')
     plt.legend()
     plt.axis('equal')  # Pour conserver les proportions
