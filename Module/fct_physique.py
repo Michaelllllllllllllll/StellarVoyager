@@ -150,8 +150,14 @@ def calculer_duree_mission(mission):
     mission['annee_depart_planete'] = date_depart_planete.utc_datetime().year
 
     # récupère l'angle de départ du vaisseau
+
     mission['indice'] += int(mission["duree_sur_planete_arrivee"])
-    mission['angle_depart_planete'] = mission['planete_depart'].temps_pos_planete[3, mission['indice']]
+    try:
+        mission['angle_depart_planete'] = mission['planete_depart'].temps_pos_planete[3, mission['indice']]
+    except IndexError:
+        print("\nErreur, la mission est trop longue, elle dépasse l'année maximale permise par nos données d'éphéméride.")
+        mission['retour_oui_non'] = 'non'
+        return mission
 
     # Demande à l'utilisateur s'il souhaite revenir sur la planète de départ
 
@@ -166,7 +172,7 @@ def calculer_duree_mission(mission):
 
         # Affichage de la date de retour du vaisseau sur la planète initiale
         ts = load.timescale()
-        date_retour_mission = ts.utc(mission['annee_depart_planete'], mission['mois_depart_planete'],mission['jour_depart_planete'])
+        date_retour_mission = ts.utc(mission['annee_depart_planete'], mission['mois_depart_planete'], mission['jour_depart_planete'])
         date_retour_mission = date_retour_mission + timedelta(days=int(mission['duree_transfert']))
         mission['jour_retour_mission'] = date_retour_mission.utc_datetime().day
         mission['mois_retour_mission'] = date_retour_mission.utc_datetime().month

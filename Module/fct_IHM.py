@@ -8,20 +8,19 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     mission = {}
     print("Voici les planètes du système solaire :\n1 - Mercure\n2 - Vénus\n3 - Terre\n4 - Mars\n5 - Jupiter\n6 - Saturne\n7 - Uranus\n8 - Neptune\n9 - Pluton")
 
-    mission['numero_planete_depart'] = obtenir_entier("Veuillez entrer le numéro de la planète de départ de votre voyage : ") - 1
-    mission['numero_planete_arrivee'] = obtenir_entier("Veuillez entrer le numéro de la planète d'arrivée de votre voyage : ") - 1
+    mission['numero_planete_depart'] = obtenir_entier("Veuillez entrer le numéro de la planète de départ de votre voyage : ", 1, 9) - 1
+    mission['numero_planete_arrivee'] = obtenir_entier("Veuillez entrer le numéro de la planète d'arrivée de votre voyage : ", 1, 9) - 1
     mission['planete_depart'] = Planete(mission['numero_planete_depart'])
     mission['planete_arrivee'] = Planete(mission['numero_planete_arrivee'])
     mission['vaisseau'] = Vaisseau(obtenir_flottant)
 
-    jour = obtenir_entier("Veuillez entrer le numéro du jour de départ au plus tôt : ")
-    mois = obtenir_entier("Veuillez entrer le numéro du mois de départ au plus tôt : ")
-    annee = obtenir_entier("Veuillez entrer le numéro de l'année de départ au plus tôt : ")
+    jour = obtenir_entier("Veuillez entrer le numéro du jour de départ au plus tôt : ", 1, 31)
+    mois = obtenir_entier("Veuillez entrer le numéro du mois de départ au plus tôt : ", 1, 12)
+    annee = obtenir_entier("Veuillez entrer le numéro de l'année de départ au plus tôt : ", 1600, 2200 - 1)
+    print("\nTéléchargement des éphémérides 1/2 :\n")
     mission['planete_depart'].coordonnees_planete(jour, mois, annee)
+    print("\nTéléchargement des éphémérides 2/2 :\n")
     mission['planete_arrivee'].coordonnees_planete(jour, mois, annee)
-
-    #nom_planete = ['mercure', 'vénus', 'terre', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton']
-    #print(f"Votre Mission de )
 
     return mission
 
@@ -63,4 +62,3 @@ def retour_utilisateur(mission):
     elif mission['retour_oui_non'] == 'non' :
         print(f"\nVous comptez rester sur la planète initiale. La période totale de la mission sera de {int(mission['duree'])} jours, soit environ {round(mission['duree'] / 30, 2)} mois, ou {round(mission['duree'] / (30 * 12), 2)} ans.")
         print(f"La date de fin de mission sur {mission['planete_arrivee'].nom_planete_affichage} sera le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")
-
