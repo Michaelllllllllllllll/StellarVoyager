@@ -22,6 +22,8 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     mission['numero_planete_arrivee'] = obtenir_entier("Veuillez entrer le numéro de la planète d'arrivée de votre voyage : ", 1, 9) - 1
     mission['planete_depart'] = Planete(mission['numero_planete_depart'])
     mission['planete_arrivee'] = Planete(mission['numero_planete_arrivee'])
+
+    # Initialisation du vaisseau
     mission['vaisseau'] = Vaisseau(obtenir_flottant)
 
     # Choix de la date de départ au plus tôt
