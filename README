@@ -1,1 +1,0 @@
-Le programme calcule la trajectoire optimale d'un vaisseau entre deux astres de notre système solaire. Pour cela le programme calcule plusieurs trajectoires en utilisant l'orbite de Newman et l'assistance gravitationnelle et sélectionne la meilleure.
