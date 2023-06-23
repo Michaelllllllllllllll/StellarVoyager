@@ -1,10 +1,13 @@
 import numpy as np
 def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
-    """Affiche l'interface utilisateur
-
-    Input : aucune
-
-    Output : dictionnaire avec les données d'entrée du problème"""
+    """
+    :param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
+    :param fct obtenir_flottant: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre entier.
+    :param class Vaisseau: Contient tous les paramètres internes aux vaisseaux.
+    :param class Planete: Contient tous les paramètres internes aux planètes.
+    :var dict mission: Contient tous les paramètres utiles de la mission.
+    :return: Aucun
+    """
     mission = {}
     print("Voici les planètes du système solaire :\n1 - Mercure\n2 - Vénus\n3 - Terre\n4 - Mars\n5 - Jupiter\n6 - Saturne\n7 - Uranus\n8 - Neptune\n9 - Pluton")
 
