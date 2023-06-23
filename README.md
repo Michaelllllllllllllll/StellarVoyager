@@ -44,9 +44,13 @@ Expliquer la structure (comment le programme intéragit) et le module.
 Expliquer le processus d'installation et les librairies immbriquées
 
 Librairie Skyfield : [Skyfield](https://rhodesmill.org/skyfield/).
+
 DateTime : [DateTime](https://docs.python.org/3/library/datetime.html).
+
 Numpy : [Numpy](https://numpy.org/).
+
 MatplotLib : [Matplot](https://matplotlib.org/).
+
 tqdm : [tqdm](https://tqdm.github.io/).
 
 ## Exemples
@@ -57,7 +61,8 @@ Mettez-vous dans l'ambiance :
 *Nous sommes dans un monde ou les hommes ont colonisés Mars et nous voulons ravitaillé la planète en matière première et en équipage.*
 *Vous êtes la personne en charge du départ et vous convertissez tous les élements indiqués en unité de masse, soit :*
    - 10 personnes d'environ 75 kg, qui représente 750 kg.
-   - 5000 kg de matière première pour ravitailler la planète
+   - 5000 kg de matière première pour ravitailler la planète.
+
 *Vous voulez partir à partir du mois de Juin 2035 et vous voulez connaitre la quantité de carburant, et quand vous serez de retour auprès de votre famille.*
 
 Voici ce que vous rentrez pour la mission, vous pouvez le voir **en gras** :
