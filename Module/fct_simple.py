@@ -1,9 +1,12 @@
 def obtenir_flottant(question):
     """Vérifie que l'entrée de l'utilisateur est un nombre flottant.
+
     :param question: Contient la question posée à l'utilisateur.
     :type question: str
+
     :return: Le nombre entré par l'utilisateur.
-    :rtype: float"""
+    :rtype: float
+    """
     while True:
         # Vérifiez constamment si une valeur a été saisie suivie de "Try"
         try:
@@ -23,7 +26,8 @@ def obtenir_entier(question, minimum, maximum):
     :type question: str
 
     :return: Le nombre entré par l'utilisateur.
-    :rtype: int"""
+    :rtype: int
+    """
     while True:
         # Vérifiez constamment si une valeur a été saisie suivie de "Try"
         try:
