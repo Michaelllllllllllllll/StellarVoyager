@@ -49,7 +49,7 @@ def determiner_instant_depart(mission):
 
     return mission
 
-def calculer_delta_v(mission):
+def calculer_energie_orbitale(mission):
     """Calculer la variation de vitesse pour calculer l'energie orbitale
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
