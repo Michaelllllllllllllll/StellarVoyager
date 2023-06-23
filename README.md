@@ -49,8 +49,6 @@ Numpy : [Numpy](https://numpy.org/).
 MatplotLib : [Matplot](https://matplotlib.org/).
 tqdm : [tqdm](https://tqdm.github.io/).
 
-
-
 ## Exemples
 Pour vous aider à utiliser le programme, nous allons vous introduire l'exemple d'une mission habitée de la Terre vers Mars.
 Mettez-vous dans l'ambiance : 
