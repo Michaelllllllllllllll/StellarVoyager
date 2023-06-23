@@ -221,7 +221,7 @@ def appel_fonctions_physique(mission, retour_utilisateur):
     mission = calculer_duree_transfert(mission)
     mission = determiner_instant_depart(mission)
     mission = calculer_influence_planete(mission)
-    mission = calculer_delta_v(mission)
+    mission = calculer_energie_orbitale(mission)
     mission = calculer_vitesse_orbite(mission)
     mission = calculer_masse_carburant(mission)
     mission = calculer_periode_synodique(mission)
