@@ -1,14 +1,12 @@
 import numpy as np
 
 def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
-    """
-    :param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
+    """:param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
     :param fct obtenir_flottant: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre entier.
     :param class Vaisseau: Contient tous les paramètres internes aux vaisseaux.
     :param class Planete: Contient tous les paramètres internes aux planètes.
     :var dict mission: Contient tous les paramètres utiles de la mission.
-    :return: Aucun
-    """
+    :return: Aucun"""
     # Création d'un dictionnaire avec toutes les données de la mission
     mission = {}
     # Affichage de la liste des planètes disponnible

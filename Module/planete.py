@@ -5,7 +5,6 @@ import numpy as np
 from tqdm import tqdm
 
 class Planete:
-
     """Classe représentant une planète du système solaire et ses caractéristiques utiles au projet.
 
     :ivar str nom_planete: Nom de la planète en Anglais reconnue par les données éphémérides.
@@ -24,8 +23,6 @@ class Planete:
     :classmethod: coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
 
     """
-
-
     def __init__(self, numero_planete):
         """Le constructeur.
         :param int numero_planete: Numéro de la planète indiquée par l'utilisateur.
@@ -34,35 +31,35 @@ class Planete:
 
         # Liste des noms des planetes utilisées dans Skyfield afin de récupérer les données associées
         nom_planete_ordre = ['mercury barycenter', 'venus barycenter', 'earth barycenter', 'mars barycenter', 'jupiter barycenter', 'saturn barycenter', 'uranus barycenter', 'neptune barycenter', 'pluto barycenter']
-        # Récupère le nom de la planète avec le numéro de la planète entrée par l'utilisateur.
+        # Récupère le nom de la planète avec le numéro de la planète entrée par l'utilisateur
         self.nom_planete = nom_planete_ordre[numero_planete]
 
         # Liste des noms des planètes en français pour l'affichage
         nom_planete_affichage_ordre = ['Mercure', 'Venus', 'Terre', 'Mars', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Pluton']
-        # Récupère le nom en français de la planète avec le numéro de la planète entrée par l'utilisateur.
+        # Récupère le nom en français de la planète avec le numéro de la planète entrée par l'utilisateur
         self.nom_planete_affichage = nom_planete_affichage_ordre[numero_planete]
 
         # Liste des masses des planètes dans le même ordre que leurs noms
         masse_planete_ordre = [3.3011e+23, 4.8675e+24, 5.9724e+24, 6.4171e+23, 1.8982e+27, 5.6834e+26, 8.6813e+25, 1.0241e+26, 1.303e+22] #kg
-        # Récupère la masse de la planète avec le numéro de la planète entrée par l'utilisateur.
+        # Récupère la masse de la planète avec le numéro de la planète entrée par l'utilisateur
         self.masse = masse_planete_ordre[numero_planete] #kg
 
         # Liste des périodes des planètes dans le même ordre que leur noms
         periode_planete_ordre = [87.97, 224.7, 365.26, 686.98, 4332.71, 10759.5, 30685.0, 60190.0, 90560.0] #jours
-        # Récupère la période de la planète avec le numéro de la planète entrée par l'utilisateur.
+        # Récupère la période de la planète avec le numéro de la planète entrée par l'utilisateur
         self.periode_revolution = periode_planete_ordre[numero_planete] #jours
 
         # Liste des rayons des planètes dans le même ordre que leur noms
         rayon_planete_ordre = [2439.7, 6051.8, 6371.0, 3389.5, 69911.0, 58232.0, 25362.0, 24622.0, 1188.3] #km
-        # Récupère le rayon de la planète avec le numéro de la planète entrée par l'utilisateur.
+        # Récupère le rayon de la planète avec le numéro de la planète entrée par l'utilisateur
         self.rayon = rayon_planete_ordre[numero_planete] #km
 
-        # Calcule la distance entre le centre de la planète de départ/ d'arrivée et la position du vaisseau au départ/ à l'arrivée
+        # Calcule la distance entre le centre de la planète de départ/d'arrivée et la position du vaisseau au départ/ à l'arrivée
         self.rayon_orbite = self.rayon * 1.05 #km
 
         # Liste des vitesse des planètes dans le même ordre que leur noms
         vitesse_planete_ordre = [172800, 126000, 104400, 86400, 46800, 36000, 25200, 18000, 18000] #km/h
-        # Récupère la vitesse de la planète avec le numéro de la planète entrée par l'utilisateur.
+        # Récupère la vitesse de la planète avec le numéro de la planète entrée par l'utilisateur
         self.vitesse = vitesse_planete_ordre[numero_planete] #km/h
 
         # Liste des distance des planètes parrapport au soleil dans le même ordre que leur noms
@@ -75,13 +72,13 @@ class Planete:
         # Calcule le paramètre gravitationel associé à l'astre entré
         self.parametre_gravitationnel = self.masse * 6.67 * 10**-20 #km^3/s^2
 
+        # Année maximal permise par nos éphémérides
         self.annee_maximum = 2200 -1
 
         # Charger les données éphémérides pour toutes les planètes
         # Ephemeries comprises entre 1900 et 2050
         # self.ephemeris = load('de421.bsp')
         # Ephemeries comprises entre 1600 et 2200
-
         self.ephemeris = load('de405.bsp')
 
     def coordonnees_planete(self, jour, mois, annee):
@@ -120,7 +117,7 @@ class Planete:
         # Converti la date donnée en entrée par l'utilisateur en date UTC
         date = ts.utc(date_observation.year, date_observation.month, date_observation.day)
 
-        # Boucle qui donne la date en fonction de la position de la planète.
+        # Boucle qui donne la date en fonction de la position de la planète
         for jour in tqdm(range((self.annee_maximum - annee) * 365)):
 
             # Récupère la position relative à la date entrée
@@ -136,7 +133,7 @@ class Planete:
             # Récupère l'année
             self.temps_pos_planete[2, jour] = date.utc_datetime().year
 
-            # Données astrométriques
+            # Récupère l'angle vu depuis le soleil
             self.temps_pos_planete[3, jour] = ra.radians
 
             # Ajoute une journée à la date actuelle
