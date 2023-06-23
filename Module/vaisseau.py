@@ -8,6 +8,7 @@ class Vaisseau:
     """
     def __init__(self, obtenir_flottant):
         """Le constructeur.
+
         :param fct obtenir_flottant: Vérifie que l'entrée de l'utilisateur est un nombre flottant.
         """
         # Demande à l'utilisateur la masse de charge utile

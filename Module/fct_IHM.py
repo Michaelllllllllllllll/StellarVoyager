@@ -1,12 +1,17 @@
 import numpy as np
 
 def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
-    """:param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
+    """Affiche l'interface utilisateur
+
+    :param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
     :param fct obtenir_flottant: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre entier.
     :param class Vaisseau: Contient tous les paramètres internes aux vaisseaux.
     :param class Planete: Contient tous les paramètres internes aux planètes.
+
     :var dict mission: Contient tous les paramètres utiles de la mission.
-    :return: Aucun"""
+
+    :return: Aucun
+    """
     # Création d'un dictionnaire avec toutes les données de la mission
     mission = {}
     # Affichage de la liste des planètes disponnible
@@ -35,8 +40,13 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     return mission
 
 def retour_utilisateur(mission):
-    # Affichage des informations de la mission à l'utilisateur
+    """Affichage des informations de la mission à l'utilisateur
 
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+
+    :return: Contient tous les paramètres utiles de la mission.
+    :rtype: dict
+    """
     # Si les données d'entrées sont valide
     if mission['mission_trop_longue'] == 'oui':
         print("\nErreur, la mission est trop longue, elle dépasse l'année maximale permise par nos données d'éphéméride.")

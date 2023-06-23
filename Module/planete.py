@@ -21,14 +21,13 @@ class Planete:
 
     :classmethod: __init__(self, numero_planete): Initialise une instance de la classe Planete.
     :classmethod: coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
-
     """
     def __init__(self, numero_planete):
         """Le constructeur.
+
         :param int numero_planete: Numéro de la planète indiquée par l'utilisateur.
         :return: Aucun.
         """
-
         # Liste des noms des planetes utilisées dans Skyfield afin de récupérer les données associées
         nom_planete_ordre = ['mercury barycenter', 'venus barycenter', 'earth barycenter', 'mars barycenter', 'jupiter barycenter', 'saturn barycenter', 'uranus barycenter', 'neptune barycenter', 'pluto barycenter']
         # Récupère le nom de la planète avec le numéro de la planète entrée par l'utilisateur
@@ -82,22 +81,18 @@ class Planete:
         self.ephemeris = load('de405.bsp')
 
     def coordonnees_planete(self, jour, mois, annee):
-
         """Calcule les coordonnées de la planète à une date spécifiée.
 
         :param int jour: Le jour de la date d'observation.
         :param int mois: Le mois de la date d'observation.
         :param int annee: L'année de la date d'observation.
-
         :var float date_observation: Date à laquelle on souhaite observer la planète
         :var planete_cible: Contient les ephemeries de la planète cible
         :var sun: Contient les ephemeries du soleil
         :ivar array temps_pos_planete: Tableau des coordonnées et date sur les prochaines années
 
-
         :return: Aucun.
         """
-
         # Date précise à laquelle vous souhaitez observer la planète
         date_observation = datetime.datetime(annee, mois, jour)
 
