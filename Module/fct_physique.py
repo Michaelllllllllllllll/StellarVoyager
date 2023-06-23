@@ -49,7 +49,7 @@ def determiner_instant_depart(mission):
 
     return mission
 
-def calculer_delta_v(mission):
+def calculer_energie_orbitale(mission):
     """Calculer la variation vitesse calculer energie orbitale
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
@@ -221,7 +221,7 @@ def appel_fonctions_physique(mission, retour_utilisateur):
     mission = calculer_duree_transfert(mission)
     mission = determiner_instant_depart(mission)
     mission = calculer_influence_planete(mission)
-    mission = calculer_delta_v(mission)
+    mission = calculer_energie_orbitale(mission)
     mission = calculer_vitesse_orbite(mission)
     mission = calculer_masse_carburant(mission)
     mission = calculer_periode_synodique(mission)
