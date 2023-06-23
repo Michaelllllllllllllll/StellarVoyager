@@ -3,9 +3,9 @@ from skyfield.api import load, utc
 from datetime import timedelta
 
 # e = 0, nous considérons que les orbites sont circulaires
-# On considère que le vaisseau est deja en orbite a basse alttitude avec une vitesse initiale non nulle
+# On considère que le vaisseau est deja en orbite à basse alttitude avec une vitesse initiale non nulle
 
-# Données du soleil utiles
+# Données du soleil utiles (constantes)
 param_gravitation_soleil = 132712440018	 # km3/s2
 masse_soleil = 1.989 * 10**30 #kg
 
@@ -191,8 +191,23 @@ def calculer_duree_mission(mission):
     return mission
 
 def appel_fonctions_physique(mission, retour_utilisateur):
-    """a faire"""
+    """
+    Effectue une série de calculs physiques pour une mission spatiale donnée et appelle la fonction de retour utilisateur.
 
+    Paramètres :
+        - mission : Un objet représentant la mission spatiale à calculer.
+        - retour_utilisateur : Une fonction de rappel pour retourner les résultats à l'utilisateur.
+
+    Retourne :
+        - mission : L'objet de mission mis à jour après les calculs.
+
+    Remarque :
+        Cette fonction effectue plusieurs étapes de calcul physique pour préparer les données de mission. Les calculs incluent
+        la durée de transfert, l'instant de départ, le delta-v, l'influence planétaire, la vitesse orbitale, la masse de carburant,
+        la période synodique et la durée totale de la mission.
+
+        Une fois les calculs terminés, les résultats sont retournés à l'utilisateur en utilisant la fonction de rappel spécifiée.
+    """
     mission = calculer_duree_transfert(mission)
     mission = determiner_instant_depart(mission)
     mission = calculer_delta_v(mission)
