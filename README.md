@@ -38,10 +38,16 @@ De plus, nous sommes conscients que Pluton n'est plus catégorisée comme une pl
 Nous l'avons ajouté pour avoir plus de résultats.
 
 ## Structure du projet
-
+Expliquer la structure (comment le programme intéragit) et le module.
 
 ## Installation
+Expliquer le processus d'installation et les librairies immbriquées
 
+Librairie Skyfield : [Skyfield](https://rhodesmill.org/skyfield/).
+DateTime : [DateTime](https://docs.python.org/3/library/datetime.html).
+Numpy : [Numpy](https://numpy.org/).
+MatplotLib : [Matplot](https://matplotlib.org/).
+tqdm : [tqdm](https://tqdm.github.io/).
 
 ## Exemples
 Pour vous aider à utiliser le programme, nous allons vous introduire l'exemple d'une mission habitée de la Terre vers Mars.
@@ -103,10 +109,10 @@ Nous acceptons tout type de contribution dans notre projet. Dès lors que les mo
 *(Voir rubrique **Licence**)*
 
 ## Licence
-GNU
+GNU General Public License (GPL)
 
 ## Auteurs
 GRANAL Laétitia - ROBILLARD Romain - ROQUEJOFRE Michaël
 
 ## Statut du projet
-Le programme est **terminé**
+**TERMINE**

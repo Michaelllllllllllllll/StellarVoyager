@@ -65,7 +65,7 @@ def calculer_delta_v(mission):
     return mission
 
 def calculer_influence_planete(mission):
-    """ Calcul la distance à laquelle la planète à toujours une influance sur le vaisseau.
+    """ Calcul la distance à laquelle la planète a toujours une influence sur le vaisseau.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -76,7 +76,7 @@ def calculer_influence_planete(mission):
     return mission
 
 def calculer_vitesse_orbite(mission):
-    """Calcul la vitesse en arrivant et sortant de l'obite ansi que sa variation se vitesse.
+    """Calcul la vitesse en arrivant et sortant de l'orbite ansi que sa variation de vitesse.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
