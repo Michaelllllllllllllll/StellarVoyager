@@ -3,11 +3,12 @@ import numpy as np
 
 # Fonction qui affiche la trajectoire du vaisseau ainsi que celle des planètes
 def afficher_trajectoire(mission):
-
     """Affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes.
-    :param dict mission: contient tous les paramètres utiles de la mission.
-    """
 
+    :param mission: Contient tous les paramètres utiles de la mission.
+
+    :return: Aucun
+    """
     # Liste des distances des planètes par rapport au soleil en km.
     distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000]
     # Liste les noms des planètes.
