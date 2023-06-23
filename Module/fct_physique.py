@@ -11,13 +11,10 @@ masse_soleil = 1.989 * 10**30 #kg
 
 def determiner_instant_depart(mission):
     """Détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l'orbite de Hohmann
-
-    Input :
-        planete_depart (ndarray): Tableau NumPy contenant les angles de la planète de départ (2 lignes : temps et angles).
-        planete_arrivee (ndarray): Tableau NumPy contenant les angles de la planète d'arrivée (2 lignes : temps et angles).
-
-    Output :
-        Angle optimal pour entamer l'orbite et l'instant de départ (jour, minute, seconde)."""
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+    :return: Contient tous les paramètres utiles de la mission.
+    :rtype: dict
+    """
 
     difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3])
 
@@ -59,14 +56,19 @@ def calculer_delta_v(mission):
     return mission
 
 def calculer_influence_planete(mission):
-
+    """ Calcul la distance à laquelle la planète à toujours une influance sur le vaisseau
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+    :return: Contient tous les paramètres utiles de la mission.
+    :rtype: dict
+    """
     mission['distance_influence'] = round(mission['planete_depart'].distance_soleil * (mission['planete_depart'].masse / masse_soleil)**(2/5), 2)
     return mission
 
 def calculer_vitesse_orbite(mission):
     """
-    :param mission:
-    :return:
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+    :return: Contient tous les paramètres utiles de la mission.
+    :rtype: dict
     """
 
     mission['vitesse_orbite_depart'] = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
@@ -84,14 +86,9 @@ def calculer_vitesse_orbite(mission):
 
 def calculer_duree_transfert(mission):
     """Calcule la durée estimée du transfert entre deux orbites autour du Soleil.
-
-    Input :
-        param_gravitation_soleil (float): Paramètre gravitationnel du Soleil.
-        distance_soleil_depart (float): Distance entre le Soleil et le point de départ.
-        distance_soleil_arrivee (float): Distance entre le Soleil et le point d'arrivée.
-
-    Output :
-        La durée estimée du transfert en ***.
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+    :return: Contient tous les paramètres utiles de la mission.
+    :rtype: dict
     """
     # Calcul de la durée estimée du transfert
     mission['duree_transfert'] = abs((np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil)))
@@ -108,13 +105,9 @@ def calculer_masse_carburant(mission):
     return mission
 def calculer_periode_synodique(mission):
     """Calcule la période synodique entre deux planètes.
-
-    Input :
-        periode_planete_depart (float): Période orbitale de la planète de départ.
-        periode_planete_arrivee (float): Période orbitale de la planète d'arrivée.
-
-    Output :
-        La période synodique entre les deux planètes en jour.
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+    :return: Contient tous les paramètres utiles de la mission.
+    :rtype: dict
     """
 
     # Calcul de la période synodique
@@ -124,13 +117,9 @@ def calculer_periode_synodique(mission):
 
 def calculer_duree_mission(mission):
     """Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.
-
-    Input :
-        duree_transfert (float): Durée estimée du transfert entre deux orbites.
-        periode_synodique (float): Période synodique entre les deux planètes.
-
-    Output :
-
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+    :return: Contient tous les paramètres utiles de la mission.
+    :rtype: dict
     """
     omega_depart = 360 / mission['planete_depart'].periode_revolution
     omega_arrivee = 360 / mission['planete_arrivee'].periode_revolution
@@ -191,15 +180,14 @@ def calculer_duree_mission(mission):
     return mission
 
 def appel_fonctions_physique(mission, retour_utilisateur):
-    """
-    Effectue une série de calculs physiques pour une mission spatiale donnée et appelle la fonction de retour utilisateur.
 
-    Paramètres :
-        - mission : Un objet représentant la mission spatiale à calculer.
-        - retour_utilisateur : Une fonction de rappel pour retourner les résultats à l'utilisateur.
+    """Effectue une série de calculs physiques pour une mission spatiale donnée et appelle la fonction de retour utilisateur.
 
-    Retourne :
-        - mission : L'objet de mission mis à jour après les calculs.
+    :param dict mission: Contient tous les paramètres utiles de la mission.
+    :param retour_utilisateur: Affiche sur l'interface les résultats à l'utilisateur.
+
+    :return: L'objet de mission mis à jour après les calculs.
+    :rtype: dict
 
     Remarque :
         Cette fonction effectue plusieurs étapes de calcul physique pour préparer les données de mission. Les calculs incluent

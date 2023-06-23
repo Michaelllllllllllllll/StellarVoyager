@@ -20,13 +20,14 @@ class Planete:
     :ivar int nombre_annee: Nombre d'années utilisées pour les coordonnées des planètes.
     :ivar ephemeris: Données éphémérides pour toutes les planètes.
 
-    Méthodes :
-        __init__(self, numero_planete): Initialise une instance de la classe Planete.
-        coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
+    :classmethod: __init__(self, numero_planete): Initialise une instance de la classe Planete.
+    :classmethod: coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
+
     """
 
+
     def __init__(self, numero_planete):
-        """The constructor.
+        """Le constructeur.
         :param int numero_planete: Numéro de la planète indiquée par l'utilisateur.
         :return: Aucun.
         """
@@ -90,13 +91,20 @@ class Planete:
         :param int jour: Le jour de la date d'observation.
         :param int mois: Le mois de la date d'observation.
         :param int annee: L'année de la date d'observation.
+
+        :var float date_observation: Date à laquelle on souhaite observer la planète
+        :var planete_cible: Contient les ephemeries de la planète cible
+        :var sun: Contient les ephemeries du soleil
+        :ivar array temps_pos_planete: Tableau des coordonnées et date sur les prochaines années
+
+
         :return: Aucun.
         """
 
         # Date précise à laquelle vous souhaitez observer la planète
         date_observation = datetime.datetime(annee, mois, jour)
 
-        #tableau des coordonnées sur 10 ans
+        # Tableau des coordonnées et date sur les prochaines années
         self.temps_pos_planete = np.zeros([4, (self.annee_maximum - annee) * 365])
 
         ## Calcul de la position relative de la planète cible en fonction du soleil

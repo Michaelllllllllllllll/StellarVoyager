@@ -47,6 +47,11 @@
 <p>Output : dictionnaire avec les données d’entrée du problème</p>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_IHM.retour_utilisateur">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_IHM.</span></span><span class="sig-name descname"><span class="pre">retour_utilisateur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_IHM.retour_utilisateur" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="module-Module.fct_affichage">
 <span id="module-fct-affichage-module"></span><h2>Module.fct_affichage module<a class="headerlink" href="#module-Module.fct_affichage" title="Lien permanent vers cette rubrique">¶</a></h2>
@@ -62,80 +67,89 @@
 <span id="module-fct-physique-module"></span><h2>Module.fct_physique module<a class="headerlink" href="#module-Module.fct_physique" title="Lien permanent vers cette rubrique">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_physique.appel_fonctions_physique">
-<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">appel_fonctions_physique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.appel_fonctions_physique" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>a faire</p>
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">appel_fonctions_physique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retour_utilisateur</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.appel_fonctions_physique" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Effectue une série de calculs physiques pour une mission spatiale donnée et appelle la fonction de retour utilisateur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p></li>
+<li><p><strong>retour_utilisateur</strong> – Affiche sur l’interface les résultats à l’utilisateur.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>L’objet de mission mis à jour après les calculs.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<dl>
+<dt>Remarque :</dt><dd><p>Cette fonction effectue plusieurs étapes de calcul physique pour préparer les données de mission. Les calculs incluent
+la durée de transfert, l’instant de départ, le delta-v, l’influence planétaire, la vitesse orbitale, la masse de carburant,
+la période synodique et la durée totale de la mission.</p>
+<p>Une fois les calculs terminés, les résultats sont retournés à l’utilisateur en utilisant la fonction de rappel spécifiée.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_physique.calculer_delta_v">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_delta_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_delta_v" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Calcule la variation de vitesse (delta-v) nécessaire pour passer d’une orbite autour du Soleil à une autre,
-en tenant compte des vitesses initiales et finales du vaisseau.</p>
-<dl class="simple">
-<dt>Input :</dt><dd><p>param_gravitation_soleil (float): Paramètre gravitationnel du Soleil.
-distance_soleil_depart (float): Distance entre le Soleil et le point de départ.
-distance_soleil_arrivee (float): Distance entre le Soleil et le point d’arrivée.
-vitesse_initiale_vaisseau (float): Vitesse initiale du vaisseau avant le changement d’orbite.
-vitesse_arrivee_vaisseau (float): Vitesse à l’arrivée du vaisseau après le changement d’orbite.</p>
-</dd>
-<dt>Output :</dt><dd><p>variation de vitesse delta-v requise au départ et à l’arrivée.</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_physique.calculer_duree_mission">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_duree_mission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_duree_mission" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.</p>
-<dl class="simple">
-<dt>Input :</dt><dd><p>duree_transfert (float): Durée estimée du transfert entre deux orbites.
-periode_synodique (float): Période synodique entre les deux planètes.</p>
-</dd>
-</dl>
-<p>Output :</p>
+<dd><p>Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.
+:param dict mission: Contient tous les paramètres utiles de la mission.
+:return: Contient tous les paramètres utiles de la mission.
+:rtype: dict</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_physique.calculer_duree_transfert">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_duree_transfert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_duree_transfert" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Calcule la durée estimée du transfert entre deux orbites autour du Soleil.</p>
-<dl class="simple">
-<dt>Input :</dt><dd><p>param_gravitation_soleil (float): Paramètre gravitationnel du Soleil.
-distance_soleil_depart (float): Distance entre le Soleil et le point de départ.
-distance_soleil_arrivee (float): Distance entre le Soleil et le point d’arrivée.</p>
-</dd>
-<dt>Output :</dt><dd><p>La durée estimée du transfert en <a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>.</p>
-</dd>
-</dl>
+<dd><p>Calcule la durée estimée du transfert entre deux orbites autour du Soleil.
+:param dict mission: Contient tous les paramètres utiles de la mission.
+:return: Contient tous les paramètres utiles de la mission.
+:rtype: dict</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_physique.calculer_influence_planete">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_influence_planete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_influence_planete" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Calcul la distance à laquelle la planète à toujours une influance sur le vaisseau
+:param dict mission: Contient tous les paramètres utiles de la mission.
+:return: Contient tous les paramètres utiles de la mission.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_masse_carburant">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_masse_carburant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_masse_carburant" title="Lien permanent vers cette définition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_physique.calculer_periode_synodique">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_periode_synodique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_periode_synodique" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Calcule la période synodique entre deux planètes.</p>
-<dl class="simple">
-<dt>Input :</dt><dd><p>periode_planete_depart (float): Période orbitale de la planète de départ.
-periode_planete_arrivee (float): Période orbitale de la planète d’arrivée.</p>
-</dd>
-<dt>Output :</dt><dd><p>La période synodique entre les deux planètes en jour.</p>
-</dd>
-</dl>
+<dd><p>Calcule la période synodique entre deux planètes.
+:param dict mission: Contient tous les paramètres utiles de la mission.
+:return: Contient tous les paramètres utiles de la mission.
+:rtype: dict</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="Module.fct_physique.calculer_vitesse_orbite_depart">
-<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_vitesse_orbite_depart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_vitesse_orbite_depart" title="Lien permanent vers cette définition">¶</a></dt>
+<dt class="sig sig-object py" id="Module.fct_physique.calculer_vitesse_orbite">
+<span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_vitesse_orbite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_vitesse_orbite" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mission</strong> – </p>
+<dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -143,14 +157,10 @@ periode_planete_arrivee (float): Période orbitale de la planète d’arrivée.<
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_physique.determiner_instant_depart">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">determiner_instant_depart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.determiner_instant_depart" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l’orbite de Hohmann</p>
-<dl class="simple">
-<dt>Input :</dt><dd><p>planete_depart (ndarray): Tableau NumPy contenant les angles de la planète de départ (2 lignes : temps et angles).
-planete_arrivee (ndarray): Tableau NumPy contenant les angles de la planète d’arrivée (2 lignes : temps et angles).</p>
-</dd>
-<dt>Output :</dt><dd><p>Angle optimal pour entamer l’orbite et l’instant de départ (jour, minute, seconde).</p>
-</dd>
-</dl>
+<dd><p>Détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l’orbite de Hohmann
+:param dict mission: Contient tous les paramètres utiles de la mission.
+:return: Contient tous les paramètres utiles de la mission.
+:rtype: dict</p>
 </dd></dl>
 
 </section>
@@ -158,14 +168,14 @@ planete_arrivee (ndarray): Tableau NumPy contenant les angles de la planète d�
 <span id="module-fct-simple-module"></span><h2>Module.fct_simple module<a class="headerlink" href="#module-Module.fct_simple" title="Lien permanent vers cette rubrique">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_simple.obtenir_entier">
-<span class="sig-prename descclassname"><span class="pre">Module.fct_simple.</span></span><span class="sig-name descname"><span class="pre">obtenir_entier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_simple.obtenir_entier" title="Lien permanent vers cette définition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Module.fct_simple.</span></span><span class="sig-name descname"><span class="pre">obtenir_entier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_simple.obtenir_entier" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Vérifie que l’entrée de l’utilisateur est un nombre entier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>question</strong> (<em>str</em>) – Une chaîne de caractères contenant la question posée à l’utilisateur.</p>
+<dd class="field-odd"><p><strong>question</strong> (<em>str</em>) – Contient la question posée à l’utilisateur.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Le nombre entier entré par l’utilisateur.</p>
+<dd class="field-even"><p>Le nombre entré par l’utilisateur.</p>
 </dd>
 <dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
@@ -176,18 +186,11 @@ planete_arrivee (ndarray): Tableau NumPy contenant les angles de la planète d�
 <dl class="py function">
 <dt class="sig sig-object py" id="Module.fct_simple.obtenir_flottant">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_simple.</span></span><span class="sig-name descname"><span class="pre">obtenir_flottant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_simple.obtenir_flottant" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Vérifie que l’entrée de l’utilisateur est un nombre flottant.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>question</strong> (<em>str</em>) – Une chaîne de caractères contenant la question posée à l’utilisateur.</p>
-</dd>
-<dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Le nombre flottant entré par l’utilisateur.</p>
-</dd>
-<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
+<dd><p>Vérifie que l’entrée de l’utilisateur est un nombre flottant.
+:param question: Contient la question posée à l’utilisateur.
+:type question: str
+:return: Le nombre entré par l’utilisateur.
+:rtype: float</p>
 </dd></dl>
 
 </section>
@@ -214,10 +217,11 @@ planete_arrivee (ndarray): Tableau NumPy contenant les angles de la planète d�
 <li><p><strong>ephemeris</strong> – Données éphémérides pour toutes les planètes.</p></li>
 </ul>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Méthodes :</dt><dd><p>__init__(self, numero_planete): Initialise une instance de la classe Planete.
-coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée</p>
+<dt class="field-even">Classmethod<span class="colon">:</span></dt>
+<dd class="field-even"><p>__init__(self, numero_planete): Initialise une instance de la classe Planete.</p>
+</dd>
+<dt class="field-odd">Classmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p>coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -232,8 +236,16 @@ coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des pl
 <li><p><strong>annee</strong> (<em>int</em>) – L’année de la date d’observation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Aucun.</p>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>date_observation</strong> (<em>float</em>) – Date à laquelle on souhaite observer la planète</p></li>
+<li><p><strong>planete_cible</strong> – Contient les ephemeries de la planète cible</p></li>
+<li><p><strong>sun</strong> – Contient les ephemeries du soleil</p></li>
+<li><p><strong>temps_pos_planete</strong> (<em>array</em>) – Tableau des coordonnées et date sur les prochaines années</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Aucun.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -255,9 +267,8 @@ coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des pl
 <li><p><strong>masse_reactive</strong> (<em>float</em>) – La masse de carburant réactif en kg.</p></li>
 </ul>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Méthodes:</dt><dd><p>__init__(self, obtenir_flottant): Initialise un objet Vaisseau.</p>
+<dt class="field-even">Classmethod<span class="colon">:</span></dt>
+<dd class="field-even"><p>__init__(self, obtenir_flottant): Initialise un objet Vaisseau.</p>
 </dd>
 </dl>
 </dd></dl>
