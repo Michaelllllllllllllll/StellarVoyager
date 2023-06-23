@@ -7,7 +7,7 @@ Le principe est de partir au moment optimum pour profiter du mouvement de l'orbi
 Les moteurs sont alors utilisés deux fois, la première fois pour **accélerer et sortir de l'attraction** de la planète initiale, et la seconde fois pour **freiner et rentrer dans l'orbite** de la planète visée.
 
 ## Utilisation
-Une fois que vous avez installé le nécessaire __(voir rubrique **installation**)__, vous devez éxecuter le programme depuis le fichier **main*
+Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez éxecuter le programme depuis le fichier **main*
 
 Dans l'ordre, vous devez :
    * Choisir une planète de départ.
@@ -18,7 +18,7 @@ Ensuite, vous devez indiquer le moment au plus tot, auquel vous voulez partir, d
    * Le jour
    * Le mois
    * L'année
-         __Vous devrez patienter quelques instants, le temps que le programme calcule les données des planètes.__
+         *Vous devrez patienter quelques instants, le temps que le programme calcule les données des planètes.*
    * Indiquer si vous voulez revenir ou non sur la planète initiale
 
 Vous aurez alors en sortie les données importantes pour votre voyage, soit :
@@ -36,19 +36,20 @@ Vous aurez alors en sortie les données importantes pour votre voyage, soit :
 ## Exemples
 Pour vous aider à utiliser le programme, nous allons vous introduire l'exemple d'une mission habitée de la Terre vers Mars.
 Mettez-vous dans l'ambiance : 
-__Nous sommes dans un monde ou les hommes ont colonisés Mars et nous voulons ravitaillé la planète en matière première et en équipage.
-Vous êtes la personne en charge du départ et vous convertissez tous les élements indiqués en unité de masse, soit :__
-   __- 10 personnes d'environ 75 kg, soit 750 kg.__
-   __- 5000 kg de matière première pour ravitailler la planète__
-__Vous voulez partir à partir du mois de Juin 2035 et vous voulez connaitre la quantité de carburant, et quand vous serez de retour auprès de votre famille.__
+
+*Nous sommes dans un monde ou les hommes ont colonisés Mars et nous voulons ravitaillé la planète en matière première et en équipage.*
+*Vous êtes la personne en charge du départ et vous convertissez tous les élements indiqués en unité de masse, soit :*
+   *- 10 personnes d'environ 75 kg, soit 750 kg.*
+   *- 5000 kg de matière première pour ravitailler la planète*
+*Vous voulez partir à partir du mois de Juin 2035 et vous voulez connaitre la quantité de carburant, et quand vous serez de retour auprès de votre famille.*
 
 Voici ce que vous rentrez pour la mission, vous pouvez le voir **en gras** :
-* Veuillez entrer le numéro de la planète de départ de votre voyage : **3** __Terre__
-* Veuillez entrer le numéro de la planète d'arrivée de votre voyage : **4** __Mars__
-* Entrer la masse de charge utile que vous voulez emmener avec vous en kg : **5750** __Kg__
-* Veuillez entrer le numéro du jour de départ au plus tôt : **1** __Jour__
-* Veuillez entrer le numéro du mois de départ au plus tôt : **6** __Juin__
-* Veuillez entrer le numéro de l'année de départ au plus tôt : **2035** __Année__
+* Veuillez entrer le numéro de la planète de départ de votre voyage : **3** *(Terre)*
+* Veuillez entrer le numéro de la planète d'arrivée de votre voyage : **4** *(Mars)*
+* Entrer la masse de charge utile que vous voulez emmener avec vous en kg : **5750** *(Kg)*
+* Veuillez entrer le numéro du jour de départ au plus tôt : **1** *(Jour)*
+* Veuillez entrer le numéro du mois de départ au plus tôt : **6** *(Mois)*
+* Veuillez entrer le numéro de l'année de départ au plus tôt : **2035** *(Année)*
 * Souhaitez-vous revenir sur la planète de départ (oui ou non) : **oui**
 
 Les résultats sont : 
@@ -78,10 +79,11 @@ Une fois en orbite autour de la planète Terre, **votre vaisseau devra peser au 
 
 Vous comptez revenir sur la planète initiale. La période totale de la mission sera alors de **972 jours**, soit environ **32.4 mois**, ou **2.7 ans.**
 La date de retour sur Terre sera le **21/5/2038.**
-__N'oubliez pas de ravitailler votre vaisseau !__
+*N'oubliez pas de ravitailler votre vaisseau !*
 
 Voici le graphique de l'itinéraire de votre voyage : 
-![Voyage Terre Mars](C:\Users\romai\PycharmProjects\StellarVoyager\StellarVoyager\voyage_terre_mars.png)
+
+   ![Exemple du voyage Terre Mars en 2035](voyage_terre_mars.png)
 
 ## Contributions
 Nous acceptons tout type de contribution dans notre projet.
