@@ -15,7 +15,7 @@ Les moteurs sont alors utilisés deux fois, la première fois pour **accélerer 
 Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez éxecuter le programme depuis le fichier *main*
 
 Dans l'ordre, vous devez :
-   * Choisir une planète de départ. *(Vous devrez choisir le numéro index de la planète)
+   * Choisir une planète de départ. 
    * Choisir une planète d'arrivée.
    * Choisir la charge utile que vous voulez emmener avec vous dans l'espace.
 
@@ -50,13 +50,14 @@ MatplotLib : [Matplot](https://matplotlib.org/).
 tqdm : [tqdm](https://tqdm.github.io/).
 
 ## Exemples
+### Mission habitée vers Mars
 Pour vous aider à utiliser le programme, nous allons vous introduire l'exemple d'une mission habitée de la Terre vers Mars.
 Mettez-vous dans l'ambiance : 
 
 *Nous sommes dans un monde ou les hommes ont colonisés Mars et nous voulons ravitaillé la planète en matière première et en équipage.*
 *Vous êtes la personne en charge du départ et vous convertissez tous les élements indiqués en unité de masse, soit :*
-   * - 10 personnes d'environ 75 kg, qui représente 750 kg.*
-   * - 5000 kg de matière première pour ravitailler la planète*
+   - 10 personnes d'environ 75 kg, qui représente 750 kg.
+   - 5000 kg de matière première pour ravitailler la planète
 *Vous voulez partir à partir du mois de Juin 2035 et vous voulez connaitre la quantité de carburant, et quand vous serez de retour auprès de votre famille.*
 
 Voici ce que vous rentrez pour la mission, vous pouvez le voir **en gras** :
@@ -101,7 +102,26 @@ Voici le graphique de l'itinéraire de votre voyage :
 
    ![Exemple du voyage Terre Mars en 2035](voyage_terre_mars.png)
 
-En espérant que vous avez appreciés l'exemple, voyagez bien dans l'espace avec notre programme.
+### Envoie d'une sonde de Neptune à Pluton
+Autre aspect du programme, une mission trop longue.
+En effet, pour des questions de performance, nous nous limitons aux données datant de 1600 à 2200 lors du télechargement des éphémeride
+La mission indiquée est trop longue pour un départ à l'heure actuelle (~300 ans).
+
+Si vous souhaitez essayer, le résultat sera le suivant :
+   * Erreur, la mission est trop longue, elle dépasse l'année maximale permise par nos données d'éphéméride.
+Vous n'aurez pas la possibilité de faire le trajet retour.
+
+Vous obtenez le graphique suivant :
+
+   [Trajet d'une sonde entre Neptune et Pluton](sonde_neptune_pluton.png)
+
+Le but est de quand même ressortir un résultat sans avoir à crasher le programme.
+
+**ATTENTION** 
+*Si vous avez ce message, cela signifie que le trajet est trop long, ou que vous lancez votre vaisseau trop tard.
+Normalement, en deça de 2030, il y a seulement ce trajet qui pose problème.*
+
+Maintenant que vous avez vu deux exemples, amusez-vous bien avec **STELLARVOYAGER**.
 
 ## Contributions
 Nous acceptons tout type de contribution dans notre projet. Dès lors que les modifications simplifient ou améliorent le programme.
