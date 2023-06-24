@@ -9,7 +9,7 @@ def afficher_trajectoire(mission):
 
     :return: Aucun
     """
-    # Liste des distances des planètes par rapport au soleil en km.
+    # Liste de la distance de chacune des planètes par rapport au soleil en km.
     distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000]
     # Liste les noms des planètes
     nom_planete_affichage = ['Mercure', 'Venus', 'Terre', 'Mars', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Pluton']
@@ -26,11 +26,13 @@ def afficher_trajectoire(mission):
     # Affiche les orbites des 9 planètes
     for i in range(9):
 
-        # Position en x et y des points pour tracer l'orbite de chaque planètes
+        # Position en x et y des points pour tracer l'orbite de chaque planète
         x = distance_au_soleil[i] * np.cos(angle_planete)
         y = distance_au_soleil[i] * np.sin(angle_planete)
 
-        # Affiche les points et les relies en pointillés avec le nom des planètes en légende
+        # Affiche les points et les relient en pointillés avec le nom des planètes en légende
+        # La conversion est faite de km à unité astronomique (1 km = 6.68*10^-9 UA)
+        # Pour rappel, une UA = 150 millions de km : distance entre la Terre et le Soleil en moyenne
         plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = nom_planete_affichage[i], linestyle='dashed')
 
     ## Trajet aller
@@ -43,11 +45,11 @@ def afficher_trajectoire(mission):
     # Calcule les coordonnées x et y du centre du demi-cercle du trajet
     centre_trajet_x = (mission['planete_depart'].distance_soleil - rayon_trajet) * np.cos(angle_depart)
     centre_trajet_y = (mission['planete_depart'].distance_soleil - rayon_trajet) * np.sin(angle_depart)
-    # Calcul des tableaux des coordonnées du points x et y de la trajectoire du vaisseau
+    # Calcul des tableaux des coordonnées des points x et y de la trajectoire du vaisseau
     x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
     y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
 
-    # Affiche la trajectoire allée du vaisseau
+    # Affiche la trajectoire aller du vaisseau
     plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = 'Trajet aller', color='blue')
 
     # Affiche les dates de départ d'arrivée du trajet aller
@@ -57,7 +59,7 @@ def afficher_trajectoire(mission):
     plt.text(x[-1] * 6.68459e-9, y[-1] * 6.68459e-9, f"{int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}")
 
     ## Trajet retour
-    # S'effectue seulement si l'utilisateur indique qu'il veut revenir
+    # S'effectue seulement si l'utilisateur indique qu'il veut revenir (voir fct_physique)
     if mission['retour_oui_non'] == 'oui':
         # Récupère l'angle initial du retour
         angle_depart = mission['angle_depart_planete']
@@ -68,7 +70,7 @@ def afficher_trajectoire(mission):
         # Calcule les coordonnées x et y du centre du demi-cercle du trajet
         centre_trajet_x = (mission['planete_arrivee'].distance_soleil - rayon_trajet) * np.cos(angle_depart)
         centre_trajet_y = (mission['planete_arrivee'].distance_soleil - rayon_trajet) * np.sin(angle_depart)
-        # Calcul des tableaux des coordonnées du points x et y de la trajectoire du vaisseau
+        # Calcul des tableaux des coordonnées des points x et y de la trajectoire du vaisseau
         x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
         y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
 
