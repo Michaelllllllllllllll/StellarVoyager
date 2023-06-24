@@ -14,7 +14,7 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     """
     # Création d'un dictionnaire avec toutes les données de la mission
     mission = {}
-    # Affichage de la liste des planètes disponnible
+    # Affichage de la liste des planètes disponibles
     print("Voici les planètes du système solaire :\n1 - Mercure\n2 - Vénus\n3 - Terre\n4 - Mars\n5 - Jupiter\n6 - Saturne\n7 - Uranus\n8 - Neptune\n9 - Pluton")
     # Choix de la planète de départ
     mission['numero_planete_depart'] = obtenir_entier("Veuillez entrer le numéro de la planète de départ de votre voyage : ", 1, 9) - 1
@@ -47,11 +47,11 @@ def retour_utilisateur(mission):
     :return: Contient tous les paramètres utiles de la mission.
     :rtype: dict
     """
-    # Si les données d'entrées sont valide
+    # Si les données d'entrées sont valides
     if mission['mission_trop_longue'] == 'oui':
         print("\nErreur, la mission est trop longue, elle dépasse l'année maximale permise par nos données d'éphéméride.")
 
-    # Si les données d'entrées ne sont pas valide
+    # Si les données d'entrées ne sont pas valides
     else:
         print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.")
 
@@ -86,12 +86,12 @@ def retour_utilisateur(mission):
         print(f"Une fois en orbite autour de la planète {mission['planete_depart'].nom_planete_affichage}, votre vaisseau devra peser au total {int(mission['poids_vaisseau'])} kg, soit {int(mission['poids_vaisseau'] / 1000)} tonnes")
 
         # Si l'utilisateur veut revenir sur la planète de départ
-        if mission['retour_oui_non'] == 'oui' :
+        if mission['retour_oui_non'] == 'oui':
             print(f"\nVous comptez revenir sur la planète initiale. La période totale de la mission sera alors de {int(mission['duree'])} jours, soit environ {round(mission['duree'] / 30, 2)} mois, ou {round(mission['duree'] / (30 * 12), 2)} ans.")
             print(f"La date de retour sur {mission['planete_depart'].nom_planete_affichage} sera le {int(mission['jour_retour_mission'])}/{int(mission['mois_retour_mission'])}/{int(mission['annee_retour_mission'])}.")
             print(f"N'oubliez pas de ravitailler votre vaisseau !")
 
         # Si l'utilisateur ne veut pas revenir sur la planète de départ
-        elif mission['retour_oui_non'] == 'non' :
+        elif mission['retour_oui_non'] == 'non':
             print(f"\nVous comptez rester sur la planète initiale. La période totale de la mission sera de {int(mission['duree'])} jours, soit environ {round(mission['duree'] / 30, 2)} mois, ou {round(mission['duree'] / (30 * 12), 2)} ans.")
             print(f"La date de fin de mission sur {mission['planete_arrivee'].nom_planete_affichage} sera le {int(mission['jour_arrivee_planete'])}/{int(mission['mois_arrivee_planete'])}/{int(mission['annee_arrivee_planete'])}.")

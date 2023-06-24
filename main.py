@@ -3,7 +3,7 @@
 # Importe notre module contenant toutes nos fonctions
 import Module as md
 
-# Début la mission en lançant l'interface homme machine
+# Début la mission en lançant l'interface homme-machine
 mission = md.afficher_ihm(md.obtenir_entier, md.obtenir_flottant, md.Vaisseau, md.Planete)
 
 # Debute les calculs pour la mission

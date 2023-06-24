@@ -1,4 +1,4 @@
-# **StellarVoyager**, calculateur de trajectoire orbitale
+# **StellarVoyager**, calculateur de trajectoire orbitale sur Python
 
 ## Description
 Le but du projet est de calculer la trajectoire entre deux planètes la moins consommatrice de carburant.
@@ -35,7 +35,7 @@ Vous aurez alors en sortie les données importantes pour votre voyage, soit :
    * Un graphique montrant le déplacement du vaisseau entre les deux planètes dans le système solaire.
 
 De plus, nous sommes conscients que Pluton n'est plus catégorisée comme une planète mais bien une planète naine. 
-Nous l'avons ajouté pour avoir plus de résultats.
+Nous l'avons ajouté pour avoir plus de résultats et par pure curiosité.
 
 ## Structure du projet
 Expliquer la structure (comment le programme intéragit) et le module.
@@ -43,18 +43,18 @@ Expliquer la structure (comment le programme intéragit) et le module.
 ## Installation
 Expliquer le processus d'installation et les librairies immbriquées
 
-Librairie Skyfield : [Skyfield](https://rhodesmill.org/skyfield/).
+Données sur les planètes : [Skyfield](https://rhodesmill.org/skyfield/).
 
-DateTime : [DateTime](https://docs.python.org/3/library/datetime.html).
+Incorporation du temps : [DateTime](https://docs.python.org/3/library/datetime.html).
 
-Numpy : [Numpy](https://numpy.org/).
+Librairie pour vectoriser le code : [Numpy](https://numpy.org/).
 
-MatplotLib : [Matplot](https://matplotlib.org/).
+Librairie pour traçer les figures : [Matplot](https://matplotlib.org/).
 
-tqdm : [tqdm](https://tqdm.github.io/).
+Barre de chargement  : [tqdm](https://tqdm.github.io/).
 
 ## Exemples
-### Mission habitée vers Mars
+### 1) Mission habitée vers Mars
 Pour vous aider à utiliser le programme, nous allons vous introduire l'exemple d'une mission habitée de la Terre vers Mars.
 Mettez-vous dans l'ambiance : 
 
@@ -107,7 +107,7 @@ Voici le graphique de l'itinéraire de votre voyage :
 
    ![Exemple du voyage Terre Mars en 2035](voyage_terre_mars.png)
 
-### Envoie d'une sonde de Neptune à Pluton
+### 2) Envoie d'une sonde de Neptune à Pluton
 Autre aspect du programme, une mission trop longue.
 En effet, pour des questions de performance, nous nous limitons aux données datant de 1600 à 2200 lors du télechargement des éphémeride
 La mission indiquée est trop longue pour un départ à l'heure actuelle (~300 ans).
@@ -122,7 +122,7 @@ Vous obtenez le graphique suivant :
 
 Le but est de quand même ressortir un résultat sans avoir à crasher le programme.
 
-**ATTENTION** 
+**ATTENTION** : 
 *Si vous avez ce message, cela signifie que le trajet est trop long, ou que vous lancez votre vaisseau trop tard.
 Normalement, en deça de 2030, il y a seulement ce trajet qui pose problème.*
 
@@ -130,7 +130,6 @@ Maintenant que vous avez vu deux exemples, amusez-vous bien avec **STELLARVOYAGE
 
 ## Contributions
 Nous acceptons tout type de contribution dans notre projet. Dès lors que les modifications simplifient ou améliorent le programme.
-
 *(Voir rubrique **Licence**)*
 
 ## Licence

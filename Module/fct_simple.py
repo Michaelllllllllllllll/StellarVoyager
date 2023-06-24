@@ -14,10 +14,10 @@ def obtenir_flottant(question):
             entree = input(question)
             # Essayez de le transformer en nombre flottant, s'il ne peut pas, nous passons à "except"
             valeur = float(entree)
-            # Sorti de la fonction
+            # Sortie de la fonction
             return valeur
         except ValueError:
-            # Si l'entree n'est pas un nombre flottant, nous avons une erreur
+            # Si l'entrée n'est pas un nombre flottant, nous avons une erreur
             print("Entrée invalide, un flottant est attendu, veuillez réessayer.")
 
 def obtenir_entier(question, minimum, maximum):
@@ -37,12 +37,12 @@ def obtenir_entier(question, minimum, maximum):
             # Essayez de le transformer en nombre flottant, s'il ne peut pas, nous passons à "except"
             valeur = float(entree)
             # Vérification que le nombre est un entier et qu'il est compris entre le minimum et le maximum
-            if valeur % 1 != 0 or valeur > maximum or valeur < minimum :
+            if valeur % 1 != 0 or valeur > maximum or valeur < minimum:
                 # Création d'une erreur pour passer dans le "except"
                 valeur = ''
             # Essayez de le transformer en nombre entier, s'il ne peut pas, nous passons à "except"
             valeur = int(valeur)
-            # Sorti de la fonction
+            # Sortie de la fonction
             return valeur
         except ValueError:
             # Si l'entree n'est pas un nombre entier entre le minimum et le maximum, nous avons une erreur

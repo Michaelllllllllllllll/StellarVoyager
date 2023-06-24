@@ -7,20 +7,20 @@ from tqdm import tqdm
 class Planete:
     """Classe représentant une planète du système solaire et ses caractéristiques utiles au projet.
 
-    :ivar str nom_planete: Nom de la planète en Anglais reconnue par les données éphémérides.
-    :ivar str nom_planete_affichage: Nom de la planète en Français.
+    :ivar str nom_planete: Nom de la planète en anglais reconnue par les données éphémérides.
+    :ivar str nom_planete_affichage: Nom de la planète en français.
     :ivar float masse: Masse de la planète en kilogrammes.
     :ivar float periode_revolution: Période de révolution de la planète en jours.
     :ivar float rayon: Rayon de la planète en kilomètres.
-    :ivar float rayon_orbite: Rayon de l'orbite de la planète en kilomètres.
+    :ivar float rayon_orbite: Rayon de l'orbite du vaisseau au-dessus de la planète en kilomètres.
     :ivar float vitesse: Vitesse de la planète en kilomètres par heure.
     :ivar float distance_soleil: Distance de la planète par rapport au Soleil en kilomètres.
     :ivar float parametre_gravitationnel: Paramètre gravitationnel standard de la planète en km^3/s^2.
     :ivar int nombre_annee: Nombre d'années utilisées pour les coordonnées des planètes.
     :ivar ephemeris: Données éphémérides pour toutes les planètes.
 
-    :classmethod: __init__(self, numero_planete): Initialise une instance de la classe Planete.
-    :classmethod: coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
+    :classmethod : __init__(self, numero_planete) : Initialise une instance de la classe Planete.
+    :classmethod : coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
     """
     def __init__(self, numero_planete):
         """Le constructeur.
@@ -43,12 +43,12 @@ class Planete:
         # Récupère la masse de la planète avec le numéro de la planète entrée par l'utilisateur
         self.masse = masse_planete_ordre[numero_planete] #kg
 
-        # Liste des périodes des planètes dans le même ordre que leur noms
+        # Liste des périodes des planètes dans le même ordre que leurs noms
         periode_planete_ordre = [87.97, 224.7, 365.26, 686.98, 4332.71, 10759.5, 30685.0, 60190.0, 90560.0] #jours
         # Récupère la période de la planète avec le numéro de la planète entrée par l'utilisateur
         self.periode_revolution = periode_planete_ordre[numero_planete] #jours
 
-        # Liste des rayons des planètes dans le même ordre que leur noms
+        # Liste des rayons des planètes dans le même ordre que leurs noms
         rayon_planete_ordre = [2439.7, 6051.8, 6371.0, 3389.5, 69911.0, 58232.0, 25362.0, 24622.0, 1188.3] #km
         # Récupère le rayon de la planète avec le numéro de la planète entrée par l'utilisateur
         self.rayon = rayon_planete_ordre[numero_planete] #km
@@ -56,12 +56,12 @@ class Planete:
         # Calcule la distance entre le centre de la planète de départ/d'arrivée et la position du vaisseau au départ/ à l'arrivée
         self.rayon_orbite = self.rayon * 1.05 #km
 
-        # Liste des vitesse des planètes dans le même ordre que leur noms
+        # Liste des vitesses des planètes dans le même ordre que leurs noms
         vitesse_planete_ordre = [172800, 126000, 104400, 86400, 46800, 36000, 25200, 18000, 18000] #km/h
         # Récupère la vitesse de la planète avec le numéro de la planète entrée par l'utilisateur
         self.vitesse = vitesse_planete_ordre[numero_planete] #km/h
 
-        # Liste des distance des planètes parrapport au soleil dans le même ordre que leur noms
+        # Liste des distances des planètes parrapport au soleil dans le même ordre que leurs noms
         distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km/h
         # Récupère la distance de la planète par rapport au soleil avec le numéro de la planète entrée par l'utilisateur.
         self.distance_soleil = distance_au_soleil[numero_planete] #km
@@ -71,7 +71,7 @@ class Planete:
         # Calcule le paramètre gravitationel associé à l'astre entré
         self.parametre_gravitationnel = self.masse * 6.67 * 10**-20 #km^3/s^2
 
-        # Année maximal permise par nos éphémérides
+        # Année maximale permise par nos éphémérides
         self.annee_maximum = 2200 -1
 
         # Charger les données éphémérides pour toutes les planètes
