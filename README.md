@@ -123,8 +123,7 @@ Vous obtenez le graphique suivant :
 Le but est de quand même ressortir un résultat sans avoir à crasher le programme.
 
 **ATTENTION** : 
-*Si vous avez ce message, cela signifie que le trajet est trop long, ou que vous lancez votre vaisseau trop tard.
-Normalement, en deça de 2030, il y a seulement ce trajet qui pose problème.*
+*Si vous avez ce message, cela signifie que le trajet est trop long, ou que vous lancez votre vaisseau trop tard.*
 
 Maintenant que vous avez vu deux exemples, amusez-vous bien avec **STELLARVOYAGER**.
 
