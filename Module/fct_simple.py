@@ -1,5 +1,5 @@
 def obtenir_flottant(question):
-    """Vérifie que l'entrée de l'utilisateur est un nombre flottant.
+    """Cette fonction vérifie que l'entrée de l'utilisateur est un nombre flottant. Sinon elle lui demande en boucle d'entrée un nombre flottant.
 
     :param question: Contient la question posée à l'utilisateur.
     :type question: str
@@ -21,7 +21,7 @@ def obtenir_flottant(question):
             print("Entrée invalide, un flottant est attendu, veuillez réessayer.")
 
 def obtenir_entier(question, minimum, maximum):
-    """Vérifie que l'entrée de l'utilisateur est un nombre entier.
+    """Cette fonction vérifie que l'entrée de l'utilisateur est un nombre entier compris entre les bornes fournies en entrée. Sinon elle lui demande en boucle d'entrée un nombre entier et précise les bornes à respecter.
 
     :param question: Contient la question posée à l'utilisateur.
     :type question: str
