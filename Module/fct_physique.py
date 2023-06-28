@@ -99,14 +99,16 @@ def calculer_vitesse_orbite(mission):
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
+    #Calcul la vitesse en orbite autour de la planète de départ
     mission['vitesse_orbite_depart'] = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
+    #Calcul la vitesse en orbite autour de la planète d'arrivée
     mission['vitesse_orbite_arrivee'] = round(np.sqrt(mission['planete_arrivee'].parametre_gravitationnel / mission['planete_arrivee'].rayon_orbite), 2)
-
+    #Calcul la vitesse de libération
     mission['vitesse_liberation'] = round(np.sqrt(2 * (mission["energie_orbitale_planete_depart"] + (mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite))), 2)
 
-    # Accélération
+    #Calcul l'accélération au départ
     mission['delta_v_orbite_depart'] = round(mission['vitesse_liberation'] - mission['vitesse_orbite_depart'], 2)
-    # Frein
+    #Calcul la décélération à l'arrivée
     mission['delta_v_orbite_arrivee'] = round(mission['vitesse_orbite_arrivee'] - mission['vitesse_liberation'], 2)
 
     return mission
@@ -119,10 +121,10 @@ def calculer_duree_transfert(mission):
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
-    # Calcul de la durée estimée du transfert
+    #Calcul de la durée estimée du transfert
     mission['duree_transfert'] = abs((np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil)))
+    #Conversion des secondes en jour
     mission['duree_transfert'] /= (3600 * 24)
-    # Obtention de la position de la planète à la date d'observation
 
     return mission
 
