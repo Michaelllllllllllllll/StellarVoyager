@@ -6,15 +6,22 @@ from datetime import timedelta
 # Nous considérons que le vaisseau est déjà en orbite à basse altitude avec une vitesse initiale non nulle
 
 # Données du soleil utiles (constantes)
-param_gravitation_soleil = 132712440018	 # km3/s2
+param_gravitation_soleil = 132712440018	 # km^3/s^2
 masse_soleil = 1.989 * 10**30 #kg
 
 def determiner_instant_depart(mission):
     """Cette fonction détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l'orbite de Hohmann. Pour cela, il cherche la date où l'angle entre la planète de départ et d'arrivée est adapté pour commencer le transfert.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
+    Formule utilisée : :math:`\\Phi = \\pi - \\Delta T~\\omega`
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :math:`\\Delta T` est le temps de trajet entre la planète de départ et d'arrivée.
+
+    :math:`\\Phi` est l'angle entre la planète de départ et la planète d'arrivée au moment où le vaisseau doit partir.
+
+    :math:`\\omega` est la vitesse angulaire de la planète d'arrivée autour du soleil.
+
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3])
@@ -51,7 +58,7 @@ def calculer_energie_orbitale(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     # Calcul de la vitesse de libération au départ
@@ -66,7 +73,7 @@ def calculer_influence_planete(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     mission['distance_influence'] = round(mission['planete_depart'].distance_soleil * (mission['planete_depart'].masse / masse_soleil)**(2/5), 2)
@@ -77,7 +84,7 @@ def calculer_vitesse_orbite(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     mission['vitesse_orbite_depart'] = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
@@ -97,7 +104,7 @@ def calculer_duree_transfert(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     # Calcul de la durée estimée du transfert
@@ -117,7 +124,8 @@ def calculer_masse_carburant(mission):
     De l'équation de tsiolkovski découle :
     :math:`\\delta_{\\v} = v_{orbite} \cdot \ln\left(\frac{m_0}{m_f}\right)`
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
+
     :rtype: dict
     """
     mission['carburant_sortie_orbite_init'] = mission['vaisseau'].masse_initiale * (1 - np.exp(-((abs(mission['delta_v_orbite_depart'])) / mission['vitesse_orbite_depart']))) - mission['vaisseau'].masse_charge_utile
@@ -138,9 +146,10 @@ def calculer_duree_mission(mission):
 
     :math:`\\omega = \\frac{360\\pi}{T} (degrés)`
 
-    :math:`\\delta_{\\omega} = \omega_{planèteinitiale}-\omega_{planètefinale}`
+    :math:`\\delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
+
     :rtype: dict
     """
 

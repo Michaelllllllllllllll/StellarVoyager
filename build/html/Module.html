@@ -71,7 +71,7 @@
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -88,7 +88,7 @@
 <dd><p>Affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mission</strong> – Contient tous les paramètres utiles de la mission.</p>
+<dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
 <dd class="field-even"><p>Aucun</p>
@@ -107,7 +107,7 @@
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p></li>
-<li><p><strong>retour_utilisateur</strong> – Affiche sur l’interface les résultats à l’utilisateur.</p></li>
+<li><p><strong>retour_utilisateur</strong> (<em>fct</em>) – Affiche sur l’interface les résultats à l’utilisateur.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
@@ -134,17 +134,11 @@ Une fois les calculs terminés, les résultats sont retournés à l’utilisateu
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
-</dl>
-<p>formules utilisées :</p>
-<p><span class="math notranslate nohighlight">\(\omega = \frac{2\pi}{T}   (rad/s)\)</span></p>
-<p><span class="math notranslate nohighlight">\(\omega = \frac{360\pi}{T} (degrés)\)</span></p>
-<p><span class="math notranslate nohighlight">\(\delta_{\omega} = \omega_{planèteinitiale}-\omega_{planètefinale}\)</span></p>
-<dl class="field-list simple">
-<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Contient tous les paramètres utiles de la mission.</p>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
-<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
-<dd class="field-even"><p>dict</p>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -158,7 +152,7 @@ Une fois les calculs terminés, les résultats sont retournés à l’utilisateu
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -175,7 +169,7 @@ Une fois les calculs terminés, les résultats sont retournés à l’utilisateu
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -192,7 +186,7 @@ Une fois les calculs terminés, les résultats sont retournés à l’utilisateu
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -204,27 +198,17 @@ Une fois les calculs terminés, les résultats sont retournés à l’utilisateu
 <dt class="sig sig-object py" id="Module.fct_physique.calculer_masse_carburant">
 <span class="sig-prename descclassname"><span class="pre">Module.fct_physique.</span></span><span class="sig-name descname"><span class="pre">calculer_masse_carburant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mission</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.fct_physique.calculer_masse_carburant" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Calcul la masse du carburant utilisé lors du trajet</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">param dict mission<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Contient tous les paramètres utiles de la mission.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
+</dd>
+<dt class="field-even">Renvoie<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
+</dd>
+<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
-<p>formules utilisées :</p>
-<p>De l’équation de tsiolkovski découle : :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>Delta v = v_e cdot lnleft(</p>
-</div></blockquote>
-<p>rac{m_0}{m_f}
-ight)`</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">return<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Contient tous les paramètres utiles de la mission.</p>
-</dd>
-<dt class="field-even">rtype<span class="colon">:</span></dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-</div></blockquote>
 </dd></dl>
 
 <dl class="py function">
@@ -236,7 +220,7 @@ ight)`</p>
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -253,7 +237,7 @@ ight)`</p>
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+<dd class="field-even"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
 <dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
@@ -269,11 +253,17 @@ ight)`</p>
 <dt class="field-odd">Paramètres<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mission</strong> (<em>dict</em>) – Contient tous les paramètres utiles de la mission.</p>
 </dd>
-<dt class="field-even">Renvoie<span class="colon">:</span></dt>
-<dd class="field-even"><p>Contient tous les paramètres utiles de la mission.</p>
+</dl>
+<p>Formule utilisée : <span class="math notranslate nohighlight">\(\Phi = \pi - \Delta T~\omega\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Delta T\)</span> est le temps de trajet entre la planète de départ et d’arrivée.</p>
+<p><span class="math notranslate nohighlight">\(\Phi\)</span> est l’angle entre la planète de départ et la planète d’arrivée au moment où le vaisseau doit partir.</p>
+<p><span class="math notranslate nohighlight">\(\omega\)</span> est la vitesse angulaire de la planète d’arrivée autour du soleil.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tous les paramètres utiles de la mission.</p>
 </dd>
-<dt class="field-odd">Type renvoyé<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dict</p>
+<dt class="field-even">Type renvoyé<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -334,14 +324,18 @@ ight)`</p>
 <li><p><strong>rayon_orbite</strong> (<em>float</em>) – Rayon de l’orbite du vaisseau au-dessus de la planète en kilomètres.</p></li>
 <li><p><strong>vitesse</strong> (<em>float</em>) – Vitesse de la planète en kilomètres par heure.</p></li>
 <li><p><strong>distance_soleil</strong> (<em>float</em>) – Distance de la planète par rapport au Soleil en kilomètres.</p></li>
-<li><p><strong>parametre_gravitationnel</strong> (<em>float</em>) – Paramètre gravitationnel standard de la planète en km^3/s^2.</p></li>
+<li><p><strong>parametre_gravitationnel</strong> (<em>float</em>) – Paramètre gravitationnel standard de la planète en <span class="math notranslate nohighlight">\(\frac{km^3}{s^2}\)</span>.</p></li>
 <li><p><strong>nombre_annee</strong> (<em>int</em>) – Nombre d’années utilisées pour les coordonnées des planètes.</p></li>
 <li><p><strong>ephemeris</strong> – Données éphémérides pour toutes les planètes.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Classmethod<span class="colon">:</span></dt>
+<dd class="field-even"><p>__init__(self, numero_planete) : Initialise une instance de la classe Planete.</p>
+</dd>
+<dt class="field-odd">Classmethod<span class="colon">:</span></dt>
+<dd class="field-odd"><p>coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée</p>
+</dd>
 </dl>
-<p>:classmethod : __init__(self, numero_planete) : Initialise une instance de la classe Planete.
-:classmethod : coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="Module.planete.Planete.coordonnees_planete">
 <span class="sig-name descname"><span class="pre">coordonnees_planete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mois</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annee</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.planete.Planete.coordonnees_planete" title="Lien permanent vers cette définition">¶</a></dt>
@@ -378,11 +372,15 @@ ight)`</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Module.vaisseau.</span></span><span class="sig-name descname"><span class="pre">Vaisseau</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obtenir_flottant</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Module.vaisseau.Vaisseau" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Classe représentant un vaisseau spatial et ses caractéristiques.</p>
-<p>:ivar float masse_charge_utile : La masse de charge utile que l’utilisateur veut emmener l’incluant pour le voyage (en kg)
-:ivar float masse_initiale : La masse initiale pour le début d’une manoeuvre (sans le carburant) en kg.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Classmethod<span class="colon">:</span></dt>
-<dd class="field-odd"><p>__init__(self, obtenir_flottant) : Initialise un objet Vaisseau.</p>
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>masse_charge_utile</strong> (<em>float</em>) – La masse de charge utile que l’utilisateur veut emmener l’incluant pour le voyage (en kg)</p></li>
+<li><p><strong>masse_initiale</strong> (<em>float</em>) – La masse initiale pour le début d’une manoeuvre (sans le carburant) en kg.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Classmethod<span class="colon">:</span></dt>
+<dd class="field-even"><p>__init__(self, obtenir_flottant): Initialise un objet Vaisseau.</p>
 </dd>
 </dl>
 </dd></dl>
