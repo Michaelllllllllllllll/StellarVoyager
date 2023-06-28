@@ -10,7 +10,7 @@ param_gravitation_soleil = 132712440018	 # km3/s2
 masse_soleil = 1.989 * 10**30 #kg
 
 def determiner_instant_depart(mission):
-    """Détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l'orbite de Hohmann
+    """Cette fonction détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l'orbite de Hohmann. Pour cela, il cherche la date où l'angle entre la planète de départ et d'arrivée est adapté pour commencer le transfert.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -50,7 +50,7 @@ def determiner_instant_depart(mission):
     return mission
 
 def calculer_energie_orbitale(mission):
-    """Calculer la variation de vitesse pour calculer l'energie orbitale
+    """Cette fonction calcule l'énergie orbitale qui est utilisé pour calculer la vitesse de libération du vaisseau.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -65,7 +65,7 @@ def calculer_energie_orbitale(mission):
     return mission
 
 def calculer_influence_planete(mission):
-    """ Calcul la distance à laquelle la planète a toujours une influence sur le vaisseau.
+    """Cette fonction calcule la distance maximale à laquelle la planète a toujours une influence sur le vaisseau.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -76,7 +76,7 @@ def calculer_influence_planete(mission):
     return mission
 
 def calculer_vitesse_orbite(mission):
-    """Calcul la vitesse en arrivant et sortant de l'orbite ansi que sa variation de vitesse.
+    """Cette fonction calcule les vitesses en orbite des planètes de départ et d'arrivée.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -96,7 +96,7 @@ def calculer_vitesse_orbite(mission):
     return mission
 
 def calculer_duree_transfert(mission):
-    """Calcule la durée estimée du transfert entre deux orbites autour du Soleil.
+    """Cette fonction calcule la durée estimée du transfert entre deux planètes.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -111,7 +111,7 @@ def calculer_duree_transfert(mission):
     return mission
 
 def calculer_masse_carburant(mission):
-    """Calcul la masse du carburant utilisé lors du trajet
+    """Cette fonction calcule la masse du carburant à emporter pour réaliser le trajet.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -124,21 +124,9 @@ def calculer_masse_carburant(mission):
 
     mission['poids_vaisseau'] = mission['vaisseau'].masse_charge_utile + mission['vaisseau'].masse_initiale + mission['carburant_sortie_orbite_init'] + mission['carburant_entree_orbite_arrivee']
     return mission
-def calculer_periode_synodique(mission):
-    """Calcule la période synodique entre deux planètes.
-
-    :param dict mission: Contient tous les paramètres utiles de la mission.
-
-    :return: Contient tous les paramètres utiles de la mission.
-    :rtype: dict
-    """
-    # Calcul de la période synodique
-    periode_synodique = abs(round(1 / ((1 / mission['planete_depart'].periode_revolution) - (1 / mission['planete_arrivee'].periode_revolution)), 0))
-
-    return mission
 
 def calculer_duree_mission(mission):
-    """Calcule la durée totale de la mission en fonction de la durée de transfert et de la durée une fois sur place.
+    """Cette fonction calcule la durée totale de la mission en fonction de la durée de transfert et de la durée de séjour sur place.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -204,7 +192,7 @@ def calculer_duree_mission(mission):
     return mission
 
 def appel_fonctions_physique(mission, retour_utilisateur):
-    """Effectue une série de calculs physiques pour une mission spatiale donnée et appelle la fonction de retour utilisateur.
+    """Cette fonction appel les fonctions qui effectuent les calculs physiques pour la mission spatiale demandé.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
     :param retour_utilisateur: Affiche sur l'interface les résultats à l'utilisateur.
@@ -214,8 +202,7 @@ def appel_fonctions_physique(mission, retour_utilisateur):
 
     Remarque :
         Cette fonction effectue plusieurs étapes de calcul physique pour préparer les données de mission. Les calculs incluent
-        la durée de transfert, l'instant de départ, le delta-v, l'influence planétaire, la vitesse orbitale, la masse de carburant,
-        la période synodique et la durée totale de la mission.
+        la durée de transfert, l'instant de départ, le delta-v, l'influence planétaire, la vitesse orbitale, la masse de carburant, et la durée totale de la mission.
         Une fois les calculs terminés, les résultats sont retournés à l'utilisateur en utilisant la fonction de rappel spécifiée.
     """
     mission = calculer_duree_transfert(mission)
@@ -224,7 +211,6 @@ def appel_fonctions_physique(mission, retour_utilisateur):
     mission = calculer_energie_orbitale(mission)
     mission = calculer_vitesse_orbite(mission)
     mission = calculer_masse_carburant(mission)
-    mission = calculer_periode_synodique(mission)
     mission = calculer_duree_mission(mission)
     retour_utilisateur(mission)
 
