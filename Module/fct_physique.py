@@ -3,7 +3,7 @@ from skyfield.api import load, utc
 from datetime import timedelta
 
 # e = 0, nous considérons que les orbites sont circulaires
-# On considère que le vaisseau est deja en orbite à basse altitude avec une vitesse initiale non nulle
+# Nous considérons que le vaisseau est déjà en orbite à basse altitude avec une vitesse initiale non nulle
 
 # Données du soleil utiles (constantes)
 param_gravitation_soleil = 132712440018	 # km3/s2

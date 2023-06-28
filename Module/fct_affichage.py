@@ -9,7 +9,7 @@ def afficher_trajectoire(mission):
 
     :return: Aucun
     """
-    # Liste de la distance de chacune des planètes par rapport au soleil en km.
+    # Liste de la distance de chacune des planètes par rapport au soleil en km
     distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000]
     # Liste les noms des planètes
     nom_planete_affichage = ['Mercure', 'Venus', 'Terre', 'Mars', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Pluton']

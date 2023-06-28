@@ -107,12 +107,12 @@ class Planete:
         position_relative = planete_cible - sun
 
         ## Obtention de la position de la planète à la date d'observation
-        # Charger une échelle de temps par défaut.
+        # Charger une échelle de temps par défaut
         ts = load.timescale()
         # Converti la date donnée en entrée par l'utilisateur en date UTC
         date = ts.utc(date_observation.year, date_observation.month, date_observation.day)
 
-        # Boucle qui donne la date en fonction de la position de la planète
+        # Boucle qui récupère la position de la planète chaque jour en affichant une barre de progression
         for jour in tqdm(range((self.annee_maximum - annee) * 365)):
 
             # Récupère la position relative à la date entrée
