@@ -15,12 +15,12 @@ class Planete:
     :ivar float rayon_orbite: Rayon de l'orbite du vaisseau au-dessus de la planète en kilomètres.
     :ivar float vitesse: Vitesse de la planète en kilomètres par heure.
     :ivar float distance_soleil: Distance de la planète par rapport au Soleil en kilomètres.
-    :ivar float parametre_gravitationnel: Paramètre gravitationnel standard de la planète en km^3/s^2.
+    :ivar float parametre_gravitationnel: Paramètre gravitationnel standard de la planète en :math:`\\frac{km^3}{s^2}`.
     :ivar int nombre_annee: Nombre d'années utilisées pour les coordonnées des planètes.
     :ivar ephemeris: Données éphémérides pour toutes les planètes.
 
-    :classmethod : __init__(self, numero_planete) : Initialise une instance de la classe Planete.
-    :classmethod : coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
+    :classmethod: __init__(self, numero_planete) : Initialise une instance de la classe Planete.
+    :classmethod: coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
     """
     def __init__(self, numero_planete):
         """Le constructeur récupère les paramètres physiques de la planète demandée et les stocks dans des variables.
@@ -107,12 +107,12 @@ class Planete:
         position_relative = planete_cible - sun
 
         ## Obtention de la position de la planète à la date d'observation
-        # Charger une échelle de temps par défaut.
+        # Charger une échelle de temps par défaut
         ts = load.timescale()
         # Converti la date donnée en entrée par l'utilisateur en date UTC
         date = ts.utc(date_observation.year, date_observation.month, date_observation.day)
 
-        # Boucle qui donne la date en fonction de la position de la planète
+        # Boucle qui récupère la position de la planète chaque jour en affichant une barre de progression
         for jour in tqdm(range((self.annee_maximum - annee) * 365)):
 
             # Récupère la position relative à la date entrée
