@@ -63,7 +63,7 @@ def determiner_instant_depart(mission):
     return mission
 
 def calculer_energie_orbitale(mission):
-    """Cette fonction calcule l'énergie orbitale qui est utilisé pour calculer la vitesse de libération du vaisseau.
+    """Cette fonction calcule l'énergie orbitale qui est utilisée pour calculer la vitesse de libération du vaisseau.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -75,7 +75,7 @@ def calculer_energie_orbitale(mission):
 
     :math:`\\epsilon = \\frac{\\Delta v1^2}{2} - \\frac{\\mu_{planète~initiale}}{SOI}`
 
-    :math:`\\epsilon` est l'énergie orbitale pour initier l'orbite de transvert vers la planète finale
+    :math:`\\epsilon` est l'énergie orbitale pour initier l'orbite de transfert vers la planète finale
 
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
@@ -188,9 +188,9 @@ def calculer_duree_mission(mission):
 
     formules utilisées :
 
-    :math:`\\omega = \\frac{2\\pi}{T}   (rad/s)`
+    :math:`\\omega = \\frac{2\\pi}{T}   (rad//jour)`
 
-    :math:`\\omega = \\frac{360\\pi}{T} (degrés)`
+    :math:`\\omega = \\frac{360\\pi}{T} (degrés/jour)`
 
     :math:`\\delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
 
