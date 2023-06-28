@@ -147,10 +147,13 @@ def calculer_masse_carburant(mission):
 
     :rtype: dict
     """
+    #Calcul la masse de carburant utilisé pour l'accélération
     mission['carburant_sortie_orbite_init'] = mission['vaisseau'].masse_initiale * (1 - np.exp(-((abs(mission['delta_v_orbite_depart'])) / mission['vitesse_orbite_depart']))) - mission['vaisseau'].masse_charge_utile
 
+    #Calcul la masse de carburant utilisé pour la décélération
     mission['carburant_entree_orbite_arrivee'] = (mission['vaisseau'].masse_initiale - mission['carburant_sortie_orbite_init']) * (1 - np.exp(-((abs(mission['delta_v_orbite_arrivee'])) / mission['vitesse_orbite_arrivee']))) - mission['vaisseau'].masse_charge_utile
 
+    #Calcul de la masse total du vaisseau
     mission['poids_vaisseau'] = mission['vaisseau'].masse_charge_utile + mission['vaisseau'].masse_initiale + mission['carburant_sortie_orbite_init'] + mission['carburant_entree_orbite_arrivee']
     return mission
 
