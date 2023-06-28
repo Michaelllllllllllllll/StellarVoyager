@@ -112,10 +112,15 @@ def calculer_masse_carburant(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    formules utilisées :
+    Formules utilisées :
 
-    De l'équation de tsiolkovski découle :
-    :math:`\\delta_{\\v} = v_{orbite} \cdot \ln\left(\frac{m_0}{m_f}\right)`
+    De l'équation de Tsiolkovski découle :
+    :math:`\\delta_{v} = v_{orbite}\\ln(\\frac{m_{initiale}}{m_{finale}})`
+
+    On a en développant :
+    :math:`m_{carburant} = m_{initiale}(1 - e^(-{delta_{v}/v_{orbite}) - m_{chargeutile}`
+
+    :math:`m_{poidsvaisseau} = m_{chargeutile} + m_{initiale} + m_{carburant}`
 
     :return: Contient tous les paramètres utiles de la mission.
     :rtype: dict
