@@ -13,7 +13,8 @@ def determiner_instant_depart(mission):
     """Cette fonction détermine le moment où le vaisseau doit partir pour consommer le moins de carburant possible et entamer l'orbite de Hohmann. Pour cela, il cherche la date où l'angle entre la planète de départ et d'arrivée est adapté pour commencer le transfert.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
-    Formule utilisée : :math:`\\Phi = \\pi - \\Delta T~\\omega`
+    :Formules utilisées:
+    :math:`\\Phi = \\pi - \\Delta T~\\omega`
 
     :math:`\\Delta T` est le temps de trajet entre la planète de départ et d'arrivée.
 
@@ -58,6 +59,16 @@ def calculer_energie_orbitale(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
+    :Formules utilisées:
+
+    :math:`V_{périgée} = \\sqrt{\\frac{2\\mu_{soleil}}{d_{planète~initiale/soleil}+d_{planète~finale/soleil}}\\times \\frac{d_{planète~finale/soleil}}{d_{planète~initiale/soleil}}}`
+
+    :math:`\\Delta V1 = V_{périgée} - V_{planète~initiale}`
+
+    :math:`\\epsilon = \\frac{\\Delta V1^2}{2} - \\frac{\\mu_{planète~initiale}}{SOI}`
+
+    :math:`\\epsilon` est l'énergie orbitale pour initier l'orbite de transvert vers la planète finale
+
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
@@ -83,6 +94,15 @@ def calculer_vitesse_orbite(mission):
     """Cette fonction calcule les vitesses en orbite des planètes de départ et d'arrivée.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
+
+    :Formules utilisées:
+    :math:`V_{orbite} = \\frac{\\mu_{planète}}{Rayon~orbite~planète}`
+
+    :math:`V_{libération} = \\sqrt{2(\\epsilon _{planète} + \\frac{\\mu_{planète}}{Rayon~orbite~planète})}`
+
+    :math:`\\Delta V_{départ} = V_{libération} - V_{orbite~départ}`
+
+    :math:`\\Delta V_{arrivée} =  V_{orbite~arrivée} - V_{libération}`
 
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
