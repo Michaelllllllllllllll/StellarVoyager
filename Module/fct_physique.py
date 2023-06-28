@@ -86,7 +86,9 @@ def calculer_influence_planete(mission):
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
+    #Calcul la distance maximale à laquelle la planète a toujours une influence sur le vaisseau
     mission['distance_influence'] = round(mission['planete_depart'].distance_soleil * (mission['planete_depart'].masse / masse_soleil)**(2/5), 2)
+
     return mission
 
 def calculer_vitesse_orbite(mission):
