@@ -155,9 +155,9 @@ def calculer_duree_mission(mission):
 
     formules utilisées :
 
-    :math:`\\omega = \\frac{2\\pi}{T}   (rad/s)`
+    :math:`\\omega = \\frac{2\\pi}{T}   (rad//jour)`
 
-    :math:`\\omega = \\frac{360\\pi}{T} (degrés)`
+    :math:`\\omega = \\frac{360\\pi}{T} (degrés/jour)`
 
     :math:`\\delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
 
