@@ -115,6 +115,11 @@ def calculer_masse_carburant(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
+    formules utilisées :
+
+    De l'équation de tsiolkovski découle :
+    :math:`\\delta_{\\v} = v_{orbite} \cdot \ln\left(\frac{m_0}{m_f}\right)`
+
     :return: Contient tous les paramètres utiles de la mission.
     :rtype: dict
     """
@@ -142,9 +147,18 @@ def calculer_duree_mission(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
+    formules utilisées :
+
+    :math:`\\omega = \\frac{2\\pi}{T}   (rad/s)`
+
+    :math:`\\omega = \\frac{360\\pi}{T} (degrés)`
+
+    :math:`\\delta_{\\omega} = \omega_{planèteinitiale}-\omega_{planètefinale}`
+
     :return: Contient tous les paramètres utiles de la mission.
     :rtype: dict
     """
+
     omega_depart = 360 / mission['planete_depart'].periode_revolution
     omega_arrivee = 360 / mission['planete_arrivee'].periode_revolution
 
