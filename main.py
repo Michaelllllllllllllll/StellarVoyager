@@ -7,7 +7,10 @@ import Module as md
 mission = md.afficher_ihm(md.obtenir_entier, md.obtenir_flottant, md.Vaisseau, md.Planete)
 
 # Debute les calculs pour la mission
-mission = md.appel_fonctions_physique(mission, md.retour_utilisateur)
+mission = md.appel_fonctions_physique(mission)
 
-# Affiche le graphique et les trajectoires associées à la mission effectuée (vaisseau et planètes).
+# Affiche un texte qui explique les paramètres de la mission à l'utilisateur
+md.retour_utilisateur(mission)
+
+# Affiche le graphique et les trajectoires associées à la mission effectuée (vaisseau et planètes)
 md.afficher_trajectoire(mission)

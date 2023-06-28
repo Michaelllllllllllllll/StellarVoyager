@@ -5,7 +5,7 @@ import numpy as np
 from tqdm import tqdm
 
 class Planete:
-    """Classe représentant une planète du système solaire et ses caractéristiques utiles au projet.
+    """Cette classe représentant une planète du système solaire et ses caractéristiques utiles au projet.
 
     :ivar str nom_planete: Nom de la planète en anglais reconnue par les données éphémérides.
     :ivar str nom_planete_affichage: Nom de la planète en français.
@@ -23,7 +23,7 @@ class Planete:
     :classmethod: coordonnees_planete(self, jour, mois, annee): Récupère les coordonnées des planètes à la date indiquée
     """
     def __init__(self, numero_planete):
-        """Le constructeur.
+        """Le constructeur récupère les paramètres physiques de la planète demandée et les stocks dans des variables.
 
         :param int numero_planete: Numéro de la planète indiquée par l'utilisateur.
         :return: Aucun.
@@ -81,7 +81,7 @@ class Planete:
         self.ephemeris = load('de405.bsp')
 
     def coordonnees_planete(self, jour, mois, annee):
-        """Calcule les coordonnées de la planète à une date spécifiée.
+        """Cette méthode crée un tableau avec les coordonnées de la planète de l'année de départ jusqu'en 2200.
 
         :param int jour: Le jour de la date d'observation.
         :param int mois: Le mois de la date d'observation.
