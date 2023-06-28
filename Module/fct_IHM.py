@@ -1,7 +1,7 @@
 import numpy as np
 
 def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
-    """Affiche l'interface utilisateur
+    """Affiche l'interface utilisateur. Le programme va poser des questions à l'utilisateurs et stocker ses réponses dans des variables pour être traité plus tard.
 
     :param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
     :param fct obtenir_flottant: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre entier.
