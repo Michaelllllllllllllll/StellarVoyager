@@ -69,9 +69,11 @@ def calculer_energie_orbitale(mission):
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
-    # Calcul de la vitesse de libération au départ
+    #Calcul de la vitesse de libération au départ
     vitesse_perigee = abs(np.sqrt(((2 * param_gravitation_soleil) / (mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)) * (mission['planete_arrivee'].distance_soleil / mission['planete_depart'].distance_soleil)))
+    #Calcul de la différence de vitesse
     mission['delta_v1'] = abs(round(vitesse_perigee - (mission['planete_depart'].vitesse / 3600), 2))
+    #Calcul de l'énergie orbitale de la planète de départ
     mission["energie_orbitale_planete_depart"] = ((mission['delta_v1']) ** 2 / 2) - (mission['planete_depart'].parametre_gravitationnel / mission['distance_influence'])
 
     return mission
