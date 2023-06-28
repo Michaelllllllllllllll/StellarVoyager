@@ -44,7 +44,7 @@ def retour_utilisateur(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     # Si les données d'entrées sont valides

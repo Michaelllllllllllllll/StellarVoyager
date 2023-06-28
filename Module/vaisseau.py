@@ -1,10 +1,10 @@
 class Vaisseau:
     """Classe représentant un vaisseau spatial et ses caractéristiques.
 
-    :ivar float masse_charge_utile : La masse de charge utile que l'utilisateur veut emmener l'incluant pour le voyage (en kg)
-    :ivar float masse_initiale : La masse initiale pour le début d'une manoeuvre (sans le carburant) en kg.
+    :ivar float masse_charge_utile: La masse de charge utile que l'utilisateur veut emmener l'incluant pour le voyage (en kg)
+    :ivar float masse_initiale: La masse initiale pour le début d'une manoeuvre (sans le carburant) en kg.
 
-    :classmethod: __init__(self, obtenir_flottant) : Initialise un objet Vaisseau.
+    :classmethod: __init__(self, obtenir_flottant): Initialise un objet Vaisseau.
     """
     def __init__(self, obtenir_flottant):
         """Le constructeur.

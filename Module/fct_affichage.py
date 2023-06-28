@@ -5,7 +5,7 @@ import numpy as np
 def afficher_trajectoire(mission):
     """Affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes.
 
-    :param mission: Contient tous les paramètres utiles de la mission.
+    :param dict mission: Contient tous les paramètres utiles de la mission.
 
     :return: Aucun
     """
