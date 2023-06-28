@@ -17,7 +17,6 @@ def determiner_instant_depart(mission):
     :return: Contient tous les paramètres utiles de la mission.
     :rtype: dict
     """
-
     difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3])
 
     angle_objectif = np.pi - 2 * np.pi / mission['planete_arrivee'].periode_revolution * mission['duree_transfert']
@@ -34,8 +33,6 @@ def determiner_instant_depart(mission):
     mission['jour_depart'] = mission['planete_depart'].temps_pos_planete[0, indice]
     mission['mois_depart'] = mission['planete_depart'].temps_pos_planete[1, indice]
     mission['annee_depart'] = mission['planete_depart'].temps_pos_planete[2, indice]
-
-
 
     #Affichage de la date d'arrivée du vaisseau sur la planète
     ts = load.timescale()
@@ -180,7 +177,6 @@ def calculer_duree_mission(mission):
         mission['mois_retour_mission'] = date_retour_mission.utc_datetime().month
         mission['annee_retour_mission'] = date_retour_mission.utc_datetime().year
 
-
     elif question_utilisateur == 'non' or question_utilisateur == 'NON' or question_utilisateur == 'n' or question_utilisateur == 'N':
 
         mission['retour_oui_non'] = 'non'
@@ -188,22 +184,18 @@ def calculer_duree_mission(mission):
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
         mission['duree'] = abs(mission['duree_transfert'])
 
-
     return mission
 
-def appel_fonctions_physique(mission, retour_utilisateur):
+def appel_fonctions_physique(mission):
     """Cette fonction appel les fonctions qui effectuent les calculs physiques pour la mission spatiale demandé.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
-    :param retour_utilisateur: Affiche sur l'interface les résultats à l'utilisateur.
 
     :return: L'objet de mission mis à jour après les calculs.
     :rtype: dict
 
     Remarque :
-        Cette fonction effectue plusieurs étapes de calcul physique pour préparer les données de mission. Les calculs incluent
-        la durée de transfert, l'instant de départ, le delta-v, l'influence planétaire, la vitesse orbitale, la masse de carburant, et la durée totale de la mission.
-        Une fois les calculs terminés, les résultats sont retournés à l'utilisateur en utilisant la fonction de rappel spécifiée.
+        Cette fonction effectue plusieurs étapes de calcul physique pour préparer les données de mission. Les calculs incluent la durée de transfert, l'instant de départ, le delta-v, l'influence planétaire, la vitesse orbitale, la masse de carburant, et la durée totale de la mission.
     """
     mission = calculer_duree_transfert(mission)
     mission = determiner_instant_depart(mission)
@@ -212,6 +204,5 @@ def appel_fonctions_physique(mission, retour_utilisateur):
     mission = calculer_vitesse_orbite(mission)
     mission = calculer_masse_carburant(mission)
     mission = calculer_duree_mission(mission)
-    retour_utilisateur(mission)
 
     return mission
