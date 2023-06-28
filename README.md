@@ -24,18 +24,18 @@ Ensuite, vous devez indiquer le moment au plus tôt, auquel vous voulez partir, 
    * Le mois
    * L'année
          
-         Vous devrez patienter quelques instants, le temps que le programme calcule les données des planètes.
+   *Vous devrez patienter quelques instants, le temps que le programme calcule les données des planètes.*
 
    * Indiquer si vous voulez revenir ou non sur la planète initiale
 
 Vous aurez alors en sortie les données importantes pour votre voyage, soit :
    * La masse du vaisseau et du carburant en fonction de votre charge utile.
    * Les vitesses associées pour réaliser les manoeuvres.
-   * Le processus de durée (date de départ, d'arrivée et de retour).
+   * Les dates clés du voyage (date de départ, d'arrivée et de retour).
    * Un graphique montrant le déplacement du vaisseau entre les deux planètes dans le système solaire.
 
-De plus, nous sommes conscients que Pluton n'est plus catégorisée comme une planète mais bien une planète naine. 
-Nous l'avons ajouté pour avoir plus de résultats et par pure curiosité.
+De plus, nous sommes conscients que Pluton n'est plus catégorisée comme une planète mais comme une planète naine. 
+Nous l'avons ajouté pour avoir plus de possibilités et par pure curiosité.
 
 ## Structure du projet
 Expliquer la structure (comment le programme intéragit) et le module.
@@ -51,24 +51,24 @@ Librairie pour vectoriser le code : [Numpy](https://numpy.org/).
 
 Librairie pour traçer les figures : [Matplot](https://matplotlib.org/).
 
-Barre de chargement  : [tqdm](https://tqdm.github.io/).
+Barre de chargement : [tqdm](https://tqdm.github.io/).
 
 ## Exemples
 ### 1) Mission habitée vers Mars
 Pour vous aider à utiliser le programme, nous allons vous introduire l'exemple d'une mission habitée de la Terre vers Mars.
 Mettez-vous dans l'ambiance : 
 
-*Nous sommes dans un monde ou les hommes ont colonisés Mars et nous voulons ravitaillé la planète en matière première et en équipage.*
-*Vous êtes la personne en charge du départ et vous convertissez tous les élements indiqués en unité de masse, soit :*
+*Nous sommes dans un monde où les hommes ont colonisé Mars et nous voulons ravitailler la planète en matière première et en équipage.*
+*Vous êtes la personne en charge du départ et vous convertissez tous les éléments indiqués en unité de masse, soit :*
    - 10 personnes d'environ 75 kg, qui représente 750 kg.
    - 5000 kg de matière première pour ravitailler la planète.
 
-*Vous voulez partir à partir du mois de Juin 2035 et vous voulez connaitre la quantité de carburant, et quand vous serez de retour auprès de votre famille.*
+*Vous voulez partir dès le mois de juin 2035 et vous voulez connaitre la quantité de carburant à emporter, et quand vous serez de retour auprès de votre famille.*
 
 Voici ce que vous rentrez pour la mission, vous pouvez le voir **en gras** :
 * Veuillez entrer le numéro de la planète de départ de votre voyage : **3** *(Terre)*
 * Veuillez entrer le numéro de la planète d'arrivée de votre voyage : **4** *(Mars)*
-* Entrer la masse de charge utile que vous voulez emmener avec vous en kg : **5750** *(Kg)*
+* Entrer la masse de charge utile que vous voulez emmener avec vous en kg : **5750** *(kg)*
 * Veuillez entrer le numéro du jour de départ au plus tôt : **1** *(Jour)*
 * Veuillez entrer le numéro du mois de départ au plus tôt : **6** *(Mois)*
 * Veuillez entrer le numéro de l'année de départ au plus tôt : **2035** *(Année)*
@@ -118,12 +118,13 @@ Vous n'aurez pas la possibilité de faire le trajet retour.
 
 Vous obtenez le graphique suivant :
 
-   [Trajet d'une sonde entre Neptune et Pluton](sonde_neptune_pluton.png)
+   ![Trajet d'une sonde entre Neptune et Pluton](sonde_neptune_pluton.png)
 
 Le but est de quand même ressortir un résultat sans avoir à crasher le programme.
 
 **ATTENTION** : 
 *Si vous avez ce message, cela signifie que le trajet est trop long, ou que vous lancez votre vaisseau trop tard.*
+*Pour corriger le problème : essayez de lancer votre voyage plus tôt.* 
 
 Maintenant que vous avez vu deux exemples, amusez-vous bien avec **STELLARVOYAGER**.
 
