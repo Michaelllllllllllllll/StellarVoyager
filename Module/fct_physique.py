@@ -146,7 +146,7 @@ def calculer_duree_mission(mission):
 
     :math:`\\omega = \\frac{360\\pi}{T} (degrés)`
 
-    :math:`\\delta_{\\omega} = \omega_{planèteinitiale}-\omega_{planètefinale}`
+    :math:`\\delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
 
     :return: Tous les paramètres utiles de la mission.
 
