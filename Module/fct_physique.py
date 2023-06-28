@@ -174,56 +174,62 @@ def calculer_duree_mission(mission):
 
     :rtype: dict
     """
-
+    #Calcul des vitesses de rotation des planètes
     omega_depart = 360 / mission['planete_depart'].periode_revolution
     omega_arrivee = 360 / mission['planete_arrivee'].periode_revolution
 
+    #Calcul la vitesse de rotation relative entre les deux planètes
     delta_omega = omega_depart - omega_arrivee
-
+    #Calcul du paramètre phi
     phi = 360 + 180 - (omega_depart*mission['duree_transfert']) - (omega_depart*mission['duree_transfert'] - 180)
-
+    #Calcul de la durée à attendre sur la planète d'arrivée avant un nouvel alignenent des planètes pour retourner sur la planète de départ
     mission['duree_sur_planete_arrivee'] = abs(phi / delta_omega)
 
-    # Affichage de la date de départ du vaisseau sur la planète
+    #Calcul de la date de départ du vaisseau de la planète d'arrivée
     ts = load.timescale()
     date_depart_planete = ts.utc(mission['annee_arrivee_planete'], mission['mois_arrivee_planete'], mission['jour_arrivee_planete'])
     date_depart_planete = date_depart_planete + timedelta(days=int(mission["duree_sur_planete_arrivee"]))
+    #Mémorisation de la date de départ du vaisseau de la planète d'arrivée
     mission['jour_depart_planete'] = date_depart_planete.utc_datetime().day
     mission['mois_depart_planete'] = date_depart_planete.utc_datetime().month
     mission['annee_depart_planete'] = date_depart_planete.utc_datetime().year
 
-    # récupère l'angle de départ du vaisseau
-
+    #Calcul de l'indice dans le tableau du moment de départ de la planète d'arrivée
     mission['indice'] += int(mission["duree_sur_planete_arrivee"])
+    #Gestion d'erreur du dépassement de tableau si la mission est trop longue
     try:
+        #Mémorisation de l'angle de la planète d'arrivée au moment du départ vers la planète de départ
         mission['angle_depart_planete'] = mission['planete_depart'].temps_pos_planete[3, mission['indice']]
+        #Variable pour savoir s'il y a eu une erreur
         mission['mission_trop_longue'] = 'non'
     except IndexError:
+        #Variable pour savoir s'il y a eu une erreur
         mission['mission_trop_longue'] = 'oui'
         mission['retour_oui_non'] = 'non'
+        #Fin de la fonction
         return mission
 
     # Demande à l'utilisateur s'il souhaite revenir sur la planète de départ
-
     question_utilisateur = input("Souhaitez-vous revenir sur la planète de départ (oui ou non) : ")
 
     if question_utilisateur == 'oui' or question_utilisateur == 'OUI' or question_utilisateur == 'o' or question_utilisateur == 'O':
-
+        #Mémorisation de la réponse de l'utilisateur
         mission['retour_oui_non'] = 'oui'
 
-        # Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
+        #Calcule la durée totale de la mission si l'utilisateur souhaite revenir sur la planète de départ
         mission['duree'] = abs(mission['duree_transfert'] + mission["duree_sur_planete_arrivee"] + mission['duree_transfert'])
 
-        # Affichage de la date de retour du vaisseau sur la planète initiale
+        #Affichage de la date d'arrivée du vaisseau sur la planète de départ
         ts = load.timescale()
         date_retour_mission = ts.utc(mission['annee_depart_planete'], mission['mois_depart_planete'], mission['jour_depart_planete'])
         date_retour_mission = date_retour_mission + timedelta(days=int(mission['duree_transfert']))
+        #Mémorisation de la date d'arrivée du vaisseau sur la planète de départ
         mission['jour_retour_mission'] = date_retour_mission.utc_datetime().day
         mission['mois_retour_mission'] = date_retour_mission.utc_datetime().month
         mission['annee_retour_mission'] = date_retour_mission.utc_datetime().year
 
     elif question_utilisateur == 'non' or question_utilisateur == 'NON' or question_utilisateur == 'n' or question_utilisateur == 'N':
-
+        #Mémorisation de la réponse de l'utilisateur
         mission['retour_oui_non'] = 'non'
 
         # Calcule la durée totale de la mission si l'utilisateur ne souhaite pas revenir sur la planète de départ
