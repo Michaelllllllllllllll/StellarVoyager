@@ -1,53 +1,53 @@
-Module package
+voyage package
 ==============
 
 Submodules
 ----------
 
-Module.fct\_IHM module
+voyage.fct\_IHM module
 ----------------------
 
-.. automodule:: Module.fct_IHM
+.. automodule:: voyage.fct_IHM
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module.fct\_affichage module
+voyage.fct\_affichage module
 ----------------------------
 
-.. automodule:: Module.fct_affichage
+.. automodule:: voyage.fct_affichage
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module.fct\_physique module
+voyage.fct\_physique module
 ---------------------------
 
-.. automodule:: Module.fct_physique
+.. automodule:: voyage.fct_physique
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module.fct\_simple module
+voyage.fct\_simple module
 -------------------------
 
-.. automodule:: Module.fct_simple
+.. automodule:: voyage.fct_simple
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module.planete module
+voyage.planete module
 ---------------------
 
-.. automodule:: Module.planete
+.. automodule:: voyage.planete
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module.vaisseau module
+voyage.vaisseau module
 ----------------------
 
-.. automodule:: Module.vaisseau
+.. automodule:: voyage.vaisseau
    :members:
    :undoc-members:
    :show-inheritance:
@@ -55,7 +55,7 @@ Module.vaisseau module
 Module contents
 ---------------
 
-.. automodule:: Module
+.. automodule:: voyage
    :members:
    :undoc-members:
    :show-inheritance:

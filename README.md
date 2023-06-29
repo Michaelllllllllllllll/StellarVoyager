@@ -10,8 +10,13 @@ Les moteurs sont alors utilisés deux fois, la première fois pour **accélerer 
 *Cette propriété de 180 degrés entre le départ et l'arrivée est importante pour minimiser la dépense énergétique lors des transferts orbitaux. En exploitant la mécanique orbitale et en choisissant soigneusement les moments des impulsions de propulsion, les missions spatiales peuvent atteindre leur destination en utilisant le moins de carburant possible.*
 
 ## Utilisation
-Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez éxecuter le programme depuis le fichier *main*
+# 1) Si le paquet a été installé
+Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, il faut exécuter StellarVoyager dans la console python pour lancer le programme.
 
+# 2) Si le paquet n'a pas été installé
+Il faut exécuter le Main et appeler **StellarVoyager** dans sa console.
+
+# Suite de la procédure 
 Dans l'ordre, vous devez :
    * Choisir une planète de départ. 
    * Choisir une planète d'arrivée.
@@ -36,10 +41,16 @@ De plus, nous sommes conscients que Pluton n'est plus catégorisée comme une pl
 Nous l'avons ajouté pour avoir plus de possibilités et par pure curiosité.
 
 ## Structure du projet
-Expliquer la structure (comment le programme intéragit) et le module.
+Expliquer la structure (comment le programme interagit) et le module.
+    ![Structure du projet](structure.jpg)
 
 ## Installation
-Expliquer le processus d'installation et les librairies immbriquées
+Pour installer le programme, suivez les étapes suivantes :
+* Accéder au terminal 
+* Il faut exécuter la commande : **pip install -r requirements.txt** dans le dossier où se trouve requirements.txt dans votre terminal.
+* Exécuter la commande : **python setup.py install** qui installe le paquet dans l'environnement virtuel.
+
+De plus, nous avons utilisé les modules suivants qui seront automatiquement installés avec les commandes précédentes :
 
 Données sur les planètes : [Skyfield](https://rhodesmill.org/skyfield/).
 
@@ -122,7 +133,8 @@ Le but est de quand même ressortir un résultat sans avoir à crasher le progra
 
 **ATTENTION** : 
 *Si vous avez ce message, cela signifie que le trajet est trop long, ou que vous lancez votre vaisseau trop tard.*
-*Pour corriger le problème : essayez de lancer votre voyage plus tôt.* 
+*Pour corriger le problème : essayez de lancer votre voyage plus tôt.*
+*Il aurait fallu que nous installions des données d'éphémérides plus lourdes, mais cela rendrait le programme plus long, c'est un compromis que nous avons choisi afin de rendre le programme rapide*
 
 Maintenant que vous avez vu deux exemples, amusez-vous bien avec **STELLARVOYAGER**.
 

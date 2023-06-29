@@ -1,7 +1,7 @@
 import numpy as np
 
 def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
-    """Affiche l'interface utilisateur
+    """Affiche l'interface utilisateur. La fonction demande à l'utilisateur les différentes entrées requises et les stocks dans des variables pour être utilisés plus tard. Elle initialise aussi des objects qui seront utilisés par la suite.
 
     :param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
     :param fct obtenir_flottant: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre entier.
@@ -10,7 +10,8 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
 
     :var dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: Aucun
+    :return: Tous les paramètres utiles de la mission.
+    :rtype: dict
     """
     # Création d'un dictionnaire avec toutes les données de la mission
     mission = {}
@@ -40,11 +41,11 @@ def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
     return mission
 
 def retour_utilisateur(mission):
-    """Affichage des informations de la mission à l'utilisateur
+    """Affichage des informations de la mission à l'utilisateur. La fonction retourne sous forme de texte et d'explication les résultats des calculs des paramètres de la mission.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: Contient tous les paramètres utiles de la mission.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     # Si les données d'entrées sont valides

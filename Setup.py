@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-if __ name__ == '__main__':
-    setup()
+if __name__ == '__main__':
+    setup(packages=find_packages(include=['voyage', 'voyage.*'], exclude=['source', 'source.*']))
