@@ -42,6 +42,7 @@ Nous l'avons ajouté pour avoir plus de possibilités et par pure curiosité.
 
 ## Structure du projet
 Expliquer la structure (comment le programme interagit) et le module.
+    ![Structure du projet](structure.jpg)
 
 ## Installation
 Pour installer le programme, suivez les étapes suivantes :

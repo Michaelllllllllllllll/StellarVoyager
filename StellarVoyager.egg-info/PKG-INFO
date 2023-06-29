@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: StellarVoyager
+Version: 2.0
+Summary: Ce projet planifie un voyage entre deux planètes de notre système solaire.
+Home-page: https://astronomia.fr/
+Author: Laétitia Granal, Romain Robillard, Michaël Roquejofre
+Keywords: orbite de hohmann,StellarVoyager
+Requires-Python: >=3.8
+License-File: LICENSE.md
+
+L utilisateur peut choisir les planètes de départ et d arrivée ainsi que la date de départ au plus tôt. Le programme calcule la quantité de carburant nécessaire, le temps de trajet, les dates de départ et d arrivée ainsi qu une représentation graphique de la trajectoire.
