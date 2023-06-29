@@ -69,11 +69,11 @@ def calculer_energie_orbitale(mission):
 
     :Formules utilisées:
 
-    :math:`V_{périgée} = \\sqrt{\\frac{2\\mu_{soleil}}{d_{planète~initiale/soleil}+d_{planète~finale/soleil}}\\times \\frac{d_{planète~finale/soleil}}{d_{planète~initiale/soleil}}}`
+    :math:`v_{périgée} = \\sqrt{\\frac{2\\mu_{soleil}}{d_{planète~initiale/soleil}+d_{planète~finale/soleil}}\\times \\frac{d_{planète~finale/soleil}}{d_{planète~initiale/soleil}}}`
 
-    :math:`\\Delta V1 = V_{périgée} - V_{planète~initiale}`
+    :math:`\\Delta v1 = v_{périgée} - v_{planète~initiale}`
 
-    :math:`\\epsilon = \\frac{\\Delta V1^2}{2} - \\frac{\\mu_{planète~initiale}}{SOI}`
+    :math:`\\epsilon = \\frac{\\Delta v1^2}{2} - \\frac{\\mu_{planète~initiale}}{SOI}`
 
     :math:`\\epsilon` est l'énergie orbitale pour initier l'orbite de transfert vers la planète finale
 
@@ -108,13 +108,13 @@ def calculer_vitesse_orbite(mission):
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
     :Formules utilisées:
-    :math:`V_{orbite} = \\frac{\\mu_{planète}}{Rayon~orbite~planète}`
+    :math:`v_{orbite} = \\frac{\\mu_{planète}}{Rayon~orbite~planète}`
 
-    :math:`V_{libération} = \\sqrt{2(\\epsilon _{planète} + \\frac{\\mu_{planète}}{Rayon~orbite~planète})}`
+    :math:`v_{libération} = \\sqrt{2(\\epsilon _{planète} + \\frac{\\mu_{planète}}{Rayon~orbite~planète})}`
 
-    :math:`\\Delta V_{départ} = V_{libération} - V_{orbite~départ}`
+    :math:`\\Delta v_{départ} = v_{libération} - v_{orbite~départ}`
 
-    :math:`\\Delta V_{arrivée} =  V_{orbite~arrivée} - V_{libération}`
+    :math:`\\Delta v_{arrivée} =  v_{orbite~arrivée} - v_{libération}`
 
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
@@ -138,6 +138,9 @@ def calculer_duree_transfert(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
+    :Formules utilisées:
+    :math:`\\frac{\\pi}{2}\\times\\sqrt{\\frac{(d_{planète~initiale/soleil}+d_{planète~finale/soleil})^3}{2\\mu _{soleil}}}`
+
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
@@ -153,18 +156,18 @@ def calculer_masse_carburant(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    Formules utilisées :
+    :Formules utilisées:
 
     De l'équation de Tsiolkovski découle :
-    :math:`\\delta_{v} = v_{orbite}\\ln(\\frac{m_{initiale}}{m_{finale}})`
+    :math:`\\Delta v = v_{orbite}\\ln(\\frac{m_{initiale}}{m_{finale}})`
 
-    On a en développant :
-    :math:`m_{carburant} = m_{initiale}(1 - e^(-{delta_{v}/v_{orbite}) - m_{chargeutile}`
+    On a en développant:
 
-    :math:`m_{poidsvaisseau} = m_{chargeutile} + m_{initiale} + m_{carburant}`
+    :math:`m_{carburant} = m_{initiale}(1-e^{-\\frac{\\Delta v}{v_{orbite}}} - m_{charge~utile})`
+
+    :math:`m_{poids~vaisseau} = m_{charge~utile} + m_{initiale} + m_{carburant}`
 
     :return: Tous les paramètres utiles de la mission.
-
     :rtype: dict
     """
     #Calcul la masse de carburant utilisé pour l'accélération
@@ -191,7 +194,6 @@ def calculer_duree_mission(mission):
     Pour le reste des angles, nous avons expliqué directement via les commentaires du code.
 
     :return: Tous les paramètres utiles de la mission.
-
     :rtype: dict
     """
     #Calcul des vitesses de rotation des planètes
@@ -278,7 +280,7 @@ def appel_fonctions_physique(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: L'objet de mission mis à jour après les calculs.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
 
     Remarque :

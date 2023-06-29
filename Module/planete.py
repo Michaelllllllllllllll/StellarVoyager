@@ -15,7 +15,7 @@ class Planete:
     :ivar float rayon_orbite: Rayon de l'orbite du vaisseau au-dessus de la planète en kilomètres.
     :ivar float vitesse: Vitesse de la planète en kilomètres par heure.
     :ivar float distance_soleil: Distance de la planète par rapport au Soleil en kilomètres.
-    :ivar float parametre_gravitationnel: Paramètre gravitationnel standard de la planète en :math:`\\frac{km^3}{s^2}`.
+    :ivar float parametre_gravitationnel: Paramètre gravitationnel standard de la planète en :math:`\\mu = G M (\\frac{km^3}{s^2})`.
     :ivar int nombre_annee: Nombre d'années utilisées pour les coordonnées des planètes.
     :ivar ephemeris: Données éphémérides pour toutes les planètes.
 
@@ -26,7 +26,8 @@ class Planete:
         """Le constructeur récupère les paramètres physiques de la planète demandée et les stocks dans des variables.
 
         :param int numero_planete: Numéro de la planète indiquée par l'utilisateur.
-        :return: Aucun.
+
+        :return: Aucun
         """
         # Liste des noms des planetes utilisées dans Skyfield afin de récupérer les données associées
         nom_planete_ordre = ['mercury barycenter', 'venus barycenter', 'earth barycenter', 'mars barycenter', 'jupiter barycenter', 'saturn barycenter', 'uranus barycenter', 'neptune barycenter', 'pluto barycenter']
@@ -91,7 +92,7 @@ class Planete:
         :var sun: Contient les ephemeries du soleil
         :ivar array temps_pos_planete: Tableau des coordonnées et date sur les prochaines années
 
-        :return: Aucun.
+        :return: Aucun
         """
         # Date précise à laquelle vous souhaitez observer la planète
         date_observation = datetime.datetime(annee, mois, jour)
