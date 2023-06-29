@@ -2,11 +2,11 @@ import numpy as np
 from skyfield.api import load, utc
 from datetime import timedelta
 
-# e = 0, nous considérons que les orbites sont circulaires
-# Nous considérons que le vaisseau est déjà en orbite à basse altitude avec une vitesse initiale non nulle
+#e = 0, nous considérons que les orbites sont circulaires
+#Nous considérons que le vaisseau est déjà en orbite à basse altitude avec une vitesse initiale non nulle
 
-# Données du soleil utiles (constantes)
-param_gravitation_soleil = 132712440018	 #km^3/s^2
+#Données du soleil utiles (constantes)
+param_gravitation_soleil = 132712440018	#km^3/s^2
 masse_soleil = 1.989 * 10**30 #kg
 
 def determiner_instant_depart(mission):
@@ -26,13 +26,13 @@ def determiner_instant_depart(mission):
     :rtype: dict
     """
     #Création d'un tableau contenant les angles entre la planète de départ et d'arrivée au cours du temps
-    difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3])
+    difference_angles = abs(mission['planete_depart'].temps_pos_planete[3] - mission['planete_arrivee'].temps_pos_planete[3]) #rad
 
     #Calcul de l'angle qui permet le départ du vaisseau
-    angle_objectif = np.pi - 2 * np.pi / mission['planete_arrivee'].periode_revolution * mission['duree_transfert']
+    angle_objectif = np.pi - 2 * np.pi / mission['planete_arrivee'].periode_revolution * mission['duree_transfert'] #rad
 
     #Soustraction de l'angle recherché au tableau des angles pour chercher le zéro
-    minimalisation = angle_objectif - difference_angles
+    minimalisation = angle_objectif - difference_angles #rad
 
     #Parcours le tableau des angles jusqu'au premier zéro
     for indice in range(1, len(minimalisation)):
@@ -81,11 +81,11 @@ def calculer_energie_orbitale(mission):
     :rtype: dict
     """
     #Calcul de la vitesse de libération au départ
-    vitesse_perigee = abs(np.sqrt(((2 * param_gravitation_soleil) / (mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)) * (mission['planete_arrivee'].distance_soleil / mission['planete_depart'].distance_soleil)))
+    vitesse_perigee = abs(np.sqrt(((2 * param_gravitation_soleil) / (mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)) * (mission['planete_arrivee'].distance_soleil / mission['planete_depart'].distance_soleil))) #km/s
     #Calcul de la différence de vitesse
-    mission['delta_v1'] = abs(round(vitesse_perigee - (mission['planete_depart'].vitesse / 3600), 2))
+    mission['delta_v1'] = abs(round(vitesse_perigee - (mission['planete_depart'].vitesse / 3600), 2)) #km/s
     #Calcul de l'énergie orbitale de la planète de départ
-    mission["energie_orbitale_planete_depart"] = ((mission['delta_v1']) ** 2 / 2) - (mission['planete_depart'].parametre_gravitationnel / mission['distance_influence'])
+    mission["energie_orbitale_planete_depart"] = ((mission['delta_v1']) ** 2 / 2) - (mission['planete_depart'].parametre_gravitationnel / mission['distance_influence']) #KJ/kg
 
     return mission
 
@@ -98,7 +98,7 @@ def calculer_influence_planete(mission):
     :rtype: dict
     """
     #Calcul la distance maximale à laquelle la planète a toujours une influence sur le vaisseau
-    mission['distance_influence'] = round(mission['planete_depart'].distance_soleil * (mission['planete_depart'].masse / masse_soleil)**(2/5), 2)
+    mission['distance_influence'] = round(mission['planete_depart'].distance_soleil * (mission['planete_depart'].masse / masse_soleil)**(2/5), 2) #km
 
     return mission
 
@@ -120,16 +120,16 @@ def calculer_vitesse_orbite(mission):
     :rtype: dict
     """
     #Calcul la vitesse en orbite autour de la planète de départ
-    mission['vitesse_orbite_depart'] = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2)
+    mission['vitesse_orbite_depart'] = round(np.sqrt(mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite), 2) #km/s
     #Calcul la vitesse en orbite autour de la planète d'arrivée
-    mission['vitesse_orbite_arrivee'] = round(np.sqrt(mission['planete_arrivee'].parametre_gravitationnel / mission['planete_arrivee'].rayon_orbite), 2)
+    mission['vitesse_orbite_arrivee'] = round(np.sqrt(mission['planete_arrivee'].parametre_gravitationnel / mission['planete_arrivee'].rayon_orbite), 2) #km/s
     #Calcul la vitesse de libération
-    mission['vitesse_liberation'] = round(np.sqrt(2 * (mission["energie_orbitale_planete_depart"] + (mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite))), 2)
+    mission['vitesse_liberation'] = round(np.sqrt(2 * (mission["energie_orbitale_planete_depart"] + (mission['planete_depart'].parametre_gravitationnel / mission['planete_depart'].rayon_orbite))), 2) #km/s
 
     #Calcul l'accélération au départ
-    mission['delta_v_orbite_depart'] = round(mission['vitesse_liberation'] - mission['vitesse_orbite_depart'], 2)
+    mission['delta_v_orbite_depart'] = round(mission['vitesse_liberation'] - mission['vitesse_orbite_depart'], 2) #km/s
     #Calcul la décélération à l'arrivée
-    mission['delta_v_orbite_arrivee'] = round(mission['vitesse_orbite_arrivee'] - mission['vitesse_liberation'], 2)
+    mission['delta_v_orbite_arrivee'] = round(mission['vitesse_orbite_arrivee'] - mission['vitesse_liberation'], 2) #km/s
 
     return mission
 
@@ -145,9 +145,9 @@ def calculer_duree_transfert(mission):
     :rtype: dict
     """
     #Calcul de la durée estimée du transfert
-    mission['duree_transfert'] = abs((np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil)))
-    #Conversion des secondes en jour
-    mission['duree_transfert'] /= (3600 * 24)
+    mission['duree_transfert'] = abs((np.pi / 2) * np.sqrt((mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil)**3 / (2 * param_gravitation_soleil))) #secondes
+    #Conversion des secondes en jours
+    mission['duree_transfert'] /= (3600 * 24) #jours
 
     return mission
 
@@ -175,13 +175,13 @@ def calculer_masse_carburant(mission):
     :rtype: dict
     """
     #Calcul la masse de carburant utilisé pour l'accélération
-    mission['carburant_sortie_orbite_init'] = mission['vaisseau'].masse_initiale * (1 - np.exp(-((abs(mission['delta_v_orbite_depart'])) / mission['vitesse_orbite_depart']))) - mission['vaisseau'].masse_charge_utile
+    mission['carburant_sortie_orbite_init'] = mission['vaisseau'].masse_initiale * (1 - np.exp(-((abs(mission['delta_v_orbite_depart'])) / mission['vitesse_orbite_depart']))) - mission['vaisseau'].masse_charge_utile #kg
 
     #Calcul la masse de carburant utilisé pour la décélération
-    mission['carburant_entree_orbite_arrivee'] = (mission['vaisseau'].masse_initiale - mission['carburant_sortie_orbite_init']) * (1 - np.exp(-((abs(mission['delta_v_orbite_arrivee'])) / mission['vitesse_orbite_arrivee']))) - mission['vaisseau'].masse_charge_utile
+    mission['carburant_entree_orbite_arrivee'] = (mission['vaisseau'].masse_initiale - mission['carburant_sortie_orbite_init']) * (1 - np.exp(-((abs(mission['delta_v_orbite_arrivee'])) / mission['vitesse_orbite_arrivee']))) - mission['vaisseau'].masse_charge_utile #kg
 
     #Calcul de la masse total du vaisseau
-    mission['poids_vaisseau'] = mission['vaisseau'].masse_charge_utile + mission['vaisseau'].masse_initiale + mission['carburant_sortie_orbite_init'] + mission['carburant_entree_orbite_arrivee']
+    mission['poids_vaisseau'] = mission['vaisseau'].masse_charge_utile + mission['vaisseau'].masse_initiale + mission['carburant_sortie_orbite_init'] + mission['carburant_entree_orbite_arrivee'] #kg
     return mission
 
 def calculer_duree_mission(mission):
@@ -193,19 +193,17 @@ def calculer_duree_mission(mission):
 
     :math:`\\omega = \\frac{360\\pi}{T} (degrés/jour)`
 
-    :math:`\\delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
-
-    Pour le reste des angles, nous avons expliqué directement via les commentaires du code.
+    :math:`\\Delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
 
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
     #Calcul des vitesses de rotation des planètes
-    omega_planete_depart = 360 / mission['planete_depart'].periode_revolution
-    omega_planete_arrivee = 360 / mission['planete_arrivee'].periode_revolution
+    omega_planete_depart = 360 / mission['planete_depart'].periode_revolution #deg/jour
+    omega_planete_arrivee = 360 / mission['planete_arrivee'].periode_revolution #deg/jour
 
     # Calcul la vitesse de rotation relative entre les deux planètes
-    delta_omega = omega_planete_depart - omega_planete_arrivee
+    delta_omega = omega_planete_depart - omega_planete_arrivee #deg/jour
 
     #Pour la suite, on prend la convention suivante pour tous les angles :
     #p1i : position initiale de la planète de départ
@@ -214,17 +212,17 @@ def calculer_duree_mission(mission):
     #p2f : position finale de la planète d'arrivée
 
     #Angle entre la position initiale de la planète de départ et la position finale de la planète de départ
-    angle_p1i_p1f = omega_planete_depart * mission['duree_transfert']
+    angle_p1i_p1f = omega_planete_depart * mission['duree_transfert'] #deg
 
     #Angle entre la position finale de la planète de départ et la position finale de la planète d'arrivée
-    angle_p1f_p2f = angle_p1i_p1f - 180
+    angle_p1f_p2f = angle_p1i_p1f - 180 #deg
 
     #angle de phasage
-    phi = 180 - angle_p1i_p1f
+    phi = 180 - angle_p1i_p1f #deg
 
     #Calcul de la durée d'attente sur la planète d'arrivée une fois sur place
-    angle_duree_totale = 360 + phi - angle_p1f_p2f
-    mission['duree_sur_planete_arrivee'] = abs(angle_duree_totale / delta_omega)
+    angle_duree_totale = 360 + phi - angle_p1f_p2f #deg
+    mission['duree_sur_planete_arrivee'] = abs(angle_duree_totale / delta_omega) #jours
 
     #Calcul de la date de départ du vaisseau de la planète d'arrivée
     ts = load.timescale()
@@ -237,7 +235,7 @@ def calculer_duree_mission(mission):
     mission['annee_depart_planete'] = date_depart_planete.utc_datetime().year
 
     #Calcul de l'indice dans le tableau du moment de départ de la planète d'arrivée
-    mission['indice'] += int(mission["duree_sur_planete_arrivee"])
+    mission['indice'] += int(mission["duree_sur_planete_arrivee"]) #jours
     #Gestion d'erreur du dépassement de tableau si la mission est trop longue
     try:
         #Mémorisation de l'angle de la planète d'arrivée au moment du départ vers la planète de départ
