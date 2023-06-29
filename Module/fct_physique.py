@@ -184,31 +184,47 @@ def calculer_duree_mission(mission):
 
     formules utilisées :
 
-    :math:`\\omega = \\frac{2\\pi}{T}   (rad//jour)`
-
     :math:`\\omega = \\frac{360\\pi}{T} (degrés/jour)`
 
     :math:`\\delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
+
+    Pour le reste des angles, nous avons expliqué directement via les commentaires du code.
 
     :return: Tous les paramètres utiles de la mission.
 
     :rtype: dict
     """
     #Calcul des vitesses de rotation des planètes
-    omega_depart = 360 / mission['planete_depart'].periode_revolution
-    omega_arrivee = 360 / mission['planete_arrivee'].periode_revolution
+    omega_planete_depart = 360 / mission['planete_depart'].periode_revolution
+    omega_planete_arrivee = 360 / mission['planete_arrivee'].periode_revolution
 
-    #Calcul la vitesse de rotation relative entre les deux planètes
-    delta_omega = omega_depart - omega_arrivee
-    #Calcul du paramètre phi
-    phi = 360 + 180 - (omega_depart*mission['duree_transfert']) - (omega_depart*mission['duree_transfert'] - 180)
-    #Calcul de la durée à attendre sur la planète d'arrivée avant un nouvel alignenent des planètes pour retourner sur la planète de départ
-    mission['duree_sur_planete_arrivee'] = abs(phi / delta_omega)
+    # Calcul la vitesse de rotation relative entre les deux planètes
+    delta_omega = omega_planete_depart - omega_planete_arrivee
+
+    #Pour la suite, on prend la convention suivante pour tous les angles :
+    #p1i : position initiale de la planète de départ
+    #p1f : position finale de la planète de départ
+    #p2i : position initiale de la planète d'arrivée
+    #p2f : position finale de la planète d'arrivée
+
+    #Angle entre la position initiale de la planète de départ et la position finale de la planète de départ
+    angle_p1i_p1f = omega_planete_depart * mission['duree_transfert']
+
+    #Angle entre la position finale de la planète de départ et la position finale de la planète d'arrivée
+    angle_p1f_p2f = angle_p1i_p1f - 180
+
+    #angle de phasage
+    phi = 180 - angle_p1i_p1f
+
+    #Calcul de la durée d'attente sur la planète d'arrivée une fois sur place
+    angle_duree_totale = 360 + phi - angle_p1f_p2f
+    mission['duree_sur_planete_arrivee'] = abs(angle_duree_totale / delta_omega)
 
     #Calcul de la date de départ du vaisseau de la planète d'arrivée
     ts = load.timescale()
     date_depart_planete = ts.utc(mission['annee_arrivee_planete'], mission['mois_arrivee_planete'], mission['jour_arrivee_planete'])
     date_depart_planete = date_depart_planete + timedelta(days=int(mission["duree_sur_planete_arrivee"]))
+
     #Mémorisation de la date de départ du vaisseau de la planète d'arrivée
     mission['jour_depart_planete'] = date_depart_planete.utc_datetime().day
     mission['mois_depart_planete'] = date_depart_planete.utc_datetime().month
