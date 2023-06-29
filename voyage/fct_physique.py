@@ -189,7 +189,7 @@ def calculer_duree_mission(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    formules utilisées :
+    :Formules utilisées :
 
     :math:`\\omega = \\frac{360\\pi}{T} (degrés/jour)`
 

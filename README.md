@@ -10,7 +10,7 @@ Les moteurs sont alors utilisés deux fois, la première fois pour **accélerer 
 *Cette propriété de 180 degrés entre le départ et l'arrivée est importante pour minimiser la dépense énergétique lors des transferts orbitaux. En exploitant la mécanique orbitale et en choisissant soigneusement les moments des impulsions de propulsion, les missions spatiales peuvent atteindre leur destination en utilisant le moins de carburant possible.*
 
 ## Utilisation
-Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez éxecuter le programme depuis le fichier *main*
+Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez exécuter le programme depuis le fichier *main*
 
 Dans l'ordre, vous devez :
    * Choisir une planète de départ. 
@@ -47,7 +47,7 @@ L'application "StellarVoyager" comprend ce module et tous les autres fichiers qu
 Pour installer le programme, suivez les étapes suivantes :
 * Accéder au terminal.
 * Il faut exécuter la commande : **pip install -r requirements.txt** dans le dossier où se trouve requirements.txt dans votre terminal.
-* Aller dans le main et exécuter le programme.
+* Aller dans le fichier main et exécutez le programme.
 
 De plus, nous avons utilisé les modules suivants qui seront automatiquement installés avec les commandes précédentes :
 
