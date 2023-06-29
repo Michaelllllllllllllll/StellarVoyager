@@ -18,3 +18,5 @@ def StellarVoyager():
 
     # Affiche le graphique et les trajectoires associées à la mission effectuée (vaisseau et planètes)
     vy.afficher_trajectoire(mission)
+
+StellarVoyager()
