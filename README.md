@@ -10,16 +10,8 @@ Les moteurs sont alors utilisés deux fois, la première fois pour **accélerer 
 *Cette propriété de 180 degrés entre le départ et l'arrivée est importante pour minimiser la dépense énergétique lors des transferts orbitaux. En exploitant la mécanique orbitale et en choisissant soigneusement les moments des impulsions de propulsion, les missions spatiales peuvent atteindre leur destination en utilisant le moins de carburant possible.*
 
 ## Utilisation
-<<<<<<< Updated upstream
 Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez éxecuter le programme depuis le fichier *main*
 
-=======
-
-Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, il faut exécuter StellarVoyager dans la console python pour lancer le programme.
-
-Il faut exécuter le Main.
-
->>>>>>> Stashed changes
 Dans l'ordre, vous devez :
    * Choisir une planète de départ. 
    * Choisir une planète d'arrivée.
@@ -44,12 +36,6 @@ De plus, nous sommes conscients que Pluton n'est plus catégorisée comme une pl
 Nous l'avons ajouté pour avoir plus de possibilités et par pure curiosité.
 
 ## Structure du projet
-<<<<<<< Updated upstream
-Expliquer la structure (comment le programme intéragit) et le module.
-
-## Installation
-Expliquer le processus d'installation et les librairies immbriquées
-=======
 Le programme est organisé de la façon suivante : 
 
 ![Structure du projet](structure.jpg)
@@ -64,7 +50,6 @@ Pour installer le programme, suivez les étapes suivantes :
 * Aller dans le main et exécuter le programme.
 
 De plus, nous avons utilisé les modules suivants qui seront automatiquement installés avec les commandes précédentes :
->>>>>>> Stashed changes
 
 Données sur les planètes : [Skyfield](https://rhodesmill.org/skyfield/).
 
