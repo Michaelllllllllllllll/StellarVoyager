@@ -36,7 +36,7 @@ De plus, nous sommes conscients que Pluton n'est plus catégorisée comme une pl
 Nous l'avons ajouté pour avoir plus de possibilités et par pure curiosité.
 
 ## Structure du projet
-Expliquer la structure (comment le programme intéragit) et le module.
+Expliquer la structure (comment le programme interagit) et le module.
 
 ## Installation
 Expliquer le processus d'installation et les librairies immbriquées
@@ -122,7 +122,8 @@ Le but est de quand même ressortir un résultat sans avoir à crasher le progra
 
 **ATTENTION** : 
 *Si vous avez ce message, cela signifie que le trajet est trop long, ou que vous lancez votre vaisseau trop tard.*
-*Pour corriger le problème : essayez de lancer votre voyage plus tôt.* 
+*Pour corriger le problème : essayez de lancer votre voyage plus tôt.*
+*Il aurait fallu que nous installions des données d'éphémérides plus lourdes, mais cela rendrait le programme plus long, c'est un compromis que nous avons choisi afin de rendre le programme rapide*
 
 Maintenant que vous avez vu deux exemples, amusez-vous bien avec **STELLARVOYAGER**.
 
