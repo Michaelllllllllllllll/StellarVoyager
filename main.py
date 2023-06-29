@@ -10,8 +10,18 @@ def StellarVoyager():
     # Debute les calculs pour la mission
     mission = vy.appel_fonctions_physique(mission)
 
+<<<<<<< Updated upstream
     # Affiche un texte qui explique les paramètres de la mission à l'utilisateur
     vy.retour_utilisateur(mission)
+=======
+<<<<<<< HEAD
+# Débute les calculs pour la mission
+mission = md.appel_fonctions_physique(mission)
+=======
+    # Affiche un texte qui explique les paramètres de la mission à l'utilisateur
+    vy.retour_utilisateur(mission)
+>>>>>>> 358a41dd4c35a832ce2766e3901ae58868bfe4e1
+>>>>>>> Stashed changes
 
     # Affiche le graphique et les trajectoires associées à la mission effectuée (vaisseau et planètes)
     vy.afficher_trajectoire(mission)
