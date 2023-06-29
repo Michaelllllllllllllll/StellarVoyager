@@ -10,10 +10,8 @@ def StellarVoyager():
     # Debute les calculs pour la mission
     mission = vy.appel_fonctions_physique(mission)
 
-
     # Affiche un texte qui explique les paramètres de la mission à l'utilisateur
     vy.retour_utilisateur(mission)
-
 
     # Débute les calculs pour la mission
     mission = vy.appel_fonctions_physique(mission)
