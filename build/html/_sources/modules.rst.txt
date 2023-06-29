@@ -4,5 +4,6 @@ StellarVoyager
 .. toctree::
    :maxdepth: 4
 
-   Module
+   Setup
    main
+   voyage

@@ -3,25 +3,25 @@ import numpy as np
 
 # Fonction qui affiche la trajectoire du vaisseau ainsi que celle des planètes
 def afficher_trajectoire(mission):
-    """Affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes.
+    """Cette fonction affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes de notre système solaire. Elle affiche aussi les dates importantes de la mission sur ce graphique.
 
-    :param mission: Contient tous les paramètres utiles de la mission.
+    :param dict mission: Contient tous les paramètres utiles de la mission.
 
     :return: Aucun
     """
-    # Liste de la distance de chacune des planètes par rapport au soleil en km.
-    distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000]
+    # Liste de la distance de chacune des planètes par rapport au soleil en km
+    distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km
     # Liste les noms des planètes
     nom_planete_affichage = ['Mercure', 'Venus', 'Terre', 'Mars', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Pluton']
 
     # Tableau contenant 200 angles de 0 à 2 pi
-    angle_planete = np.linspace(0, 2 * np.pi, 200)
+    angle_planete = np.linspace(0, 2 * np.pi, 200) #rad
 
     # Définit la figure 1
     plt.figure(1)
 
     # Affichage du soleil
-    plt.scatter(0, 0, label = 'Soleil', color='yellow')
+    plt.scatter(0, 0, label = 'Soleil', color='gold')
 
     # Affiche les orbites des 9 planètes
     for i in range(9):

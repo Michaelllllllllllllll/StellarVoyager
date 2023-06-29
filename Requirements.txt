@@ -1,5 +1,6 @@
 numpy
-skyfield.api
+skyfield
 datetime
 tqdm
-matplotlib.pyplot
+matplotlib
+
