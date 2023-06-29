@@ -159,7 +159,11 @@ def calculer_masse_carburant(mission):
     :Formules utilisées:
 
     De l'équation de Tsiolkovski découle :
-    :math:`\\Delta v = v_{orbite}\\ln(\\frac{m_{initiale}}{m_{finale}})`
+    :math:`\\Delta v = v_{initiale}\\ln(\\frac{m_{initiale}}{m_{finale}})`
+
+    Avec :math:`v_{initiale}` qui correspond à la vitesse avant d'entamer l'actionnement des moteurs.
+    Elle correspond à la vitesse du vaisseau en orbite avant la phase d'accélération
+    et à la vitesse de libération (vitesse de déplacement du vaisseau durant le voyage) avant le freinage.
 
     On a en développant:
 
