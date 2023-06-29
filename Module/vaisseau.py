@@ -14,7 +14,7 @@ class Vaisseau:
         :return: Aucun
         """
         # Demande à l'utilisateur la masse de charge utile
-        self.masse_charge_utile = obtenir_flottant('Entrer la masse de charge utile que vous voulez emmener avec vous en kg : ')
+        self.masse_charge_utile = obtenir_flottant('Entrer la masse de charge utile que vous voulez emmener avec vous en kg : ') #kg
         # Utilise un coefficient empirique pour trouver la masse initiale du vaisseau
-        self.masse_initiale = 15 * self.masse_charge_utile
+        self.masse_initiale = 15 * self.masse_charge_utile #kg
         pass

@@ -10,12 +10,12 @@ def afficher_trajectoire(mission):
     :return: Aucun
     """
     # Liste de la distance de chacune des planètes par rapport au soleil en km
-    distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000]
+    distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km
     # Liste les noms des planètes
     nom_planete_affichage = ['Mercure', 'Venus', 'Terre', 'Mars', 'Jupiter', 'Saturne', 'Uranus', 'Neptune', 'Pluton']
 
     # Tableau contenant 200 angles de 0 à 2 pi
-    angle_planete = np.linspace(0, 2 * np.pi, 200)
+    angle_planete = np.linspace(0, 2 * np.pi, 200) #rad
 
     # Définit la figure 1
     plt.figure(1)
