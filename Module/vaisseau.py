@@ -10,6 +10,8 @@ class Vaisseau:
         """Le constructeur de cette classe initialise le vaisseau en demandant à l'utilisateur la charge utile qu'il souhaite embarquer.
 
         :param fct obtenir_flottant: Vérifie que l'entrée de l'utilisateur est un nombre flottant.
+
+        :return: Aucun
         """
         # Demande à l'utilisateur la masse de charge utile
         self.masse_charge_utile = obtenir_flottant('Entrer la masse de charge utile que vous voulez emmener avec vous en kg : ')

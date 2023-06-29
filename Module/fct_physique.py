@@ -168,7 +168,6 @@ def calculer_masse_carburant(mission):
     :math:`m_{poids~vaisseau} = m_{charge~utile} + m_{initiale} + m_{carburant}`
 
     :return: Tous les paramètres utiles de la mission.
-
     :rtype: dict
     """
     #Calcul la masse de carburant utilisé pour l'accélération
@@ -195,7 +194,6 @@ def calculer_duree_mission(mission):
     :math:`\\delta_{\\omega} = \omega_{planète~initiale}-\omega_{planète~finale}`
 
     :return: Tous les paramètres utiles de la mission.
-
     :rtype: dict
     """
     #Calcul des vitesses de rotation des planètes
@@ -266,7 +264,7 @@ def appel_fonctions_physique(mission):
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
-    :return: L'objet de mission mis à jour après les calculs.
+    :return: Tous les paramètres utiles de la mission.
     :rtype: dict
 
     Remarque :

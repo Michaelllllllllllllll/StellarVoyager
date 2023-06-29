@@ -26,7 +26,8 @@ class Planete:
         """Le constructeur récupère les paramètres physiques de la planète demandée et les stocks dans des variables.
 
         :param int numero_planete: Numéro de la planète indiquée par l'utilisateur.
-        :return: Aucun.
+
+        :return: Aucun
         """
         # Liste des noms des planetes utilisées dans Skyfield afin de récupérer les données associées
         nom_planete_ordre = ['mercury barycenter', 'venus barycenter', 'earth barycenter', 'mars barycenter', 'jupiter barycenter', 'saturn barycenter', 'uranus barycenter', 'neptune barycenter', 'pluto barycenter']
@@ -91,7 +92,7 @@ class Planete:
         :var sun: Contient les ephemeries du soleil
         :ivar array temps_pos_planete: Tableau des coordonnées et date sur les prochaines années
 
-        :return: Aucun.
+        :return: Aucun
         """
         # Date précise à laquelle vous souhaitez observer la planète
         date_observation = datetime.datetime(annee, mois, jour)
