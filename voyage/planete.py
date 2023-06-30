@@ -5,10 +5,10 @@ import numpy as np
 from tqdm import tqdm
 
 class Planete:
-    """Cette classe représentant une planète du système solaire et ses caractéristiques utiles au projet.
+    """Cette classe représente une planète du système solaire et ses caractéristiques utiles au projet.
 
     :ivar str nom_planete: Nom de la planète en anglais reconnue par les données éphémérides.
-    :ivar str nom_planete_affichage: Nom de la planète en français.
+    :ivar str nom_planete_affichage: Nom de la planète en français pour l'afficher à l'utilisateur ultérieurement.
     :ivar float masse: Masse de la planète en kilogrammes.
     :ivar float periode_revolution: Période de révolution de la planète en jours.
     :ivar float rayon: Rayon de la planète en kilomètres.
@@ -29,7 +29,7 @@ class Planete:
 
         :return: Aucun
         """
-        # Liste des noms des planetes utilisées dans Skyfield afin de récupérer les données associées
+        # Liste des noms des planètes utilisées dans Skyfield afin de récupérer les données associées
         nom_planete_ordre = ['mercury barycenter', 'venus barycenter', 'earth barycenter', 'mars barycenter', 'jupiter barycenter', 'saturn barycenter', 'uranus barycenter', 'neptune barycenter', 'pluto barycenter']
         # Récupère le nom de la planète avec le numéro de la planète entrée par l'utilisateur
         self.nom_planete = nom_planete_ordre[numero_planete]
@@ -54,7 +54,7 @@ class Planete:
         # Récupère le rayon de la planète avec le numéro de la planète entrée par l'utilisateur
         self.rayon = rayon_planete_ordre[numero_planete] #km
 
-        # Calcule la distance entre le centre de la planète de départ/d'arrivée et la position du vaisseau au départ/ à l'arrivée
+        # Calcule la distance entre le centre de la planète de départ/d'arrivée et la position du vaisseau au départ/à l'arrivée
         self.rayon_orbite = self.rayon * 1.05 #km
 
         # Liste des vitesses des planètes dans le même ordre que leurs noms
@@ -62,34 +62,34 @@ class Planete:
         # Récupère la vitesse de la planète avec le numéro de la planète entrée par l'utilisateur
         self.vitesse = vitesse_planete_ordre[numero_planete] #km/h
 
-        # Liste des distances des planètes parrapport au soleil dans le même ordre que leurs noms
+        # Liste des distances des planètes par rapport au soleil dans le même ordre que leurs noms
         distance_au_soleil = [57910000, 108200000, 149600000, 227940000, 778330000, 1429400000, 2870990000, 4498250000, 5906380000] #km/h
         # Récupère la distance de la planète par rapport au soleil avec le numéro de la planète entrée par l'utilisateur.
         self.distance_soleil = distance_au_soleil[numero_planete] #km
 
         # Le paramètre gravitationnel standard est obtenu en multipliant la masse de l'astre par la constante gravitationnelle
         # (paramètre gravitationnel standard = M * G)
-        # Calcule le paramètre gravitationel associé à l'astre entré
+        # Calcule le paramètre gravitationnel associé à l'astre entré
         self.parametre_gravitationnel = self.masse * 6.67 * 10**-20 #km^3/s^2
 
         # Année maximale permise par nos éphémérides
         self.annee_maximum = 2200 -1
 
         # Charger les données éphémérides pour toutes les planètes
-        # Ephemeries comprises entre 1900 et 2050
+        # Ephémérides comprises entre 1900 et 2050
         # self.ephemeris = load('de421.bsp')
-        # Ephemeries comprises entre 1600 et 2200
+        # Ephémérides comprises entre 1600 et 2200
         self.ephemeris = load('de405.bsp')
 
     def coordonnees_planete(self, jour, mois, annee):
-        """Cette méthode crée un tableau avec les coordonnées de la planète de l'année de départ jusqu'en 2200.
+        """Cette méthode crée un tableau avec les coordonnées de la planète de l'année de départ (après 1600) jusqu'en 2200.
 
         :param int jour: Le jour de la date d'observation.
         :param int mois: Le mois de la date d'observation.
         :param int annee: L'année de la date d'observation.
         :var float date_observation: Date à laquelle on souhaite observer la planète
-        :var planete_cible: Contient les ephemeries de la planète cible
-        :var sun: Contient les ephemeries du soleil
+        :var planete_cible: Contient les éphémérides de la planète cible
+        :var sun: Contient les éphémérides du soleil
         :ivar array temps_pos_planete: Tableau des coordonnées et date sur les prochaines années
 
         :return: Aucun

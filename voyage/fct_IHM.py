@@ -1,7 +1,7 @@
 import numpy as np
 
 def afficher_ihm(obtenir_entier, obtenir_flottant, Vaisseau, Planete):
-    """Affiche l'interface utilisateur. La fonction demande à l'utilisateur les différentes entrées requises et les stocks dans des variables pour être utilisés plus tard. Elle initialise aussi des objects qui seront utilisés par la suite.
+    """Affiche l'interface utilisateur. La fonction demande à l'utilisateur les différentes entrées requises et les stockent dans des variables pour être utilisé plus tard. Elle initialise aussi des objets qui seront utilisés par la suite.
 
     :param fct obtenir_entier: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre flottant.
     :param fct obtenir_flottant: Fonction qui vérifie que l'entrée de l'utilisateur est un nombre entier.
@@ -48,11 +48,11 @@ def retour_utilisateur(mission):
     :return: Tous les paramètres utiles de la mission.
     :rtype: dict
     """
-    # Si les données d'entrées sont valides
+    # Si les données d'entrées dépassent les données de coordonnées maximales (avant 1600 ou après 2200)
     if mission['mission_trop_longue'] == 'oui':
         print("\nErreur, la mission est trop longue, elle dépasse l'année maximale permise par nos données d'éphéméride.")
 
-    # Si les données d'entrées ne sont pas valides
+    # Si les données d'entrées sont valides
     else:
         print(f"\nVous souhaitez partir de la planète {mission['planete_depart'].nom_planete_affichage} pour aller vers {mission['planete_arrivee'].nom_planete_affichage}.\nCe code vous montrera toutes les données indispensables au trajet.")
 
