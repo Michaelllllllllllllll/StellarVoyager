@@ -9,8 +9,10 @@ Les moteurs sont alors utilisés deux fois, la première fois pour **accélerer 
 > *La caractéristique clé de la trajectoire de Hohmann est que l'angle entre le point de départ sur l'orbite intérieure et le point d'arrivée sur l'orbite extérieure est de 180 degrés. Cela signifie que l'engin spatial atteindra l'orbite extérieure exactement à l'opposé de son point de départ initial.*
 *Cette propriété de 180 degrés entre le départ et l'arrivée est importante pour minimiser la dépense énergétique lors des transferts orbitaux. En exploitant la mécanique orbitale et en choisissant soigneusement les moments des impulsions de propulsion, les missions spatiales peuvent atteindre leur destination en utilisant le moins de carburant possible.*
 
+Plus particulièrement, le but est de montrer à l'utilisateur la difficulté du déplacement interstellaire et comment la masse du vaisseau peut varier en fonction de la charge utile emportée.
+
 ## Utilisation
-Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez exécuter le programme depuis le fichier *main*
+Une fois que vous avez installé le nécessaire *(voir rubrique **installation**)*, vous devez exécuter le programme depuis le fichier *main*.
 
 Dans l'ordre, vous devez :
    * Choisir une planète de départ. 
@@ -22,7 +24,7 @@ Ensuite, vous devez indiquer le moment au plus tôt, auquel vous voulez partir, 
    * Le mois
    * L'année
          
-   *Vous devrez patienter quelques instants, le temps que le programme calcule les données des planètes.*
+   *Vous devrez patienter quelques instants, le temps que le programme calcule les données de coordonnées des planètes.*
 
    * Indiquer si vous voulez revenir ou non sur la planète initiale
 
@@ -46,10 +48,11 @@ L'application "StellarVoyager" comprend ce module et tous les autres fichiers qu
 ## Installation
 Pour installer le programme, suivez les étapes suivantes :
 * Accéder au terminal.
-* Il faut exécuter la commande : **pip install -r requirements.txt** dans le dossier où se trouve requirements.txt dans votre terminal.
+* Il faut exécuter la commande : "**pip install -r requirements.txt**"
+dans le dossier où se trouve requirements.txt dans votre terminal.
 * Aller dans le fichier main et exécutez le programme.
 
-De plus, nous avons utilisé les modules suivants qui seront automatiquement installés avec les commandes précédentes :
+Pour plus de précision, nous avons utilisé les modules suivants qui seront automatiquement installés avec les commandes précédentes :
 
 Données sur les planètes : [Skyfield](https://rhodesmill.org/skyfield/).
 
@@ -68,14 +71,17 @@ Mettez-vous dans l'ambiance :
 
 *Nous sommes dans un monde où les hommes ont colonisé Mars et nous voulons ravitailler la planète en matière première et en équipage.*
 *Vous êtes la personne en charge du départ et vous convertissez tous les éléments indiqués en unité de masse, soit :*
-   - 10 personnes d'environ 75 kg, qui représente 750 kg.
-   - 5000 kg de matière première pour ravitailler la planète.
+   - **10 personnes d'environ 75 kg, qui représente 750 kg.**
+   - **5000 kg de matière première pour ravitailler la planète.**
 
 *Vous voulez partir dès le mois de juin 2035 et vous voulez connaitre la quantité de carburant à emporter, et quand vous serez de retour auprès de votre famille.*
 
 Voici ce que vous rentrez pour la mission, vous pouvez le voir **en gras** :
 * Veuillez entrer le numéro de la planète de départ de votre voyage : **3** *(Terre)*
 * Veuillez entrer le numéro de la planète d'arrivée de votre voyage : **4** *(Mars)*
+
+   *Vous verrez que les planètes sont numérotées dans le programme quand vous allez l'exécuter.*
+
 * Entrer la masse de charge utile que vous voulez emmener avec vous en kg : **5750** *(kg)*
 * Veuillez entrer le numéro du jour de départ au plus tôt : **1** *(Jour)*
 * Veuillez entrer le numéro du mois de départ au plus tôt : **6** *(Mois)*

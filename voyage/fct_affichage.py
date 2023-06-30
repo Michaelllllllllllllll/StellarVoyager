@@ -3,7 +3,7 @@ import numpy as np
 
 # Fonction qui affiche la trajectoire du vaisseau ainsi que celle des planètes
 def afficher_trajectoire(mission):
-    """Cette fonction affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes de notre système solaire. Elle affiche aussi les dates importantes de la mission sur ce graphique.
+    """Cette fonction affiche un graphique de la trajectoire du vaisseau ainsi que celle des planètes de notre système solaire. Elle affiche aussi les dates importantes de la mission.
 
     :param dict mission: Contient tous les paramètres utiles de la mission.
 
@@ -17,11 +17,11 @@ def afficher_trajectoire(mission):
     # Tableau contenant 200 angles de 0 à 2 pi
     angle_planete = np.linspace(0, 2 * np.pi, 200) #rad
 
-    # Définit la figure 1
+    # Définit la figure
     plt.figure(1)
 
     # Affichage du soleil
-    plt.scatter(0, 0, label = 'Soleil', color='gold')
+    plt.scatter(0, 0, label='Soleil', color='gold')
 
     # Affiche les orbites des 9 planètes
     for i in range(9):
@@ -32,20 +32,20 @@ def afficher_trajectoire(mission):
 
         # Affiche les points et les relient en pointillés avec le nom des planètes en légende
         # La conversion est faite de km à unité astronomique (1 km = 6.68*10^-9 UA)
-        # Pour rappel, une UA = 150 millions de km : distance entre la Terre et le Soleil en moyenne
+        # Pour rappel, 1 UA = 150 millions de km : distance entre la Terre et le Soleil en moyenne
         plt.plot(x * 6.68459e-9, y * 6.68459e-9, label = nom_planete_affichage[i], linestyle='dashed')
 
     ## Trajet aller
     # Récupère l'angle de départ de la mission
     angle_depart = mission['angle_depart']
-    # Tableau des angles de la trajectoire commençant à l'angle de départ jusqu'à l'angle de départ + pi (orbite de Hohman)
+    # Tableau des angles de la trajectoire commençant à l'angle de départ jusqu'à l'angle de départ + pi (orbite de Hohmann)
     angle_trajet = np.linspace(angle_depart, angle_depart + np.pi, 200)
     # Calcule le rayon du trajet
     rayon_trajet = (mission['planete_depart'].distance_soleil + mission['planete_arrivee'].distance_soleil) / 2
     # Calcule les coordonnées x et y du centre du demi-cercle du trajet
     centre_trajet_x = (mission['planete_depart'].distance_soleil - rayon_trajet) * np.cos(angle_depart)
     centre_trajet_y = (mission['planete_depart'].distance_soleil - rayon_trajet) * np.sin(angle_depart)
-    # Calcul des tableaux des coordonnées des points x et y de la trajectoire du vaisseau
+    # Calcul des tableaux contenant les coordonnées des points x et y de la trajectoire du vaisseau
     x = centre_trajet_x + rayon_trajet * np.cos(angle_trajet)
     y = centre_trajet_y + rayon_trajet * np.sin(angle_trajet)
 
@@ -63,7 +63,7 @@ def afficher_trajectoire(mission):
     if mission['retour_oui_non'] == 'oui':
         # Récupère l'angle initial du retour
         angle_depart = mission['angle_depart_planete']
-        # Tableau des angles de la trajectoire commençant à l'angle de départ jusqu'à l'angle de départ + pi (orbite de Hohman)
+        # Tableau des angles de la trajectoire commençant à l'angle de départ jusqu'à l'angle de départ + pi (orbite de Hohmann)
         angle_trajet = np.linspace(angle_depart, angle_depart + np.pi, 200)
         # Calcule le rayon du trajet
         rayon_trajet = (mission['planete_arrivee'].distance_soleil + mission['planete_depart'].distance_soleil) / 2
